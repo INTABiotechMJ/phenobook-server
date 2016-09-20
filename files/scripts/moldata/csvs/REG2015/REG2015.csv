@@ -1,0 +1,123 @@
+Linea,Criadero,Status,Origen,Año,1BL/1RS,Glu-A1,Glu-B1,Glu-D1,Vrn-A1,Vrn-B1,Vrn-D1,Ppd-B1,Ppd-D1,Lr34
+B02031,INTA Balcarce,Linea,REGIONAL I,2015,NO,2*,7+8,5+10,w,w,s,s,i,-
+B02045,INTA Balcarce,Linea,REGIONAL I,2015,SI,1,7+8,5+10,s,w,w,s,s,-
+B02050,INTA Balcarce,Linea,REGIONAL II,2015,NO,2*,7+9,5+10,w,w,s,s,i,-
+B02053,INTA Balcarce,Linea,REGIONAL III,2015,SI?,2*,7+9,5+10,w,s,s,s,i,-
+B03001,INTA Balcarce,Linea,REGIONAL III,2015,SI,2*,7+9,5+10,w,s,s,s,i,-
+B03002,INTA Balcarce,Linea,REGIONAL III,2015,SI,2*,7+9,5+10,w,s,s,s,i,-
+B03004,INTA Balcarce,Linea,REGIONAL III,2015,NO,2*,17+18,5+10,w,s,s,s,i,-
+B03005,INTA Balcarce,Linea,REGIONAL I,2015,NO,2*,7+8,5+10,w,s,s,s,i,+
+B03019,INTA Balcarce,Linea,REGIONAL II,2015,NO,nulo,7+8/7+9,5+10,s,w,w,s,i,-
+B03020,INTA Balcarce,Linea,REGIONAL II,2015,NO,2*,17+18,5+10,w,H,w,s,i,-
+B03028,INTA Balcarce,Linea,REGIONAL II,2015,NO,nulo,6+8/17+18,5+10,w,H,s,s,i,-
+B03045,INTA Balcarce,Linea,REGIONAL I,2015,NO,nulo,H,5+10,w,w,w,s,s,-
+B03046,INTA Balcarce,Linea,REGIONAL II,2015,NO,1,7/7+9,5+10,H,s,w,i,i,-
+B03047,INTA Balcarce,Linea,REGIONAL I,2015,NO,2*,7oe+8,5+10,s,s,w,s,s,-
+B04001,INTA Balcarce,Linea,REGIONAL III,2015,SI,1,7,5+10,w,w,s,i,i,-
+B04013,INTA Balcarce,Linea,REGIONAL III,2015,NO,2*,7+9,5+10,w,s,s,i,s,-
+B16208,INTA Balcarce,Linea,REGIONAL I,2015,NO,nulo,6+8/7+9,2+12,w,w,s,s,s,-
+J12001,INTA Marcos Juarez,Linea,REGIONAL I,2015,NO,2*,7+8/13+16,5+10,w,s,w,i,s,-
+J12012,INTA Marcos Juarez,Linea,REGIONAL III,2015,SI?,nulo,13+16,5+10,w?,w,w,s,i,-
+J13001,INTA Marcos Juarez,Linea,REGIONAL I,2015,NO,2*,7+8,5+10,w,s,s,i,s,-
+J13003,INTA Marcos Juarez,Linea,REGIONAL I,2015,NO,2*,13+16,5+10,s*,w,w,s,i,-
+J13009,INTA Marcos Juarez,Linea,REGIONAL II,2015,NO,2*,13+16,5+10,w,w,w,s,i,-
+J13011,INTA Marcos Juarez,Linea,REGIONAL II,2015,NO,2*,13+16,5+10,s*,w,w,s,i,-
+J13013,INTA Marcos Juarez,Linea,REGIONAL III,2015,NO,2*,7oe+8,5+10,w,w,w,s,i,-
+J13014,INTA Marcos Juarez,Linea,REGIONAL III,2015,NO,2*,13+16,5+10,w,s,w,s,i,+
+J14007,INTA Marcos Juarez,Linea,REGIONAL II,2015,NO,2*,7+8,5+10,w,s,w,s,i,-
+J15001,INTA Marcos Juarez,Linea,REGIONAL I,2015,SI,1,7+9,5+10,w,s,s,s,H,-
+J15002,INTA Marcos Juarez,Linea,REGIONAL I,2015,NO,2*,7+8/7+9,5+10,s*,s,w,s,i,-
+J15003,INTA Marcos Juarez,Linea,REGIONAL I,2015,NO,1,7+8,5+10,w,w,w,s,i,+
+J15004,INTA Marcos Juarez,Linea,REGIONAL I,2015,NO,2*,6+8,5+10,w,w,w,i,s,+
+J15009,INTA Marcos Juarez,Linea,REGIONAL II,2015,NO,2*,6+8,5+10,w,s,w,s,i,-
+J15010,INTA Marcos Juarez,Linea,REGIONAL II,2015,NO,2*,7+9,5+10,w,s,s,i,H,-
+J15011,INTA Marcos Juarez,Linea,REGIONAL II,2015,NO,2*,7+8,5+10,s*,s,w,s,i,-
+J15017,INTA Marcos Juarez,Linea,REGIONAL III,2015,NO,2*,7+8,5+10,s*,w,s,s,i,-
+J15018,INTA Marcos Juarez,Linea,REGIONAL III,2015,NO,1/2*,7+8,5+10,w,w,s,s,i,-
+J15019,INTA Marcos Juarez,Linea,REGIONAL III,2015,NO,2*,7+8,5+10,s*,w,s,s,i,-
+J15020,INTA Marcos Juarez,Linea,REGIONAL III,2015,NO,2*,7+8/7oe+8,5+10,s,w,w,i,s,+
+JN12015,INTA Saenz Peña,Linea,REGIONAL III,2015,NO,nulo,7+8/13+16,5+10,s*,w,w,s,i,-
+JN13004,INTA Saenz Peña,Linea,REGIONAL I,2015,NO,2*,17+18,5+10,s,w,w,s,i,+
+JN13012,INTA Saenz Peña,Linea,REGIONAL II,2015,NO,1,7oe+8,5+10,w,w,w,s,i,H
+JN14004,INTA Saenz Peña,Linea,REGIONAL I,2015,NO,1,7+9,5+10,w,s,s,s,s,-
+JN14016,INTA Saenz Peña,Linea,REGIONAL III,2015,NO,nulo,13+16,5+10,s*,w,s,s,i,+
+JN15005,INTA Saenz Peña,Linea,REGIONAL I,2015,NO,nulo,7+8,5+10,w,H,w,i,s,H
+JN15006,INTA Saenz Peña,Linea,REGIONAL I,2015,NO,2*,6+8,5+10,w,w,w,i,s,+
+JN15007,INTA Saenz Peña,Linea,REGIONAL I,2015,SI?,2*,7+9,5+10,w,w,w,s,s,+
+JN15008,INTA Saenz Peña,Linea,REGIONAL I,2015,NO,2*,7+8,5+10,w,w,w,s,s,+
+JN15012,INTA Saenz Peña,Linea,REGIONAL II,2015,NO,2*,17+18,5+10,w,s,s,s,i,-
+JN15013,INTA Saenz Peña,Linea,REGIONAL II,2015,NO,2*,7+8,5+10,w,w,s,i,H,+
+JN15014,INTA Saenz Peña,Linea,REGIONAL II,2015,NO,2*,7+8,5+10,s*,w,w,s,i,-
+JN15015,INTA Saenz Peña,Linea,REGIONAL II,2015,SI?,1,7+9,5+10,w,s,w,s,i,-
+JN15016,INTA Saenz Peña,Linea,REGIONAL II,2015,NO,2*,7+8,5+10,s*,w,w,s,i,-
+JN15021,INTA Saenz Peña,Linea,REGIONAL III,2015,NO,1,7,5+10,w,s,w,i,i,H
+JN15022,INTA Saenz Peña,Linea,REGIONAL III,2015,NO,1,7/7+9,5+10,w,H,H,s,i,-
+JN15023,INTA Saenz Peña,Linea,REGIONAL III,2015,NO,2*,7,5+10,w,s,s,s,i,-
+JN15024,INTA Saenz Peña,Linea,REGIONAL III,2015,NO,2*,7,5+10,w,s,s,s,i,-
+JN15025,INTA Saenz Peña,Linea,REGIONAL III,2015,NO,1,13+16,2+12,w,s,s,s,s,-
+P05900,INTA Pergamino,Linea,REGIONAL III,2015,NO,2*,7+9,5+10,w,s,s,i,i,-
+P06000,INTA Pergamino,Linea,REGIONAL II,2015,NO,2*,7+9,5+10,s*,w,s,i,s,-
+P06001,INTA Pergamino,Linea,REGIONAL I,2015,NO,2*,7+9,5+10,w,H,s,s,s,+
+P06002,INTA Pergamino,Linea,REGIONAL II,2015,NO,2*,7+9,5+10,w,s,s,s,s,+
+P06004,INTA Pergamino,Linea,REGIONAL I,2015,SI,1,7+9,5+10,w,s,s,s,s,+
+P06008,INTA Pergamino,Linea,REGIONAL II,2015,SI,2*,7+9,5+10,s,s,w,s,s,-
+P06009,INTA Pergamino,Linea,REGIONAL I,2015,SI,2*,7+9,5+10,s,w,w,s,s,-
+P06020,INTA Pergamino,Linea,REGIONAL II,2015,NO,1,7oe+8,5+10,w,w,s,i,s,-
+P06041,INTA Pergamino,Linea,REGIONAL I,2015,SI,1,7+9,5+10,w,s,s,s,s,-
+P06052,INTA Pergamino,Linea,REGIONAL I,2015,SI,1,7+9,5+10,w,s,s,s,s,+
+P06073,INTA Pergamino,Linea,REGIONAL II,2015,NO,2*,7oe+8,5+10,s,s,s,s,s,+
+P06157,INTA Pergamino,Linea,REGIONAL III,2015,SI,2*,7+9,5+10,w,s,s,s,i,-
+P06265,INTA Pergamino,Linea,REGIONAL III,2015,NO,2*,7+9,5+10,w,s,s,s,i,-
+P06266,INTA Pergamino,Linea,REGIONAL III,2015,NO,2*,7+9,5+10,w,s,s,s,i,-
+P06267,INTA Pergamino,Linea,REGIONAL III,2015,NO,1/2*,17+18,5+10,w,s,s,s,i,-
+T00243,INTA Parana,Linea,REGIONAL II,2015,NO,nulo,6+8,5+10,w,w,s,s,i,-
+T00271,INTA Parana,Linea,REGIONAL I,2015,NO,,,2+12,w,w,w,s,i,-
+T00272,INTA Parana,Linea,REGIONAL I,2015,SI,2*,7+9,5+10,w,w,w,s,i,-
+T00282,INTA Parana,Linea,REGIONAL III,2015,NO,2*,7+9,5+10,w,s,w,s,i,-
+T00283,INTA Parana,Linea,REGIONAL III,2015,NO,,,,w,w,s,s,i,-
+T00286,INTA Parana,Linea,REGIONAL I,2015,NO,nulo,6+8,5+10,w,s,s,s,s,-
+T00287,INTA Parana,Linea,REGIONAL I,2015,NO,2*,7+8,5+10,s,s,w,s,s,-
+T00288,INTA Parana,Linea,REGIONAL I,2015,SI,2*,7oe+8,5+10,w,w,w,s,s,-
+T00289,INTA Parana,Linea,REGIONAL I,2015,NO,Nulo?,14+15?,5+10,w,w,w,s,i,-
+T00290,INTA Parana,Linea,REGIONAL I,2015,NO,2*,6+8,5+10,w,s,s,s,s,-
+T00291,INTA Parana,Linea,REGIONAL II,2015,NO,1/2*,7+8,5+10,w,s,w,s,i,+
+T00292,INTA Parana,Linea,REGIONAL II,2015,SI,nulo,7+8/13+16,5+10,w,w,w,s,i,-
+T00293,INTA Parana,Linea,REGIONAL II,2015,NO,nulo,7+8/13+16,5+10,w,s,w,s,i,-
+T00294,INTA Parana,Linea,REGIONAL II,2015,NO,2*,7+9,5+10,w,s,w,i,i,-
+T00295,INTA Parana,Linea,REGIONAL II,2015,SI,2*,7oe+8,5+10,w,s,w,i,s,-
+T00296,INTA Parana,Linea,REGIONAL II,2015,SI,2*,7+9,5+10,w,w,w,i,i,+
+T00297,INTA Parana,Linea,REGIONAL II,2015,NO,1,7+8,5+10,w,w,w,s,i,-
+T00298,INTA Parana,Linea,REGIONAL III,2015,SI,1,17+18,5+10,w,w,s,s,i,-
+T00299,INTA Parana,Linea,REGIONAL III,2015,NO,,,,s,w,w,s,i,-
+T00300,INTA Parana,Linea,REGIONAL III,2015,NO,2*,7+8,5+10,s,s,,s,i,-
+T00301,INTA Parana,Linea,REGIONAL III,2015,NO,1,7+9,5+10,w,s,s,s,i,-
+T00302,INTA Parana,Linea,REGIONAL III,2015,SI,2*,13+16,5+10,w,s,w,i,i,+
+V00948,INTA Bordenave,Linea,REGIONAL I,2015,NO,2*,7+9,5+10,w,s,s,s,s,+
+V00972,INTA Bordenave,Linea,REGIONAL II,2015,NO,2*,7oe+8,5+10,w,s,s,s,s,-
+V00980,INTA Bordenave,Linea,REGIONAL II,2015,NO,2*,7oe+8?,5+10,w,s,w,s,s,-
+V00984,INTA Bordenave,Linea,REGIONAL I,2015,NO,2*,7+8,5+10,w,s,w,s,s,-
+V00990,INTA Bordenave,Linea,REGIONAL I,2015,NO,2*,7+8,5+10,s,s,s,s,s,+
+V01010,INTA Bordenave,Linea,REGIONAL II,2015,NO,nulo,7+8,5+10,w,s,s,s,s,-
+V01011,INTA Bordenave,Linea,REGIONAL II,2015,SI,2*,7+8,5+10,w,w,s,s,i,-
+V01012,INTA Bordenave,Linea,REGIONAL I,2015,NO,2*,7+8,5+10,s,s,s,s,s,-
+V01014,INTA Bordenave,Linea,REGIONAL II,2015,NO,2*,7+8,5+10,s,s,w,i,s,-
+V01016,INTA Bordenave,Linea,REGIONAL I,2015,NO,1/2*,7+8,5+10,w,s,w,s,s,-
+V01019,INTA Bordenave,Linea,REGIONAL I,2015,NO,2*,7+8/7+9,5+10,w,s,w,s,s,+
+V01034,INTA Bordenave,Linea,REGIONAL II,2015,NO,1/2*,7+8,5+10,s,w,w,s,s,+
+W10024,INTA Barrow,Linea,REGIONAL I,2015,NO,2*/nulo,7+9,2+12,s,s,s,s,s,-
+W10043,INTA Barrow,Linea,REGIONAL II,2015,NO,1,17+18,5+10,s,w,w,i,s,+
+W11008,INTA Barrow,Linea,REGIONAL II,2015,NO,1,17+18,5+10,s,H,w,i,s,H
+W11022,INTA Barrow,Linea,REGIONAL III,2015,NO,1,17+18,5+10,w,w,s,s,i,-
+W11029,INTA Barrow,Linea,REGIONAL III,2015,SI,2*,7+9/17+18,5+10,w,s,s,s,i,-
+W11031,INTA Barrow,Linea,REGIONAL III,2015,NO,1,7+9,5+10,w,s,s,s,i,-
+W12044,INTA Barrow,Linea,REGIONAL II,2015,SI,2*,7+9,5+10,w,w,w,s,i,-
+W12045,INTA Barrow,Linea,REGIONAL I,2015,SI,2*,7+9,5+10,w,w,w,s,i,-
+W12046,INTA Barrow,Linea,REGIONAL II,2015,NO,2*,7+8,5+10,w,H,w,s,i,-
+W12047,INTA Barrow,Linea,REGIONAL III,2015,SI,1/2*,7+9,5+10,w,w,s,s,i,-
+W12132,INTA Barrow,Linea,REGIONAL III,2015,NO,2*,7+8,5+10,w,w,H,s,i,H
+W12224,INTA Barrow,Linea,REGIONAL I,2015,NO,2*,7+9,5+10,w,w,w,s,i,-
+W12232,INTA Barrow,Linea,REGIONAL I,2015,NO,2*,14+15,5+10,w,s,s,s,s,-
+W12247,INTA Barrow,Linea,REGIONAL II,2015,NO,2*,17+18,5+10,w,w,s,s,i,-
+W12252,INTA Barrow,Linea,REGIONAL I,2015,SI,nulo,7+9,5+10,w,w,w,s,i,+
+W12254,INTA Barrow,Linea,REGIONAL I,2015,SI,nulo,7+9,5+10,w,w,w,s,i,+
+W13205,INTA Barrow,Linea,REGIONAL II,2015,NO,1,17+18,5+10,s,w,w,s,i,-

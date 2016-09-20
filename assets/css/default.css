@@ -1,0 +1,64 @@
+.error{
+  color: #FF5E38;
+}
+.print{
+  display: none;
+}
+.btn-shadow{
+  /*text-shadow: 0 -1px 0 rgba(0,0,0,0.25);*/
+  border-color: rgba(0,0,0,0.1) rgba(0,0,0,0.1) rgba(0,0,0,0.25);
+  filter: text-shadow: none;
+  border-width: 1px 1px 2px 1px;
+  -webkit-box-shadow: inset 0px 0px 0px 0px;
+  -moz-box-shadow: inset 0px 0px 0px 0px;
+  box-shadow: inset 0px 0px 0px 0px;  
+}
+
+.center{
+	text-align: center;
+}
+.right{
+	text-align: right;
+}
+.clarito{
+	color: #979797;
+}
+.botonera{
+  margin-bottom: 10px;
+  text-align: right;
+}
+
+
+/*==========  Mobile First Method  ==========*/
+
+/* Custom, iPhone Retina */ 
+@media only screen and (min-width : 320px) {
+
+}
+
+/* Extra Small Devices, Phones */ 
+@media only screen and (min-width : 480px) {
+
+}
+
+/* Small Devices, Tablets */
+@media only screen and (min-width : 768px) {
+  .dropdown:hover .dropdown-menu {
+    display: block;
+  }
+}
+
+/* Medium Devices, Desktops */
+@media only screen and (min-width : 992px) {
+  .dropdown:hover .dropdown-menu {
+    display: block;
+  }
+}
+
+/* Large Devices, Wide Screens */
+@media only screen and (min-width : 1200px) {
+  .dropdown:hover .dropdown-menu {
+    display: block;
+  }
+}
+

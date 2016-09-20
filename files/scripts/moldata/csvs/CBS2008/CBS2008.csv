@@ -1,0 +1,124 @@
+Linea,Criadero,Status,Origen,Año,1AL/1RS,1BL/1RS,Glu-A1,Glu-B1,Glu-D1,Vrn-A1,Vrn-B1,Vrn-D1,Ppd-D1,Lr34
+ACA 201,ACA,Variedad,CBS,2008,NO,NO,2*,17+18,5+10,s,s,s,i,-
+ACA 302,ACA,Variedad,CBS,2008,NO,NO,2*,7oe+8,5+10,s,s,s,s,-
+ACA 303,ACA,Variedad,CBS,2008,NO,NO,2*,7+8,5+10,w,s,s,s,-
+ACA 601,ACA,Variedad,CBS,2008,NO,NO,2*,7+8,5+10,s,w,s,i,H
+ACA 801,ACA,Variedad,CBS,2008,NO,NO,2*,7+9,5+10,w,s,w,i,+
+ACA 901,ACA,Variedad,CBS,2008,NO,NO,2*,7+9,5+10,w,s,s,i,+
+ACA 903 B ,ACA,Variedad,CBS,2008,NO,SI,2*,7+9,5+10,w,s,w,i,-
+ATLAX ,DON MARIO,Variedad,CBS,2008,NO,NO,1,7+9,5+10,w,s,s,i,-
+BAGUETTE 21,NIDERA,Variedad,CBS,2008,NO,NO,2*/nulo,7+9,2+12,w,w,w,i,-
+BAGUETTE 9,NIDERA,Variedad,CBS,2008,NO,NO,2*,14+15,5+10,s*,w,s,i,-
+BAGUETTE 10,NIDERA,Variedad,CBS,2008,NO,NO,nulo,6+8,5+10,s*,w,w,i,-
+BAGUETTE 17,NIDERA,Variedad,CBS,2008,NO,NO,nulo,6+8/7+8,5+10,s,w,w,i,-
+BAGUETTE 18,NIDERA,Variedad,CBS,2008,NO,NO,nulo,13+16?,5+10,w,w,w,i,-
+BAGUETTE 19,NIDERA,Variedad,CBS,2008,NO,NO,nulo,14+15,5+10,s*,w,w,i,-
+BAGUETTE 30,NIDERA,Variedad,CBS,2008,NO,NO,nulo,7oe+8,2+12,s,s,w,s,-
+BAGUETTE 31,NIDERA,Variedad,CBS,2008,NO,NO,2*,7,5+10,w,w,w,s,-
+BAGUETTE 11,NIDERA,Variedad,CBS,2008,NO,NO,2*,7+8,5+10,s*,w,w,i,-
+BAGUETTE 13,NIDERA,Variedad,CBS,2008,NO,NO,2*,14+15,5+10,w,w,s,i,-
+BIOINTA 1000,INTA,Variedad,CBS,2008,NO,NO,1,7oe+8,5+10,w,s,w,i,-
+BIOINTA 1001,INTA,Variedad,CBS,2008,NO,SI,1,7+9,5+10,w,s,s,i,-
+BIOINTA 1005,INTA,Variedad,CBS,2008,NO,NO,2*,7+9,5+10,w,s,s,i,-
+BIOINTA 2002,INTA,Variedad,CBS,2008,NO,NO,2*,17+18,5+10,w,s,w,i,-
+BIOINTA 2004,INTA,Variedad,CBS,2008,SI,NO,2*,7+8,5+10,w,w,w,s,+
+BIOINTA 3000,INTA,Variedad,CBS,2008,NO,NO,1,7oe+8,5+10,s,s,s,s,H
+BIOINTA 3004,INTA,Variedad,CBS,2008,NO,SI,2*,7+9,5+10,s,s,s,s,-
+75 ANIVERSARIO,BUCK,Variedad,CBS,2008,NO,NO,1,7+8,5+10,s,s,w,i,-
+BAQUEANO,BUCK,Variedad,CBS,2008,NO,SI,1,7+9,5+10,w,w,s,s,-
+GLUTINO,BUCK,Variedad,CBS,2008,NO,SI,2*,7+8,5+10,w,s,w,s,-
+HUANCHEN,BUCK,Variedad,CBS,2008,NO,SI,2*,7+9,5+10,w,w,s,i,+
+MALEVO,BUCK,Variedad,CBS,2008,NO,SI,2*,7+8,5+10,w,s,w,s,-
+METEORO,BUCK,Variedad,CBS,2008,NO,NO,1,17+18,5+10,s,s,s,i,-
+NORTEÑO,BUCK,Variedad,CBS,2008,NO,SI,2*,7+8,5+10,w,s,w,s,-
+PUELCHE,BUCK,Variedad,CBS,2008,NO,SI,1,7+9,5+10,s,w,s,i,-
+RANQUEL,BUCK,Variedad,CBS,2008,NO,SI,2*,7+9,5+10,w,w,w,i,-
+TAITA,BUCK,Variedad,CBS,2008,NO,SI,2*,7oe+8,5+10,w,w,w,s,-
+CH 12559,,Linea,CBS,2008,NO,NO,1,7+9,5+10,w,s,s,s,-
+CH 12576,,Linea,CBS,2008,NO,NO,2*,7+9,5+10,w,s,w,i,-
+CRONOX,DON MARIO,Variedad,CBS,2008,NO,NO,2*,7+9,5+10,w,s,s,s,-
+CARPINCHO,KLEIN,Variedad,CBS,2008,NO,SI,1,7+9,5+10,w,s,s,s,+
+CASTOR,KLEIN,Variedad,CBS,2008,NO,NO,2*,7oe+8,5+10,w,w,s,i,+
+FLECHA,KLEIN,Variedad,CBS,2008,NO,NO,2*,7oe+8,5+10,s,w,w,i,-
+GUERRERO,KLEIN,Variedad,CBS,2008,NO,SI,1,7+9,5+10,w,s,s,s,+
+PANTERA,KLEIN,Variedad,CBS,2008,NO,NO,2*,7+9,5+10,w,w,s,s,-
+TAURO,KLEIN,Variedad,CBS,2008,NO,NO,1,7oe+8,5+10,w,s,s,i,+
+TIGRE,KLEIN,Variedad,CBS,2008,NO,SI,1,7+9,5+10,w,s,s,i,+
+ZORRO,KLEIN,Variedad,CBS,2008,NO,SI,2*,7+9,5+10,w,w,s,i,-
+LE 2330,KLEIN,Variedad,CBS,2008,NO,NO,1,7+8,5+10,w,w,s,s,+
+CENTINELA,RELMO,Variedad,CBS,2008,NO,NO,2*,7+9,5+10,s,s,w,s,-
+SIRIRI,RELMO,Variedad,CBS,2008,NO,NO,2*,7+9,5+10,s,s,s,i,-
+NOGAL,SURSEM,Variedad,CBS,2008,NO,NO,2*,7+8,5+10,w,w,w,i,-
+NOGAL 31,SURSEM,Variedad,CBS,2008,NO,NO,1/2*,17+18,5+10,w,s,s/w,i,-
+NOGAL 33,SURSEM,Variedad,CBS,2008,NO,SI,2*,7+9,5+10,s,w,s,i,-
+APACHE,,Variedad,CBS,2008,NO,NO,2*/nulo,7+9,2+12,w,w,w,i,-
+AUBUSSON,,Variedad,CBS,2008,NO,NO,2*,7,5+10,w,w,w,s,-
+AUTAN,,Variedad,CBS,2008,NO,NO,1,17+18,5+10,w,w,w,s,-
+ARCHE,,Variedad,CBS,2008,NO,NO,nulo,6+8,2+12,s*,w,w,s,-
+AVALON,,Variedad,CBS,2008,NO,NO,2*/nulo,7+8,2+12,w,w,w,s,-
+BORJANA,,Variedad,CBS,2008,NO,SI,2*,7+9,2+12,s*,s,w,s,-
+BOURGOGNE,,Variedad,CBS,2008,NO,NO,2*,7+8,5+10,w,s,s,i,-
+CAPHORN,,Variedad,CBS,2008,NO,NO,1,7+9,5+10,w,w,w,i,-
+CHARGER,,Variedad,CBS,2008,NO,NO,nulo,17+18,2+12,w,w,w,i,-
+CUTTER,,Variedad,CBS,2008,NO,NO,1,17+18,5+10,w,s,w,s,-
+GALIDIER,,Variedad,CBS,2008,NO,NO,1,7,5+10,w,w,w,s,-
+GLUPRO,,Variedad,CBS,2008,NO,NO,1,7+9,5+10,s,s,w,s,-
+INSEGRAIN,,Variedad,CBS,2008,NO,NO,nulo,7+8,5+10,w,s,s,s,-
+JAGALENE,,Variedad,CBS,2008,NO,NO,2*,17+18,5+10,w,s,w,s,+
+KANSAS,,Variedad,CBS,2008,NO,NO,2*,7+9,5+10,,,,,
+MENDEL,,Variedad,CBS,2008,NO,NO,nulo,7+9,2+12,w,w,w,s,-
+NIRVANA,,Variedad,CBS,2008,NO,NO,1,7+8,2+12,w,w,w,s,-
+ORMIL,,Variedad,CBS,2008,NO,NO,nulo,7+9,5+10,w,w,w,i,-
+ORVANTIS,,Variedad,CBS,2008,NO,NO,1,6+8,2+12,w,w,w,i,-
+ROYSSAC,,Variedad,CBS,2008,NO,NO,nulo,17+18,2+12,w,w,w,i,-
+SOISSONS,,Variedad,CBS,2008,NO,NO,2*,7+8,5+10,w,w,w,i,-
+SPONSOR,,Variedad,CBS,2008,NO,NO,1,6+8,2+12,w,w,w,s,-
+TREMIE,,Variedad,CBS,2008,NO,NO,nulo,6+8,2+12,w,w,w,s,-
+HUAYUN INIA,,Variedad,CBS,2008,NO,SI,2*,7+9,5+10,w,w,s,i,+
+KENYA HEROE,,Variedad,CBS,2008,NO,SI,1,7+9,5+10,w,s,s,i,+
+TA10106,,Linea,CBS,2008,NO,NO,2*,6+8/7+8,5+10/2+12,w,w,w,i,-
+TA10206,,Linea,CBS,2008,NO,NO,2*,7+8,5+10,w,s,w,i,-
+TA10306,,Linea,CBS,2008,NO,SI,2*,7+9,5+10,w,s,w,s,-
+W05009,INTA Barrow,Linea,CBS,2008,NO,NO,2*,7+8,5+10,w,s,s,s,-
+W05026,INTA Barrow,Linea,CBS,2008,NO,SI,1,7+9,5+10,w,s,s,s,-
+W05027,INTA Barrow,Linea,CBS,2008,NO,SI,1,7+9,5+10,w,s,s,s,-
+W05035,INTA Barrow,Linea,CBS,2008,NO,SI,1,7+9,5+10,w,s,s,s,-
+W06001,INTA Barrow,Linea,CBS,2008,NO,NO,2*,7oe+8,5+10,w,w,w,s,-
+W06005,INTA Barrow,Linea,CBS,2008,NO,NO,2*,7+9,2+12,w,s,s,s,-
+W06006,INTA Barrow,Linea,CBS,2008,NO,NO,1,7oe+8,2+12,w,s,s,s,-
+W06010,INTA Barrow,Linea,CBS,2008,NO,NO,2*,7+8,2+12,s,s,s,s,+
+W06011,INTA Barrow,Linea,CBS,2008,NO,NO,2*,7+8,2+12,s,s,s,s,-
+W06012,INTA Barrow,Linea,CBS,2008,NO,NO,2*,7oe+8,5+10,w,s,w,i,+
+W06016,INTA Barrow,Linea,CBS,2008,NO,NO,2*,7+8,5+10,s,w,w,i,-
+W06018,INTA Barrow,Linea,CBS,2008,NO,NO,nulo,14+15,5+10,w,s,w,s,+
+W07001,INTA Barrow,Linea,CBS,2008,NO,NO,2*,17+18,5+10,s,s,w,s,-
+W07004,INTA Barrow,Linea,CBS,2008,NO,NO,1,17+18,5+10,w,w,w,s,-
+W07016,INTA Barrow,Linea,CBS,2008,NO,NO,2*,7oe+8,5+10,s,w,w,s,-
+W07026,INTA Barrow,Linea,CBS,2008,NO,NO,1/2*,17+18,5+10,s*,s,w,s,-
+W07041,INTA Barrow,Linea,CBS,2008,NO,NO,2*,7+9,5+10,s,s,w,s,-
+W07057,INTA Barrow,Linea,CBS,2008,NO,NO,2*,17+18,5+10,s,w,w,s,-
+B08804,INTA Balcarce,Linea,CBS,2008,NO,NO,1,17+18,5+10,s,s,s,s,+
+B09404,INTA Balcarce,Linea,CBS,2008,NO,NO,2*,7+9,5+10,w,w,s,s,-
+B06405,INTA Balcarce,Linea,CBS,2008,NO,SI,1,,2+12,w,s,s,s,-
+B13005,INTA Balcarce,Linea,CBS,2008,NO,NO,2*,7+9,5+10,s,w,w,i,-
+B15405,INTA Balcarce,Linea,CBS,2008,NO,NO,2*,7+8,5+10,s,w,s,i,-
+B17205,INTA Balcarce,Linea,CBS,2008,NO,NO,2*,13+16,2+12,w,w,s,i,+
+B10506,INTA Balcarce,Linea,CBS,2008,NO,NO,1,7+8,5+10,w,w,s,s,-
+B11706,INTA Balcarce,Linea,CBS,2008,NO,?,1,6+8,5+10,s,s,w,i,-
+B11306,INTA Balcarce,Linea,CBS,2008,NO,SI,2*,7+9,2+12,w,s,w,s,-
+B11706,INTA Balcarce,Linea,CBS,2008,NO,NO,2*,7+8,5+10,w,s,w,s,-
+B12606,INTA Balcarce,Linea,CBS,2008,NO,SI,1,7+9,5+10,s,s,s,s,+
+B16306,INTA Balcarce,Linea,CBS,2008,NO,SI,2*,7+9,5+10,w,s,s,s,+
+B20306,INTA Balcarce,Linea,CBS,2008,NO,NO,2*,7+9,5+10,w,w,s,s,-
+B20406,INTA Balcarce,Linea,CBS,2008,NO,NO,1,7oe+8,5+10,s,w,s,s,-
+B21406,INTA Balcarce,Linea,CBS,2008,NO,NO,2*,17+18,5+10,w,s,w,s,+
+V00882,INTA Bordenave,Linea,CBS,2008,NO,NO,1,7oe+8,5+10,s,w,s,s,+
+V00885,INTA Bordenave,Linea,CBS,2008,NO,NO,1,7oe+8,5+10,w,s,s,s,+
+V00893,INTA Bordenave,Linea,CBS,2008,NO,NO,nulo,7oe+8,5+10,w,s,s,s,-
+V00897,INTA Bordenave,Linea,CBS,2008,NO,NO,2*,17+18,5+10,s,w,w,s,+
+V00918,INTA Bordenave,Linea,CBS,2008,NO,NO,1,17+18,5+10,w,s,w,s,-
+V00921,INTA Bordenave,Linea,CBS,2008,NO,NO,2*,7+8/7+9,5+10,w,s,w,s,+
+V00923,INTA Bordenave,Linea,CBS,2008,NO,NO,2*,7+8,5+10,s,s,w,s,+
+V00925,INTA Bordenave,Linea,CBS,2008,NO,NO,1,17+18,2+12,w,w,w,i,+
+V00926,INTA Bordenave,Linea,CBS,2008,NO,NO,2*,17+18,5+10,s,w,w,s,+
+V00928,INTA Bordenave,Linea,CBS,2008,NO,NO,1,7oe+8/?,2+12,s,s,s,s,-

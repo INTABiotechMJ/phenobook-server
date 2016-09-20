@@ -1,0 +1,112 @@
+Linea,Criadero,Status,Origen,Año,CNN/CS,1AL/1RS,1BL/1RS,Glu-A1,Glu-B1,Glu-D1
+ACA 302                                                     ,ACA,Variedad,CBS,2007,CNN,NO,NO,2*,7+8,5+10
+ACA 303                                                     ,ACA,Variedad,CBS,2007,CNN,NO,NO,2*,7+8,5+10
+ACA 304                                                     ,ACA,Variedad,CBS,2007,CNN,NO,NO,2',7+8,5+10
+ACA 315                                                     ,ACA,Variedad,CBS,2007,CNN,NO,NO,2*,7+8,5+10
+ACA 601                                                     ,ACA,Variedad,CBS,2007,CNN,NO,NO,2*,7+8,5+10
+ACA 801                                                     ,ACA,Variedad,CBS,2007,CS,NO,NO,2*,7+9,5+10
+ACA 901                                                     ,ACA,Variedad,CBS,2007,CS,NO,NO,2*,7+9,5+10
+BAGUETTE 21,NIDERA,Variedad,CBS,2007,CS,NO,NO,2*/nulo,7+9,2+12
+BAGUETTE 9                                                  ,NIDERA,Variedad,CBS,2007,CS,NO,NO,2*,6+8/14+15,5+10
+BAGUETTE 10                                                 ,NIDERA,Variedad,CBS,2007,CS,NO,NO,nulo,6+8,5+10
+BAGUETTE 19                                                 ,NIDERA,Variedad,CBS,2007,CS,NO,NO,nulo,14+15,5+10
+BAGUETTE 11                                         ,NIDERA,Variedad,CBS,2007,CS,NO,NO,2*,7+8,5+10
+BAGUETTE 13                                         ,NIDERA,Variedad,CBS,2007,CS,NO,NO,2*,14+15,5+10
+BIOINTA 1000                                                ,INTA,Variedad,CBS,2007,CNN,NO,NO,1,7+8,5+10
+BIOINTA 1001                                                ,INTA,Variedad,CBS,2007,CS,NO,SI,1,7+9,5+10
+BIOINTA 1002                                                ,INTA,Variedad,CBS,2007,CS,NO,NO,1,7+9,5+10
+BIOINTA 1003                                                ,INTA,Variedad,CBS,2007,CS,NO,NO,2*,7+9,5+10
+BIOINTA 1004                                                ,INTA,Variedad,CBS,2007,CS,NO,NO,2*,7+8,5+10
+BIOINTA 2002                                                ,INTA,Variedad,CBS,2007,CS,NO,NO,2*,17+18,5+10
+BIOINTA 3000                                                ,INTA,Variedad,CBS,2007,CS,NO,NO,1,7+8,5+10
+BIOINTA 3004                                                ,INTA,Variedad,CBS,2007,CS,NO,SI,2*,7+9,5+10
+75 ANIVERSARIO                                         ,BUCK,Variedad,CBS,2007,CS,NO,NO,1,7+8,5+10
+ARRIERO                                                ,BUCK,Variedad,CBS,2007,CS,NO,NO,1,7+8,5+10
+BAQUEANO                                               ,BUCK,Variedad,CBS,2007,CS,NO,SI,1,7+9,5+10
+CHACARERO                                              ,BUCK,Variedad,CBS,2007,CNN,NO,NO,2*,17+18,5+10
+GUAPO                                                  ,BUCK,Variedad,CBS,2007,CS,NO,SI,1/2*,7+8,5+10
+GUATIMOZIN                                             ,BUCK,Variedad,CBS,2007,CNN,NO,NO,2*,7+8,5+10
+MALEVO                                                 ,BUCK,Variedad,CBS,2007,CS,NO,SI,2*,7+8,5+10
+NORTEÑO                                                ,BUCK,Variedad,CBS,2007,CNN,NO,SI,2*,7+8,5+10
+PUELCHE                                                ,BUCK,Variedad,CBS,2007,CNN,NO,SI,1,7+9,5+10
+RANQUEL                                                ,BUCK,Variedad,CBS,2007,CS,NO,SI,2*,7+9,5+10
+SUREÑO                                                 ,BUCK,Variedad,CBS,2007,CS,NO,SI,2*,7+8,5+10
+INIA CONDOR                                                 ,INIA,Variedad,CBS,2007,CS,NO,SI,2*,7+8/9,5+10
+INIA TORCAZA                                                ,INIA,Variedad,CBS,2007,CS,NO,NO,2*,17+18,5+10
+CAPRICORNIO                                           ,KLEIN,Variedad,CBS,2007,CS,NO,NO,2*,7+8,5+10
+CARPINCHO                                             ,KLEIN,Variedad,CBS,2007,CS,NO,SI,1,7+9,5+10
+CASTOR                                                ,KLEIN,Variedad,CBS,2007,CS,NO,SI,1,7+8/17+18,5+10
+CHAJA                                                 ,KLEIN,Variedad,CBS,2007,CS,NO,NO,2*,17+18,5+10
+ESCORPION                                             ,KLEIN,Variedad,CBS,2007,CS,NO,NO,1,7+9,5+10
+GAVILAN                                               ,KLEIN,Variedad,CBS,2007,CS,NO,SI,2*,7+9,5+10
+GUERRERO                                              ,KLEIN,Variedad,CBS,2007,CS,NO,SI,1,7+9,5+10
+JABALI                                                ,KLEIN,Variedad,CBS,2007,CS,NO,NO,2*,7+8,5+10
+PROTEO                                                ,KLEIN,Variedad,CBS,2007,CS,NO,NO,1,7+9,5+10
+TAURO                                                 ,KLEIN,Variedad,CBS,2007,CS,NO,NO,1,7+8,5+10
+ZORRO                                                 ,KLEIN,Variedad,CBS,2007,CS,NO,SI,2*,7+9,5+10
+CRONOX                                                      ,DON MARIO,Variedad,CBS,2007,CS,NO,NO,2*,7+9,5+10
+ONIX                                                        ,DON MARIO,Variedad,CBS,2007,CS,NO,NO,2*,7+9,5+10
+THEMIX                                                      ,DON MARIO,Variedad,CBS,2007,CNN,NO,NO,2*,7+9,5+10
+CENTINELA                                             ,RELMO,Variedad,CBS,2007,CS,NO,NO,2*,7+9,5+10
+SIRIRI                                                ,RELMO,Variedad,CBS,2007,CS,NO,NO,2*,7+9,5+10
+NOGAL                                                ,SURSEM,Variedad,CBS,2007,CS,NO,NO,2*,7+8,5+10
+ZORZAL                                                      ,,Variedad,CBS,2007,CS,NO,NO,2*,7+9,5+10
+W05015,INTA Barrow,Linea,CBS,2007,CS,NO,NO,2*,7+8,5+10
+W05019,INTA Barrow,Linea,CBS,2007,CS,NO,NO,2*,7+8,5+10
+W05024,INTA Barrow,Linea,CBS,2007,CS,NO,SI,1,7+9,5+10
+W05026,INTA Barrow,Linea,CBS,2007,CNN,NO,SI,1,7+9,5+10
+W05035,INTA Barrow,Linea,CBS,2007,CS,NO,SI,1,7+9,5+10
+W05036,INTA Barrow,Linea,CBS,2007,CS,NO,NO,2*,7+8,5+10
+W05042,INTA Barrow,Linea,CBS,2007,CS,NO,NO,2*,13+16,5+10
+W05046,INTA Barrow,Linea,CBS,2007,CS,NO,NO,2*,7+9,5+10
+W06001,INTA Barrow,Linea,CBS,2007,CS,NO,NO,2*,7+8,5+10
+W06002,INTA Barrow,Linea,CBS,2007,CS,NO,NO,1,17+18,2+12/5+10
+W06004,INTA Barrow,Linea,CBS,2007,CNN,NO,NO,1,7+8,2+12/5+10
+W06005,INTA Barrow,Linea,CBS,2007,CNN,NO,NO,2*/nulo,7+9,2+12
+W06006,INTA Barrow,Linea,CBS,2007,CS,NO,NO,1,7+8,2+12
+W06007,INTA Barrow,Linea,CBS,2007,CS,NO,NO,1,7+8,2+12
+W06009,INTA Barrow,Linea,CBS,2007,CS,NO,NO,2*,7+8,5+10
+W06010,INTA Barrow,Linea,CBS,2007,CS,NO,NO,2*/nulo,7+8,2+12
+W06011,INTA Barrow,Linea,CBS,2007,CS,NO,NO,2*/nulo,7+8,2+12
+W06012,INTA Barrow,Linea,CBS,2007,CS,NO,NO,2*,7+8,5+10
+W06013,INTA Barrow,Linea,CBS,2007,CS,NO,NO,1,7+8,5+10
+W06014,INTA Barrow,Linea,CBS,2007,CS,NO,SI,2*,7,5+10
+W06015,INTA Barrow,Linea,CBS,2007,CNN,NO,NO,2*,7+8,5+10
+W06016,INTA Barrow,Linea,CBS,2007,CNN,NO,NO,2*,7+8,5+10
+W06017,INTA Barrow,Linea,CBS,2007,CS,NO,NO,2*,7+8,5+10
+W06018,INTA Barrow,Linea,CBS,2007,CS,NO,NO,nulo,,
+B08102,INTA Balcarce,Linea,CBS,2007,CNN,NO,SI,2*,7+9,5+10
+B08804,INTA Balcarce,Linea,CBS,2007,CS,NO,NO,1,17+18,5+10
+B09404,INTA Balcarce,Linea,CBS,2007,CS,NO,NO,2*,7+9,5+10
+B06405,INTA Balcarce,Linea,CBS,2007,CS,NO,SI,1,,2+12
+B09605,INTA Balcarce,Linea,CBS,2007,CS,NO,NO,2*,7+9,5+10
+B09705,INTA Balcarce,Linea,CBS,2007,CS,NO,NO,2*,7+9,5+10
+B10305,INTA Balcarce,Linea,CBS,2007,CS,NO,SI,2*/nulo,7+9/17+18,2+12
+B11705,INTA Balcarce,Linea,CBS,2007,CS,NO,SI,1,7+9,2+12/5+10
+B12305,INTA Balcarce,Linea,CBS,2007,CS,NO,SI,2*,7+9,5+10
+B12905,INTA Balcarce,Linea,CBS,2007,CS,NO,SI,2*/nulo,7+9,2+12
+B13005,INTA Balcarce,Linea,CBS,2007,CS,NO,NO,2*,7+9,5+10
+B15405,INTA Balcarce,Linea,CBS,2007,CS,NO,NO,2*,7+8,5+10
+B17205,INTA Balcarce,Linea,CBS,2007,CS,NO,SI,2*,7+9,5+10
+B17805,INTA Balcarce,Linea,CBS,2007,CS,NO,NO,2*/nulo,13+16,2+12
+MILLENUIM                                                   ,,Variedad,CBS,2007,CNN,NO,NO,2*,7+9,5+10
+DRONG HORN                                                  ,,Variedad,CBS,2007,CNN,NO,NO,2*,7+9,5+10
+GOOD STREAK                                                 ,,Variedad,CBS,2007,CS,NO,NO,2*,7+9,5+10
+V00328,INTA Bordenave,Linea,CBS,2007,CS,NO,NO,2*,17+18,5+10
+V00713,INTA Bordenave,Linea,CBS,2007,CS,NO,SI,2*,7+8,5+10
+V00723,INTA Bordenave,Linea,CBS,2007,CS,NO,NO,1,7+8,5+10
+V00858,INTA Bordenave,Linea,CBS,2007,CS,NO,NO,1,7+8,5+10
+V00871,INTA Bordenave,Linea,CBS,2007,CNN,NO,NO,2*,7+8,5+10
+V00882,INTA Bordenave,Linea,CBS,2007,CS,NO,NO,1,7+8,5+10
+V00885,INTA Bordenave,Linea,CBS,2007,CS,NO,NO,1,7+8,5+10
+V00889,INTA Bordenave,Linea,CBS,2007,CNN,NO,NO,1,14+15,5+10
+V00893,INTA Bordenave,Linea,CBS,2007,CS,NO,NO,nulo,7+8,5+10
+V00897,INTA Bordenave,Linea,CBS,2007,CS,NO,NO,2*,17+18,5+10
+V00899,INTA Bordenave,Linea,CBS,2007,CS,NO,NO,1,17+18,5+10
+V00900,INTA Bordenave,Linea,CBS,2007,CS,NO,NO,1,7+8,5+10
+V00904,INTA Bordenave,Linea,CBS,2007,CS,NO,SI,2*,7+8,5+10
+V00906,INTA Bordenave,Linea,CBS,2007,H,NO,NO,1,7+8,5+10
+V00910,INTA Bordenave,Linea,CBS,2007,CS,NO,SI,2*,7+8,5+10
+V00912,INTA Bordenave,Linea,CBS,2007,CS,NO,SI,2*,7+8,5+10
+V00918,INTA Bordenave,Linea,CBS,2007,CS,NO,NO,1,17+18,5+10
+V00920,INTA Bordenave,Linea,CBS,2007,CS,NO,NO,1,7+8,2+12

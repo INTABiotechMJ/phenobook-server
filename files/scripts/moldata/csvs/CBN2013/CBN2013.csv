@@ -1,0 +1,51 @@
+Linea,Criadero,Status,Origen ,Año,1AL/1RS,1BL/1RS,Glu-A1,Glu-B1,Glu-D1,Vrn-A1,Vrn-B1,Vrn-D1,Ppd-B1,Ppd-D1,Lr34
+ACA 356,ACA,Variedad,CBN,2013,NO,NO,2*,7+8,5+10,s,s,w,s,s,+
+ACA 360,ACA,Variedad,CBN,2013,,,2*?,7+8,5+10,s*,s,w,s,,-
+CEDRO,ACA,Variedad,CBN,2013,,,2*,7+8,5+10,w,,w,s,,-
+CIPRES,ACA,Variedad,CBN,2013,NO,NO,1,7+8,5+10,w,,w,s,i,-
+ACA 602,ACA,Variedad,CBN,2013,,,2*,7+8,5+10,w,s,w,s,i,H
+ACA 908,ACA,Variedad,CBN,2013,,,2*,7oe+8,5+10,s*,s,s,s,i,-
+L.A. 2008.08 ,ACA,Linea,CBN,2013,,,2*,7oe+8,5+10,s*,s,s,s,i,-
+TIMBO,BIOCERES,Variedad,CBN,2013,,,nulo,6+8,5+10,w,w,w,s,i,-
+SY 110,BUCK ,Variedad,CBN,2013,NO,NO,nulo,6+8,5+10,s*,w,s,s,i,-
+AGP 127,BUCK ,Variedad,CBN,2013,NO,NO,nulo,7?,2+12,w,w,w,i,s,-
+TILCARA,BUCK ,Variedad,CBN,2013,,,1,6+8,5+10,s*,w,w,s,i,-
+SY 200,BUCK ,Variedad,CBN,2013,NO,NO,2*,6+8,5+10,w,w,s,s,i,-
+PLENO,BUCK ,Variedad,CBN,2013,,,2*,7+8,5+10,w,s,w,s,i,-
+SY 300,BUCK ,Variedad,CBN,2013,NO,NO,2*,6+8,5+10,s*,w,w,s,i,-
+LENOX,DON MARIO,Variedad,CBN,2013,NO,NO,2*?,7+8,5+10,w,w,w,s,i,+
+LYON,DON MARIO,Variedad,CBN,2013,NO,NO,1,7+8,5+10,w,w,w,s,,-
+BIOINTA 3005,INTA,Variedad,CBN,2013,NO,NO,2*?,7+8,2+12,w,w,w,i,s,-
+BIOINTA 3006,INTA,Variedad,CBN,2013,NO,NO,1,7+8,5+10,s*,w,w,i,s,-
+BIOINTA 3008,INTA,Variedad,CBN,2013,,,1,7+8,5+10,s*,w,w,s,s,-
+BIOINTA 2004,INTA,Variedad,CBN,2013,SI,NO,2*,7+8,5+10,w,w,w,s,s,+
+BIOINTA 2007,INTA,Variedad,CBN,2013,NO,SI,2*,7+9,5+10,w,s,w,s,i,-
+BIOINTA 1005,INTA,Variedad,CBN,2013,NO,NO,2*,7+9,5+10,w,s,s,s,i,-
+BIOINTA 1006,INTA,Variedad,CBN,2013,NO,NO,1,7+9,5+10,w,w,s,s,i,-
+BIOINTA 1007,INTA,Variedad,CBN,2013,NO,NO,2*,7+9,5+10,w,s,s,s,i,+
+FLAMENCO,KLEIN,Variedad,CBN,2013,,,1,7+9,5+10,s*,w,w,s,s,-
+PROTEO,KLEIN,Variedad,CBN,2013,NO,NO,2*,7+9,5+10,w,s,s,s,s,-
+LIEBRE,KLEIN,Variedad,CBN,2013,,,2*,7+9,5+10,w,w,s,s,i,-
+RAYO,KLEIN,Variedad,CBN,2013,NO,SI,2*,7oe+8,5+10,w,s,w,s,i,-
+ROBLE,KLEIN,Variedad,CBN,2013,NO,SI,1,7oe+8,5+10,w,s,s,s,i,-
+AVELINO,MERCOSEED,Variedad,CBN,2013,,,nulo,7+8,2+12,w,w,w,s,i,-
+BAGUETTE 601,NIDERA,Variedad,CBN,2013,NO,NO,1,7+8,5+10,w,s,w,s,i,-
+BAGUETTE 801,NIDERA,Variedad,CBN,2013,NO,NO,1,7+8,5+10,w,s,s,s,s,-
+BAGUETTE 802,NIDERA,Variedad,CBN,2013,,,nulo,7+8,5+10,w,s?,w,s,i,-
+BAGUETTE 501,NIDERA,Variedad,CBN,2013,NO,NO,nulo,7+8,5+10,s,w,w,i?,i,-
+BAGUETTE 560,NIDERA,Variedad,CBN,2013,,,2*,7oe+8,5+10,s,w,w,s,i,-
+FLORIPAN 200,SGSEED,Variedad,CBN,2013,NO,NO,2*,7+9,5+10,w,s,s,s,i,H
+FLORIPAN 100,SGSEED,Variedad,CBN,2013,NO,NO,1,7oe+8,5+10,w,s,s,s,i,+
+CALDEN,SURSEM,Variedad,CBN,2013,,,nulo,7+9,5+10,w,w,w,s,i,-
+LAPACHO,SURSEM,Variedad,CBN,2013,,,nulo,7+8,5+10,w,w,w,s,i,-
+LE 2330,SURSEM,Variedad,CBN,2013,NO,NO,1,7+8,5+10,s,w,s,s,s,+
+B16208,INTA Balcarce,Linea,CBN,2013,NO,NO,2*/nulo, 6+8, 2+12,w,w,s,s,s,-
+B17108,INTA Balcarce,Linea,CBN,2013,NO,NO,1, 7+9, 5+10,s*,s,s,s,i,-
+J11023,INTA Marcos Juarez,Linea,CBN,2013,NO,NO,2*,7, 5+10,w,s,s,s,i,-
+J12012,INTA Marcos Juarez,Linea,CBN,2013,NO,NO,nulo, 13+16, 5+10,s*,w,w,s,i,-
+JN12005,INTA Saenz Peña,Linea,CBN,2013,NO,NO,2*, 7+9, 5+10,s*,s,s,s,i,-
+JN12015,INTA Saenz Peña,Linea,CBN,2013,NO,NO,nulo, 13+16, 5+10,s*,w?,w,s,i,-
+P05140,INTA Pergamino,Linea,CBN,2013,NO,NO,1/2*, 7+8, 5+10,s,w,w,s,i,+
+T00242,INTA Parana,Linea,CBN,2013,NO,NO,nulo, 6+8, 5+10,s*,w,w,s,i,-
+T 00243,INTA Parana,Linea,CBN,2013,NO,NO,nulo, 6+8, 5+10,w,w,s,s,i,-
+W 08033,INTA Barrow,Linea,CBN,2013,NO,NO,nulo, 7+8, 5+10,s,w,w,s,i,-

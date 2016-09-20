@@ -1,0 +1,35 @@
+form{
+	display: none!important;
+}
+nav{
+	display: none;
+}
+a.btn , .navbar, button{
+	display: none;
+}
+.noPrint{
+	display: none;
+}
+footer{
+
+}
+.print{
+	display: block;
+}
+.alert{
+	display: none;
+}
+.input-prepend{
+	display: none;
+}
+a[href]:after {
+	content: "";
+}
+.container {
+	padding-top: 0; 
+	
+}
+.table-responsive{
+	max-width: none;
+	overflow: visible;
+}

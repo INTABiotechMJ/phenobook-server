@@ -1,0 +1,61 @@
+Linea,Criadero,Status,Origen,Año,1AL/1RS,1BL/1RS,GLU-A1,GLU-B1,GLU-D1,VRN-A1,VRN-B1,VRN-D1,PPD-D1,Lr34
+ACA 201,ACA,Variedad,CBN,2008,NO,NO,2*,17+18,5+10,s,s,s,i,-
+ACA 304,ACA,Variedad,CBN,2008,NO,NO,2*,7oe+8,5+10,w,w,s,s,-
+ACA 315,ACA,Variedad,CBN,2008,NO,NO,2*,7+8,5+10,w,w,s,s,-
+ACA 901,ACA,Variedad,CBN,2008,NO,NO,2*,7+9,5+10,w,s,s,i,+
+ACA 903 B,ACA,Variedad,CBN,2008,NO,SI,2*,7+9,5+10,w,s,w,i,-
+BAGUETTE 9,NIDERA,Variedad,CBN,2008,NO,NO,2*,14+15,5+10,s*,w,s,i,-
+BAGUETTE 11,NIDERA,Variedad,CBN,2008,NO,NO,2*,7+8,5+10,s*,w,w,i,-
+BAGUETTE 17,NIDERA,Variedad,CBN,2008,NO,NO,nulo,6+8/7+8,5+10,s,w,w,i,-
+BAGUETTE 18,NIDERA,Variedad,CBN,2008,NO,NO,nulo,13+16?,5+10,w,w,w,i,-
+BAGUETTE 19,NIDERA,Variedad,CBN,2008,NO,NO,nulo,14+15,5+10,s*,w,w,i,-
+BAGUETTE 20,NIDERA,Variedad,CBN,2008,NO,NO,nulo,7+8,5+10,s,w,w,s,-
+BAGUETTE 21,NIDERA,Variedad,CBN,2008,NO,NO,nulo,7+8,2+12,w,w,w,i,-
+BAGUETTE 10,NIDERA,Variedad,CBN,2008,NO,NO,nulo,6+8,5+10,s*,w,w,i,-
+BAGUETTE 31,NIDERA,Variedad,CBN,2008,NO,NO,2*,7,5+10,w,w,w,s,-
+GLUTINO,BUCK,Variedad,CBN,2008,NO,SI,2*,7+8,5+10,w,s,w,s,-
+HUENCHEN,BUCK,Variedad,CBN,2008,NO,SI,2*,7+9,5+10,w,w,s,i,+
+METEORO,BUCK,Variedad,CBN,2008,NO,NO,1,17+18,5+10,s,s,s,i,-
+PUELCHE,BUCK,Variedad,CBN,2008,NO,SI,1,7+9,5+10,s,w,s,i,-
+TAITA,BUCK,Variedad,CBN,2008,NO,SI,2*,7oe+8/17+18,5+10,w,w,w,s,-
+BIOINTA 1000,INTA,Variedad,CBN,2008,NO,NO,1,7oe+8,5+10,w,s,w,i,-
+BIOINTA 1001,INTA,Variedad,CBN,2008,NO,SI,1,7+9,5+10,w,s,s,i,-
+BIOINTA 1002,INTA,Variedad,CBN,2008,NO,NO,1,7+9,5+10,w,w,s,s,-
+BIOINTA 1004,INTA,Variedad,CBN,2008,NO,NO,2*,7+8,5+10,s,w,w,s,-
+BIOINTA 1005,INTA,Variedad,CBN,2008,NO,NO,2*,7+9,5+10,w,s,s,i,-
+BIOINTA 2002,INTA,Variedad,CBN,2008,NO,NO,2*,17+18,5+10,w,s,w,i,-
+BIOINTA 2004,INTA,Variedad,CBN,2008,SI,NO,2*,7+8,5+10,w,w,w,s,+
+BIOINTA 3000,INTA,Variedad,CBN,2008,NO,NO,1,7oe+8,5+10,s,s,s,s,H
+BIOINTA 3004,INTA,Variedad,CBN,2008,NO,SI,2*,7+9,5+10,s,s,s,s,-
+CAPRICORNIO,KLEIN,Variedad,CBN,2008,NO,SI,1,7+9,5+10,w,s,s,s,+
+GAVILAN,KLEIN,Variedad,CBN,2008,NO,SI,2*,7+9,5+10,s,w,s,s,-
+GUERRERO,KLEIN,Variedad,CBN,2008,NO,SI,1,7+9,5+10,w,s,s,s,+
+PANTERA,KLEIN,Variedad,CBN,2008,NO,NO,2*,7+9,5+10,w,w,s,s,-
+TAURO,KLEIN,Variedad,CBN,2008,NO,NO,1,7oe+8,5+10,w,s,s,i,+
+TIGRE,KLEIN,Variedad,CBN,2008,NO,SI,1,7+9,5+10,w,s,s,i,+
+LE 2330,RELMO,Variedad,CBN,2008,NO,NO,1,7+8,5+10,s,w,s,s,+
+NOGAL   ,SURSEM,Variedad,CBN,2008,NO,NO,2*,7+8,5+10,w,w,w,i,-
+NOGAL 31,RELMO,Variedad,CBN,2008,NO,NO,2*,17+18,5+10,w,s,s/w,i,-
+NOGAL 33,RELMO,Variedad,CBN,2008,NO,SI,2*,7+9,5+10,s,w,s,i,-
+MEGASEED,LT,Variedad,CBN,2008,NO,SI,2*,7+9,5+10,s,s,s,s,-
+RADIA,BIOCERES,Variedad,CBN,2008,NO,SI,nulo,7+9,2+12,w,s,s,i,-
+SALAMA,BIOCERES,Variedad,CBN,2008,NO,SI,2*,7+9,5+10,s,s,w,i,-
+ATLAX,DON MARIO,Variedad,CBN,2008,NO,NO,1,7+9,5+10,w,s,s,i,-
+PROINTA ELITE Lr47+,INTA Marcos Juarez,Linea,CBN,2008,NO,NO,2*,7+9,5+10,s,w,w,i,-
+CHAJA,KLEIN,Variedad,CBN,2008,NO,NO,2*,17+18,5+10,s,w,w,i,-
+CRONOX,DON MARIO,Variedad,CBN,2008,NO,NO,2*,7+9,5+10,w,s,s,s,-
+THEMIX,DON MARIO,Variedad,CBN,2008,NO,NO,2*,7+9,5+10,w,w,w,s,-
+J05018,INTA Marcos Juarez,Linea,CBN,2008,NO,NO,1,7+9,5+10,w,s,s,i,-
+JN05007,INTA Saenz Peña,Linea,CBN,2008,NO,NO,,7+8,,w,w,w,s,-
+JN05016,INTA Saenz Peña,Linea,CBN,2008,NO,SI,2*,7+9,2+12,w,s,s,s,-
+B08804,INTA Balcarce,Linea,CBN,2008,NO,NO,1,17+18,5+10,w/s,s,w,s,+
+B09404,INTA Balcarce,Linea,CBN,2008,SI?,NO,2*,7+9,5+10,w,w,s,s,-
+J06013,INTA Marcos Juarez,Linea,CBN,2008,NO,NO,2*,7+8,5+10,w,s,w,i,-
+JN06003,INTA Saenz Peña,Linea,CBN,2008,NO,NO,1,7oe+8,5+10,s,s,s,s,-
+JN06011,INTA Saenz Peña,Linea,CBN,2008,NO,NO,2*,7oe+8,5+10,w,s,s,s,-
+P04805,INTA Pergamino,Linea,CBN,2008,SI?,NO,2*,7oe+8,5+10,w,w,s,s,-
+P04849,INTA Pergamino,Linea,CBN,2008,NO,NO,2*,7+9,5+10,w,s,s,i,+
+P04859,INTA Pergamino,Linea,CBN,2008,NO,SI,2*,7oe+8,2+12,w,w,s,i,-
+P04862,INTA Pergamino,Linea,CBN,2008,NO,SI,2*,7+9,5+10,w,s,w,i,-
+V00885,INTA Bordenave,Linea,CBN,2008,NO,NO,1,7oe+8,5+10,w,s,s,s,+
+V00897,INTA Bordenave,Linea,CBN,2008,NO,NO,2*,17+18,5+10,s,w,w,s,+

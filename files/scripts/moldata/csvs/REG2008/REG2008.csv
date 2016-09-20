@@ -1,0 +1,125 @@
+Linea,Criadero,Status,Origen,Año,1AL/1RS,1BL/1RS,Glu-A1,Glu-B1,Glu-D1,Vrn-A1,Vrn-B1,Vrn-D1,Ppd-D1,Lr34
+J07004,INTA Marcos Juarez,Linea,REGIONAL I,2008,NO,NO,nulo,7+8,5+10,w,s,w,s,-
+J08001,INTA Marcos Juarez,Linea,REGIONAL I,2008,NO,NO,1,7+8,5+10,w,s,s,s,-
+J08002,INTA Marcos Juarez,Linea,REGIONAL I,2008,NO,NO,1,7+8,2+12,s,w,w,s,-
+J08003,INTA Marcos Juarez,Linea,REGIONAL I,2008,NO,SI,2*,7+9,5+10,w,w,w,i,-
+J08007,INTA Marcos Juarez,Linea,REGIONAL I,2008,NO,NO,1,7+9,5+10,w,s,s,s,+
+J08008,INTA Marcos Juarez,Linea,REGIONAL I,2008,NO,NO,1,7+8,2+12,w,s,s,s,-
+JN06003,INTA Saenz Peña,Linea,REGIONAL I,2008,NO,NO,1,7oe+8,5+10,w,s,w/s,i,-
+J07003,INTA Marcos Juarez,Linea,REGIONAL I,2008,SI?,NO,2*,7+8,5+10,s,s,w,s,+
+JN08004,INTA Saenz Peña,Linea,REGIONAL I,2008,NO,NO,1,7+8,5+10,w,s,s,s,+
+JN08005,INTA Saenz Peña,Linea,REGIONAL I,2008,NO,NO,1,7oe+8,5+10,s,s,w,i,-
+JN08006,INTA Saenz Peña,Linea,REGIONAL I,2008,NO,NO,2*,6+8/17+18,5+10,s,w,w,i,-
+P04859,INTA Pergamino,Linea,REGIONAL I,2008,NO,NO,,7+8,2+12,w,w,s,s,+
+P04857,INTA Pergamino,Linea,REGIONAL I,2008,NO,NO,1,7oe+8,5+10,w,w,s,s,-
+P04975,INTA Pergamino,Linea,REGIONAL I,2008,NO,NO,Nulo,7oe+8,2+12,s,w,w,s,-
+P05153,INTA Pergamino,Linea,REGIONAL I,2008,NO,NO,2*,7+8,5+10,w,s,w,s,-
+P05156,INTA Pergamino,Linea,REGIONAL I,2008,NO,NO,2*,7+8,5+10,w,s,w,s,-
+P05247,INTA Pergamino,Linea,REGIONAL I,2008,NO,NO, nulo,7oe+8,2+12,w,s,s,i,-
+T00183,INTA Parana,Linea,REGIONAL I,2008,NO,SI,1,7+9,5+10,w,s,w,s,+
+T00184,INTA Parana,Linea,REGIONAL I,2008,NO,NO,nulo,6+8,5+10,s*,w/s,w,i,-
+T00185,INTA Parana,Linea,REGIONAL I,2008,NO,NO,1,7+8,5+10,s*,w,w,s,-
+T00186,INTA Parana,Linea,REGIONAL I,2008,NO,NO,nulo,6+8,5+10,s,s,w,s,-
+T00187,INTA Parana,Linea,REGIONAL I,2008,NO,NO,1,7+8,5+10,w,s,w,s,-
+T00188,INTA Parana,Linea,REGIONAL I,2008,NO,SI,2*,7oe+8,5+10,s,s,s,s,-
+T00189,INTA Parana,Linea,REGIONAL I,2008,NO,NO,nulo,6+8,5+10,s*,w,w,i,-
+V00882,INTA Bordenave,Linea,REGIONAL I,2008,NO,NO,1,7oe+8,5+10,s,w,s,s,+
+V00897,INTA Bordenave,Linea,REGIONAL I,2008,NO,NO,2*,17+18,5+10,s,w,w,s,+
+V00918,INTA Bordenave,Linea,REGIONAL I,2008,NO,NO,1,17+18,5+10,w,s,w,s,-
+V00926,INTA Bordenave,Linea,REGIONAL I,2008,NO,NO,2*,17+18,5+10,s,w,w,s,+
+V00928,INTA Bordenave,Linea,REGIONAL I,2008,NO,NO,2*,7oe+8,2+12,w,s,s,i,-
+W05009,INTA Barrow,Linea,REGIONAL I,2008,NO,NO,2*,7+8,5+10,w,s,s,s,-
+W05026,INTA Barrow,Linea,REGIONAL I,2008,NO,SI,1,7+9,5+10,w,s,s,s,-
+W05027,INTA Barrow,Linea,REGIONAL I,2008,NO,SI,1,7+9,5+10,w,s,s,s,-
+W05035,INTA Barrow,Linea,REGIONAL I,2008,NO,SI,1,7+9,5+10,w,s,s,s,-
+W06006,INTA Barrow,Linea,REGIONAL I,2008,NO,NO,1,7oe+8,5+10,w,s,s,s,H
+W06018,INTA Barrow,Linea,REGIONAL I,2008,NO,NO,2*,13+16,5+10,w,s,w,i,+
+ACA 303,ACA,Variedad,REGIONAL I,2008,NO,NO,2*,7+8,5+10,w,s,s,s,-
+BAGUETTE 11,NIDERA,Variedad,REGIONAL I,2008,NO,NO,2*,7+8,5+10,s*,w,w,i,-
+BAGUETTE 19,NIDERA,Variedad,REGIONAL I,2008,NO,NO,null,14+15,5+10,s*,w,w,i,-
+BIOINTA 3OOO,INTA,Variedad,REGIONAL I,2008,NO,NO,1,7oe+8,5+10,s,s,s,s,H
+BIOINTA 3004,INTA,Variedad,REGIONAL I,2008,NO,SI,2*,7+9,5+10,w,s,s,s,-
+CARPINCHO,KLEIN,Variedad,REGIONAL I,2008,NO,SI,1,7+9,5+10,w,s,s,s,+
+JN5007,INTA Saenz Peña,Linea,REGIONAL I,2008,NO,NO,nulo,7+8,?+12,w,w,w,i,-
+NOGAL,SURSEM,Variedad,REGIONAL I,2008,NO,NO,2*,7+8,5+10,w,w,w,i,-
+B08804,INTA Balcarce,Linea,REGIONAL II,2008,NO,NO,1,17+18,5+10,w,s,s,s,-
+B06405,INTA Balcarce,Linea,REGIONAL II,2008,NO,SI,1,,2+12,w,w,s,s,
+B10706,INTA Balcarce,Linea,REGIONAL II,2008,NO,SI,1,6+8,5+10,s,s,w,s,-
+B12606,INTA Balcarce,Linea,REGIONAL II,2008,NO,SI,1,6+8,5+10,s,s,s,s,-
+B20406,INTA Balcarce,Linea,REGIONAL II,2008,NO,NO,1,14+15,5+10,s,w,s,s,-
+J08009,INTA Marcos Juarez,Linea,REGIONAL II,2008,NO,NO,2*,17+18,5+10,w,w,s,i,-
+J08010,INTA Marcos Juarez,Linea,REGIONAL II,2008,NO,SI,1/2*,7+9,5+10,s,w,w,i,+
+J08013,INTA Marcos Juarez,Linea,REGIONAL II,2008,NO,NO,2*,17+18,5+10,w,w,w,s,+
+J08014,INTA Marcos Juarez,Linea,REGIONAL II,2008,NO,NO,nulo,7+9,5+10,w,w,s,i,-
+J08015,INTA Marcos Juarez,Linea,REGIONAL II,2008,NO,SI,1,7+9,5+10,w,w/s,w,i,-
+J08018,INTA Marcos Juarez,Linea,REGIONAL II,2008,NO,NO,1,7oe+8,5+10,s*,s,w,i,+
+JN06011,INTA Saenz Peña,Linea,REGIONAL II,2008,NO,NO,2*,7oe+8,5+10,w,s,s,s,-
+JN08011,INTA Saenz Peña,Linea,REGIONAL II,2008,NO,SI,2*,7+9,5+10,w,s,w,i,-
+JN08012,INTA Saenz Peña,Linea,REGIONAL II,2008,NO,NO,1,7+8,2+12,s,s,w,s,-
+JN08016,INTA Saenz Peña,Linea,REGIONAL II,2008,NO,SI,1,7+9,5+10,s,s,s,i,+
+JN08017,INTA Saenz Peña,Linea,REGIONAL II,2008,NO,NO,1,17+18,5+10,w,w,w,i,-
+P04805,INTA Pergamino,Linea,REGIONAL II,2008,NO,NO,2*,7oe+8,5+10,w,w,s,s,-
+P04862,INTA Pergamino,Linea,REGIONAL II,2008,NO,SI,2*,7+9,5+10,w,s,w,i,-
+P04999,INTA Pergamino,Linea,REGIONAL II,2008,NO,SI,2*,7+9,5+10,s,w,w,i,-
+P05141,INTA Pergamino,Linea,REGIONAL II,2008,NO,SI,nulo,7+8,5+10,w,w,w,i,+
+P05142,INTA Pergamino,Linea,REGIONAL II,2008,NO,SI,2*,7oe+8,5+10,w,w,w,i,+
+P05258,INTA Pergamino,Linea,REGIONAL II,2008,SI?,NO,1,7+8,5+10,s,s,s,s,-
+T00190,INTA Parana,Linea,REGIONAL II,2008,NO,NO,nulo,6+8/7+8,5+10/2+12,s*,w,w,i,-
+T00191,INTA Parana,Linea,REGIONAL II,2008,NO,NO,nulo,7+8,5+10,w/s,s,w,i,-
+T00192,INTA Parana,Linea,REGIONAL II,2008,NO,NO,nulo,7+8,5+10/2+12,s*,s,w,i,+
+T00193,INTA Parana,Linea,REGIONAL II,2008,NO,NO,1,7+8,2+12,w,s,s,s,-
+T00194,INTA Parana,Linea,REGIONAL II,2008,NO,NO,1,6+8,5+10,s*,w,w,i,-
+T00195,INTA Parana,Linea,REGIONAL II,2008,NO,NO,1,7+9,5+10,w,s,w,i,-
+V00885,INTA Bordenave,Linea,REGIONAL II,2008,NO,NO,1,7oe+8,5+10,w,s,s,s,+
+V00893,INTA Bordenave,Linea,REGIONAL II,2008,NO,NO,nulo,7oe+8,5+10,w,s,s,s,-
+V00921,INTA Bordenave,Linea,REGIONAL II,2008,NO,NO,2*,7+9,5+10,w,s,w,s,+
+V00923,INTA Bordenave,Linea,REGIONAL II,2008,NO,NO,2*,7+8,5+10,s,s,w,s,+
+V00925,INTA Bordenave,Linea,REGIONAL II,2008,NO,NO,1,17+18,?+12,w,w,w,i,+
+W05035,INTA Barrow,Linea,REGIONAL II,2008,NO,SI,1,7+9,5+10,w,s,s,s,-
+W06010,INTA Barrow,Linea,REGIONAL II,2008,NO,NO,2*,7+8,2+12,w/s,s,s,s,H
+W06011,INTA Barrow,Linea,REGIONAL II,2008,NO,NO,2*,7+8,2+12,s,s,s,s,-
+ACA 303,ACA,Variedad,REGIONAL II,2008,NO,NO,2*,7+8,5+10,w,s,s,s,-
+BAGUETTE 10,NIDERA,Variedad,REGIONAL II,2008,NO,NO,null,6+8,5+10,s*,w,w,i,-
+BAGUETTE 11,NIDERA,Variedad,REGIONAL II,2008,NO,NO,2*,7+8,5+10,s*,w,w,i,-
+BIOINTA 1002,INTA,Variedad,REGIONAL II,2008,NO,NO,1,7+9,5+10,w,s,s,s,-
+BIOINTA 2002,INTA,Variedad,REGIONAL II,2008,NO,NO,2*,17+18,5+10,w,s,w,i,-
+BIOINTA 2004,INTA,Variedad,REGIONAL II,2008,SI,NO,2*,7+8,5+10,w,w,w,s,+
+GAVILAN,KLEIN,Variedad,REGIONAL II,2008,NO,SI,2*,7+9,5+10,s,w,s,s,-
+JN5016,INTA Marcos Juarez,Linea,REGIONAL II,2008,NO,SI,2*,7+8,2+12,w,s,s,i,-
+NOGAL,SURSEM,Variedad,REGIONAL II,2008,NO,NO,2*,7+8,5+10,w,w,w,i,-
+B13005,INTA Balcarce,Linea,REGIONAL III,2008,NO,NO,2*,7+9,5+10,s,w,w,i,
+B15405,INTA Balcarce,Linea,REGIONAL III,2008,NO,NO,2*,7+8,5+10,s,w,s,i,
+B17205,INTA Balcarce,Linea,REGIONAL III,2008,NO,SI,2*,7+9,5+10,w,w,s,i,+
+B20306,INTA Balcarce,Linea,REGIONAL III,2008,NO,NO,2*,7+9,5+10,w,w,s,s,-
+J06013,INTA Marcos Juarez,Linea,REGIONAL III,2008,NO,NO,2*,7+8,5+10,w,s,w,i,-
+J07014,INTA Marcos Juarez,Linea,REGIONAL III,2008,NO,SI,2*,7+9,5+10,w,s,w,i,-
+J07015,INTA Marcos Juarez,Linea,REGIONAL III,2008,NO,SI,2*,7+9,5+10,w,s,w,i,-
+J08019,INTA Marcos Juarez,Linea,REGIONAL III,2008,NO,NO,1,7+9,5+10,w,s,s,i,-
+J08020,INTA Marcos Juarez,Linea,REGIONAL III,2008,NO,SI,nulo,7+9,5+10,s*,w,w,i,-
+JN07019,INTA Saenz Peña,Linea,REGIONAL III,2008,NO,SI,2*,7+9,2+12,w,s,w,i,-
+JN08021,INTA Saenz Peña,Linea,REGIONAL III,2008,NO,NO,2*,7+9,5+10,w,s,s,i,+
+JN08022,INTA Saenz Peña,Linea,REGIONAL III,2008,NO,NO,2*,17+18,5+10,w,s,w,i,-
+JN08023,INTA Saenz Peña,Linea,REGIONAL III,2008,NO,NO,2*,17+18,2+12,w,s,s/w,i,-
+JN08024,INTA Saenz Peña,Linea,REGIONAL III,2008,NO,NO,1,17+18,5+10,w,s,s,i,-
+P04849,INTA Pergamino,Linea,REGIONAL III,2008,NO,NO,2*,7+9,5+10,w,s,s,i,+
+P05030,INTA Pergamino,Linea,REGIONAL III,2008,NO,NO,1,7+8,5+10,w,w,s,s,-
+P05106,INTA Pergamino,Linea,REGIONAL III,2008,SI?,NO,1,7oe+8,2+12,s,s,s,s,-
+P05115,INTA Pergamino,Linea,REGIONAL III,2008,NO,NO,2*,7+9,5+10,w,s,s,i,-
+P05134,INTA Pergamino,Linea,REGIONAL III,2008,NO,SI,2*,7+8,5+10,w,w,w,i,-
+T00196,INTA Parana,Linea,REGIONAL III,2008,NO,SI,nulo,7+9,5+10,w,w,s,i,-
+T00197,INTA Parana,Linea,REGIONAL III,2008,NO,NO,2*,7+9,5+10,w,w,s,i,-
+T00198,INTA Parana,Linea,REGIONAL III,2008,NO,NO,1,17+18,5+10,s,w,w,s,+
+T00199,INTA Parana,Linea,REGIONAL III,2008,NO,SI,2*,7+9,5+10,w,w,s,s,+
+T00200,INTA Parana,Linea,REGIONAL III,2008,NO,SI,1,17+18,5+10,w,w/s,s,s,-
+T00201,INTA Parana,Linea,REGIONAL III,2008,NO,SI,1,7+9,5+10,w,w,s,s,-
+W06016,INTA Barrow,Linea,REGIONAL III,2008,NO,NO,2*,7+8,5+10,s,w/s,w,s,-
+ACA 901,ACA,Variedad,REGIONAL III,2008,NO,NO,2*,7+9,5+10,w,s,s,i,+
+BAGUETTE 13,NIDERA,Variedad,REGIONAL III,2008,NO,NO,2*,14+15,5+10,w,w,s/w,i,-
+BAGUETTE 9,NIDERA,Variedad,REGIONAL III,2008,NO,NO,2*,14+15,5+10,s*,w,s/w,i,-
+BIOINTA 1000,INTA,Variedad,REGIONAL III,2008,NO,NO,1,7oe+8,5+10,w,s,w,i,-
+BIOINTA 1001,INTA,Variedad,REGIONAL III,2008,NO,SI,1,7+9,5+10,w,s,s,i,-
+BIOINTA 1002,INTA,Variedad,REGIONAL III,2008,NO,NO,1,7+9,5+10,w,w,s,s,-
+BIOINTA 1004,INTA,Variedad,REGIONAL III,2008,NO,SI?,2*,7+8,5+10,s,w,w,s,
+BIOINTA 1005,INTA,Variedad,REGIONAL III,2008,NO,NO,2*,7+9,5+10,w,s,s,i,-
+CRONOX,DON MARIO,Variedad,REGIONAL III,2008,NO,NO,2*,7+9,5+10,w,s,s,s,-
+TAURO,KLEIN,Variedad,REGIONAL III,2008,NO,NO,1,7oe+8,5+10,w,s,s,i,+

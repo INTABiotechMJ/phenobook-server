@@ -1,0 +1,54 @@
+Linea,Criadero,Status,Origen,Año,CNN/CS,1AL/1RS,1BL/1RS,Glu-A1,Glu-B1,Glu-D1,Vrn-A1,Vrn-B1,Vrn-D1,Ppd-D1,Lr34
+ACA 201,ACA,Variedad,CBS,2011,CS,NO,NO,2*,17+18,5+10,s,s,s,Sensible,-
+ACA 901,ACA,Variedad,CBS,2011,CS,NO,NO,2*,7+9,5+10,w,s,s,Insensible,-
+ACA 905 PA,ACA,Variedad,CBS,2011,CS,NO,NO,1,7+9,5+10,w,s,s,Insensible,-
+ACA 906,ACA,Variedad,CBS,2011,CS,NO,SI,1,7+9,5+10,w,H,s,Insensible,H
+BAGUETTE 9,NIDERA,Variedad,CBS,2011,CS,NO,NO,2*,14+15,5+10,s*,w,s,Insensible,-
+BAGUETTE 10,NIDERA,Variedad,CBS,2011,CS,NO,NO,nulo,7+8,5+10,s*,w,w,Insensible,-
+BAGUETTE 11,NIDERA,Variedad,CBS,2011,CS,NO,NO,2*,7+8,5+10,s*,w,w,Insensible,-
+BAGUETTE 601,NIDERA,Variedad,CBS,2011,CS,NO,NO,1,7+8,5+10,w,w,w,Insensible,-
+BAGUETTE 17,NIDERA,Variedad,CBS,2011,CS,NO,NO,nulo,7+9,5+10,s,w,w,Insensible,-
+BAGUETTE 18,NIDERA,Variedad,CBS,2011,CS,NO,NO,nulo,13+16,5+10,s*,w,w,Insensible,-
+BAGUETTE 31,NIDERA,Variedad,CBS,2011,CS,NO,NO,nulo,7,5+10,w,w,w,Sensible,-
+AGP 127,BUCK,Variedad,CBS,2011,CNN,NO,NO,2*/nulo,7+9,2+12,w,w,w,Sensible,-
+SY 100,SYNGENTA,Variedad,CBS,2011,CS,NO,NO,2*,6+8,5+10,s*,w,w,Sensible,-
+SY 200,SYNGENTA,Variedad,CBS,2011,CS,NO,NO,2*,6+8,5+10,w,w,s,Insensible,-
+SY 300,SYNGENTA,Variedad,CBS,2011,CS,NO,NO,2*,6+8,5+10,s*,w,H,Insensible,-
+Puelche,BUCK,Variedad,CBS,2011,CS,NO,SI,1,7+9,5+10,s,w,s,Insensible,-
+BIOINTA 1005,INTA,Variedad,CBS,2011,CS,NO,NO,2*,7+9,5+10,w,w,s,Insensible,-
+BIOINTA 1006,INTA,Variedad,CBS,2011,CS,NO,NO,1,7+9,5+10,w,H,s,Insensible,-
+BIOINTA 2006,INTA,Variedad,CBS,2011,CS,NO,NO,2*,7oe+8,5+10,w,w,s,Sensible,-
+BIOINTA 3004,INTA,Variedad,CBS,2011,CS,NO,SI,2*,7+9,5+10,s,w,s,Sensible,-
+BIOINTA 3005,INTA,Variedad,CBS,2011,CS,NO,NO,2*,7+8,5+10,w,w,w,Insensible,-
+AREX,DON MARIO,Variedad,CBS,2011,CS,NO,NO,2*,7+9,5+10,w,s,s,Sensible,-
+CRONOX,DON MARIO,Variedad,CBS,2011,CS,NO,NO,2*/nulo,7+9,2+12,w,s,s,Sensible,-
+LE 2330,RELMO,Variedad,CBS,2011,CS,NO,NO,1,7+8,5+10,s,w,s,Sensible,+
+LE 2331,RELMO,Variedad,CBS,2011,CS,NO,NO,1,17+18,5+10,w,s,s,Insensible,-
+LE 2333,RELMO,Variedad,CBS,2011,CS,NO,SI,2*,7+9,5+10,w,w,s,Insensible,-
+SRM 2338,SURSEM,Linea,CBS,2011,CS,NO,NO,1,7+8,2+12,w,w,w,Sensible,-
+NOGAL,SURSEM,Variedad,CBS,2011,CS,NO,NO,2*,7+8,5+10,w,w,w,Insensible,-
+RAYO,KLEIN,Variedad,CBS,2011,CS,NO,SI,2*,7+8,5+10,w,,,Insensible,
+LEON,KLEIN,Variedad,CBS,2011,CS,NO,NO,2*/nulo,7+8,2+12,w,s,w,Insensible,-
+T00203,INTA Parana,Linea,CBS,2011,CS,NO,NO,1/2*,7+8/17+18,5+10,s*,w,w,Sensible,-
+W07004,INTA Barrow,Linea,CBS,2011,H,NO,NO,1,7+8,5+10,w,w,s,Insensible,
+W09005,INTA Barrow,Linea,CBS,2011,CNN,NO,SI,2*,7+8/9,2+12,w,s,w,Sensible,-
+W09019,INTA Barrow,Linea,CBS,2011,CS,NO,SI,1,7+9,5+10,s*,w,w,Insensible,-
+W09022,INTA Barrow,Linea,CBS,2011,CS,NO,SI,1,7+9,5+10,w,s,w,Insensible,-
+W09028,INTA Barrow,Linea,CBS,2011,CS,NO,SI,1,7+9/8,5+10,s,H,w,Sensible,H
+B15007,INTA Balcarce,Linea,CBS,2011,CS,NO,NO,nulo,6+8,5+10,w,w,s,Insensible,-
+B28808,INTA Balcarce,Linea,CBS,2011,H,NO,SI,2*/nulo,7+9,2+12,w,w,s,Sensible,-
+B16008,INTA Balcarce,Linea,CBS,2011,CS,NO,NO,2*/nulo,6+8,2+12,w,,,Insensible,
+B16208,INTA Balcarce,Linea,CBS,2011,CS,NO,NO,2*/nulo,6+8,2+12,w,w,,Sensible,-
+B30709,INTA Balcarce,Linea,CBS,2011,CS,NO,NO,nulo,6+8,5+10,w,s,w,H,-
+B14207,INTA Balcarce,Linea,CBS,2011,CS,NO,NO,2*,6+8,5+10,w,s,s,Insensible,-
+B13608,INTA Balcarce,Linea,CBS,2011,CS,NO,NO,1,7+8,5+10,s,s,w,Sensible,-
+B16808,INTA Balcarce,Linea,CBS,2011,CS,NO,NO,nulo,6+8/17+18,5+10,w,w,s,Insensible,-
+B17108,INTA Balcarce,Linea,CBS,2011,CS,NO,NO,1,7+9,5+10,s*,s,s,Insensible,-
+B23708,INTA Balcarce,Linea,CBS,2011,CS,NO,SI,2*/nulo,7+8,2+12,s*,s,w,Insensible,-
+V00924,INTA Bordenave,Linea,CBS,2011,CS,NO,NO,2*,17+18,5+10,w,s,s,Sensible,-
+V00931,INTA Bordenave,Linea,CBS,2011,CS,SI?,NO,2*/nulo,7+8,2+12,s,s,s,Sensible,+
+V00932,INTA Bordenave,Linea,CBS,2011,CS,NO,NO,1,7+9,5+10/2+12,s,s,w,Sensible,+
+V00935,INTA Bordenave,Linea,CBS,2011,CS,NO,NO,2*,7+8,5+10,H,w,w,H,H
+V00933,INTA Bordenave,Linea,CBS,2011,CS,SI?,NO,1,7+9,2+12,w,s,s,Sensible,+
+V00934,INTA Bordenave,Linea,CBS,2011,CS,SI?,NO,2*,7+8,2+12,s,s,s,Sensible,+
+V00936,INTA Bordenave,Linea,CBS,2011,CS,NO,NO,2*,7+8,5+10,w,s,s,Sensible,-

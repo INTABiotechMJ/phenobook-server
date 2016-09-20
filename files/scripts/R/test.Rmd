@@ -1,0 +1,40 @@
+---
+title: "test"
+output: html_document
+---
+
+```{r setup}
+#install.packages("RMySQL")
+library(RMySQL)
+con <- dbConnect(MySQL(),user="root", password="manolin",dbname="phenobook", host="localhost")
+lineas = dbReadTable(conn = con,name = 'LineaCaracterizacion')
+gen = dbReadTable(conn = con,name = 'GenCaracterizacion')
+colnames(gen)[1] <- "id_gen"
+res <- merge(lineas,  gen, by.x=c("id"), by.y=c("lineaCaracterizacion"))
+summary(res)
+blrs <- res[res$name == "Glu-B1", ]
+blrs
+#install.packages("data.table")
+#library(data.table)
+#install.packages("dplyr")
+library(dplyr)
+
+res <- blrs %>% group_by(year) %>% summarise(n = n())
+res_si <- filter(blrs, value == "7oe+8") %>% group_by(year) %>% summarise(n = n())
+res_no <- filter(blrs, value != "7oe+8") %>% group_by(year) %>% summarise(n = n())
+res_1 = merge(res, res_si, by="year")
+res_1 = merge(res_1, res_no, by="year")
+res = res_1 %>% mutate(porc = (100 * n.y) / n.x)
+#install.packages("ggplot2")
+library(ggplot2)
+#install.packages("scales")
+library(scales)
+ggplot(res,aes(x = year, y = porc)) + geom_line()
+```
+
+## Porcentaje de lines que contienen 1BL/1RS por a??o
+
+
+```{r pressure, echo=FALSE}
+plot(pressure)
+```
