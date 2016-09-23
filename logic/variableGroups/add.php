@@ -12,7 +12,7 @@ if($_POST){
 	if(!$alert->hasError){
 		Entity::save($item);
 		Entity::commit();
-		redirect("../genericVariable/add.php?id=$item->id&m=$classNameShow added");
+		redirect("../Variable/add.php?id=$item->id&m=$classNameShow added");
 	}
 }
 ?>

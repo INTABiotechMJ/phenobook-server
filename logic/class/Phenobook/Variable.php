@@ -1,6 +1,10 @@
 <?php
 class Variable extends Object{
 	/**
+	*@class VariableGroup
+	*/
+	var $variableGroup;
+	/**
 	*@type VARCHAR(200)
 	*/
 	var $name;

@@ -137,6 +137,9 @@ class FieldType extends Object{
 	function isOption(){
 		return $this->type == FieldType::$TYPE_OPTION;
 	}
+	function isInformative(){
+		return $this->type == FieldType::$TYPE_INFORMATIVE;
+	}
 	function searchGraphType(){
 		$tgtc = Entity::listMe("GrapTypeFieldType", "fieldType = '$this->id' AND active");
 		$ret = array();

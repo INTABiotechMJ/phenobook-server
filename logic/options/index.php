@@ -2,8 +2,8 @@
 $admin = true;
 require "../../files/php/config/require.php";
 $id = _get("id");
-$variable = Entity::load("GenericVariable", $id);
-$items = Entity::listMe("FieldOption","active AND genericVariable = '$id' ORDER BY id DESC");
+$variable = Entity::load("Variable", $id);
+$items = Entity::listMe("FieldOption","active AND Variable = '$id' ORDER BY id DESC");
 $data = array();
 $cont = 1;
 foreach ($items as $key => $value) {
@@ -18,8 +18,8 @@ foreach ($items as $key => $value) {
 
 }
 echo "<div class='botonera'>";
-echo btn("Back to variables", "../genericVariable/index.php?id=".$variable->variableGroup->id, ICON_BACK, TYPE_DEFAULT);
-echo btn("Add option", "add.php?id=$id", ICON_ADD);
+echo btn("Back to variables", "../Variable/index.php?id=".$variable->variableGroup->id, null, TYPE_DEFAULT);
+echo btn("Add option", "add.php?id=$id");
 echo "</div>";
 echo "<legend>Options of variable <span class='object-name'>$variable</span></legend>";
 

@@ -759,8 +759,8 @@ define("ICON_BACK", "glyphicon glyphicon-arrow-left");
 define("TYPE_PRIMARY", "btn-primary");
 define("TYPE_DEFAULT", "btn-default");
 
-function btn($text, $link, $icon = "", $type = TYPE_PRIMARY, $size = "btn-sm"){
-    return "<a href='$link' class='btn btn-shadow $type $size'><i class='$icon'></i> $text</a> ";
+function btn($text, $link, $icon = "", $type = TYPE_PRIMARY, $size = "btn-md"){
+    return "<a href='$link' class='btn $type $size'><i class='$icon'></i> $text</a> ";
 }
 
 /**

@@ -8,7 +8,7 @@ if($_POST){
   $item->name = _post("name");
   if(!$alert->hasError){
     Entity::update($item);
-    redirect("index.php?id=".$item->genericVariable->id."&m=Option edited");
+    redirect("index.php?id=".$item->Variable->id."&m=Option edited");
   }
 
 }
@@ -21,7 +21,7 @@ if($_POST){
     <input type="hidden" name="id" value="<?= _request("id") ?>">
     <fieldset>
       <!-- Form Name -->
-      <legend>Edit option <?= i($item) ?> from variable <?=  i($item->genericVariable) ?> </legend>
+      <legend>Edit option <?= i($item) ?> from variable <?=  i($item->Variable) ?> </legend>
 
       <div class="form-group">
         <label class="col-md-4 control-label" for="name">Name <span class="red">*</span></label>

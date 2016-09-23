@@ -18,33 +18,38 @@ if($__user->isOperador()){
 $data = array();
 $cont = 1;
 foreach ($items as $key => $value) {
-	$importacion = Entity::search("Importacion","phenobook = '$value->id'");
-	if($importacion){
-		$download = "<a href='".__URL."$importacion->path' class='btn btn-sm btn-default' target='_blank'><i class='glyphicon glyphicon-download-alt'></i></a>";
-	}else{
-		$download =  "";
+	$up = Entity::listMe("PhenobookUser", "active AND phenobook = '$value->id'");
+	if(!empty($up)){
+		$assignedString = "Users: ";
+		foreach ((array)$up as $upi) {
+			$assignedString .= " $upi->user ";
+		}
+	}
+	$gp = Entity::listMe("PhenobookUserGroup", "active AND phenobook = '$value->id'");
+	if(!empty($gp)){
+		$assignedString .= " - Groups: ";
+		foreach ((array)$gp as $gpi) {
+			$assignedString .= " $gpi->userGroup ";
+		}
 	}
 	$item = array();
 	$cont++;
 	$item["Id"] = $value->id;
 	$item["Name"] = $value;
-	$item["File"] = $download;
-	$item["Experimental Unit"] = $value->campo_numero;
-	$item["Assigned to"] = !empty($value->userGroup)? $value->userGroup : $value->selectedUsers2String();
+	$item["Assigned to"] = $assignedString;
+	$item["Variable Group"] = $value->variableGroup;
 	$item["Status"] = $value->visible? "In course" : "Ended";
 
-	$item["Actions"] = "<div class='nowrap'><a href='open.php?id_ensayo=$value->id' class='btn btn-primary btn-sm'>".__DATA."</a> ";
-	$item["Actions"] .= "<a href='load.php?id_ensayo=$value->id' class='btn btn-primary btn-sm'>".__LOAD."</a> ";
-	$item["Actions"] .= "<a href='../../Reportes/graphs.php?id_ensayo=$value->id' class='btn btn-primary btn-sm hide'>".__GRAPHS."</a> ";
+	$item["Actions"] = "<div class='nowrap'><a href='open.php?id=$value->id' class='btn btn-default btn-sm'>Data report</a> ";
+	$item["Actions"] .= "<a href='load.php?id=$value->id' class='btn btn-default btn-sm'>Load data</a> ";
 	if($__user->isAdmin()){
-		$item["Actions"] .= "<a href='../Variables/index.php?id_ensayo=$value->id' class='btn btn-default btn-sm'>Variables</a> ";
-		$item["Actions"] .= "<a href='edit.php?id=$value->id' class='btn btn-default btn-sm'>" . __EDIT . "</a> ";
+		$item["Actions"] .= "<a href='edit.php?id=$value->id' class='btn btn-default btn-sm'>Edit metadata</a> ";
 		if($value->visible){
-			$item["Actions"] .= "<a data-href='".__URL."logic/phenobook/end.php?status=0&id=$value->id' class='btn btn-warning btn-sm ask' data-what='¿Seguro?'>" . __END . "</a> ";
+			$item["Actions"] .= "<a data-href='".__URL."logic/phenobook/end.php?status=0&id=$value->id' class='btn btn-warning btn-sm ask' data-what='Are you sure?'>End</a> ";
 		}else{
-			$item["Actions"] .= "<a data-href='".__URL."logic/phenobook/end.php?status=1&id=$value->id' class='btn btn-success btn-sm ask' data-what='¿Seguro?'>" . __CONTINUE . "</a> ";
+			$item["Actions"] .= "<a data-href='".__URL."logic/phenobook/end.php?status=1&id=$value->id' class='btn btn-success btn-sm ask' data-what='Are you sure?'>Continue</a> ";
 		}
-		$item["Actions"] .= "<a data-href='".__URL."logic/phenobook/delete.php?id=$value->id' class='btn btn-danger btn-sm ask' data-what='¿Seguro?'>" . __DELETE . "</a></div> ";
+		$item["Actions"] .= "<a data-href='".__URL."logic/phenobook/delete.php?id=$value->id' class='btn btn-danger btn-sm ask' data-what='Are you sure?'>Delete</a></div> ";
 	}
 	$data[] = $item;
 

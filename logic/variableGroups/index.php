@@ -14,27 +14,20 @@ $classNameShow = "Variable Group";
 			$item = array();
 			$item["Name"] = $value;
 			$item["Actions"] = "<a href='edit.php?id=$value->id' class='btn btn-default btn-sm'>Edit</a> ";
-			$item["Actions"] .= "<a href='../genericVariable/index.php?id=$value->id' class='btn btn-default btn-sm'>Change variables</a> ";
+			$item["Actions"] .= "<a href='../variables/index.php?id=$value->id' class='btn btn-default btn-sm'>Change variables</a> ";
 			$item["Actions"] .= "<a data-href='delete.php?id=$value->id' class='btn btn-danger btn-sm ask' data-what='Are you sure?'>Delete</a>";
 			$data[] = $item;
-
 		}
 
 		echo "<div class='row'>";
-
 		echo "<div class='col-md-8'>";
 		echo "<legend>$classNamePlural</legend>";
 		echo "</div>";
-
 		echo "<div class='col-md-3'>";
-
 		echo "</div>";
-
-
 		echo "<div class='col-md-1'>";
 		echo "<a href='add.php' class='btn btn-primary'>Add</a>";
 		echo "</div>";
-
 		echo "</div>";
 		echo genTable($data,true,"table");
 		?>

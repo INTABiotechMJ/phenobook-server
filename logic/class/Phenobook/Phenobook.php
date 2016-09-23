@@ -9,11 +9,6 @@ class Phenobook extends Object{
 	*/
 	var $experimentalUnitsNumber;
 	/**
-	*@type VARCHAR(200)
-	* Experimental Unit name
-	*/
-	var $eu_field_name;
-	/**
 	*@type TINYINT DEFAULT 1
 	*/
 	var $visible;
@@ -25,6 +20,10 @@ class Phenobook extends Object{
 	*@class UserGroup
 	*/
 	var $userGroup;
+	/**
+	*@class VariableGroup
+	*/
+	var $variableGroup;
 
 	function __toString(){
 		return $this->name;

@@ -10,6 +10,6 @@ class VariableGroup extends Object{
 	}
 
 	function listVariables(){
-		return Entity::listMe("GenericVariable","active AND variableGroup = '$this->id'");
+		return Entity::listMe("Variable","active AND variableGroup = '$this->id'");
 	}
 }

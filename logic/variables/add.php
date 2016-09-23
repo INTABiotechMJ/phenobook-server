@@ -1,79 +1,80 @@
-<?php 
-$admin = true;
-require "../../../files/php/config/require.php";
+<?php
+require "../../files/php/config/require.php";
+$classNamePlural = "Variables";
+$className = "Variable";
+$classNameShow = "Variable";
 
+$variableGroup = Entity::load("VariableGroup",_request("id"));
 if($_POST){
+	Entity::begin();
+	$item = new Variable();
+	$item->name = _post("name");
+	$item->description = _post("description");
+	$item->variableGroup = $variableGroup;
+	$item->fieldType = Entity::load("FieldType",_post("fieldType"));
 
-  $item = new Variable();
-  $item->nombre = _post("nombre");
-
-  $dir = __ROOT."files/uploads/" . date("Y") . "/". date("m") ."/";
-
-  if (!file_exists($dir)) {
-    mkdir($dir, 0777, true);
-  }
-
-  $fileName = time() . rand(0, 10000) .".". ext($_FILES["archivo"]["name"]);
-  $res = subir($_FILES["archivo"], $dir.$fileName);
-  if($res){
-    $alert->addError($res);
-  }
-
-
-  if(!$alert->hasError){
-    Entity::save($item);
-
-
-    $importacion = new Importacion();
-    $importacion->archivo = $fileName;
-    $importacion->path = "$dir$fileName";
-    $importacion->ensayo = $item;
-
-    Entity::save($importacion);
-    redirect("add_result.php?id=$item->id&m=Ensayo agregado");
-  }
-
+	if(!$alert->hasError){
+		Entity::save($item);
+		Entity::commit();
+		if(_post("save_add")){
+			redirect("add.php?id=$variableGroup->id&m=$classNameShow added");
+		}
+		if(_post("save_back")){
+			redirect("index.php?id=$variableGroup->id&m=$classNameShow added");
+		}
+	}
 }
 ?>
 
 <div class="row">
-  <div class="col-sm-8 col-md-offset-1">
-    <form autocomplete="off" enctype="multipart/form-data" class="form-horizontal valid" 
-    method="POST" action="<?= $_SERVER["PHP_SELF"]?>">
-    <fieldset>
-      <!-- Form Name -->
-      <legend><?= __TRIAL_CRUD_ADD_TITLE ?></legend>
+	<div class="col-xs-12">
 
-      <div class="form-group">
-        <label class="col-md-4 control-label" for="nombre"><?= __TRIAL_CRUD_ADD_NAME ?> *</label>  
-        <div class="col-md-5">
-          <input id="nombre" name="nombre" value="<?= _post("nombre"); ?>" type="text"  class="form-control input-md required">
-          <span class="help-block"></span>  
-        </div>
-      </div>
+		<div class='row'>
 
+			<div class='col-md-11'>
+				<legend>Add <i>variable</i> to group <?= "<i>$variableGroup</i> " ?> </legend>
+			</div>
 
-      <div class="form-group">
-        <label class="col-md-4 control-label" for="archivo"><?= __TRIAL_CRUD_ADD_FILE ?> *</label>  
-        <div class="col-md-5">
-          <input type="file" name="archivo" class="form-control input-md required">
-          <span class="help-block">
-          <?= __TRIAL_CRUD_ADD_INSTRUCTIONS ?>
-          </span>  
-        </div>
-      </div>
+			<div class='col-md-1'>
+				<a href='index.php?id=<?= $variableGroup->id ?>' class='btn btn-default btn-sm'>Existents</a>
+			</div>
 
-      <!-- Button -->
-      <div class="form-group">
-        <div class="col-md-4 col-md-offset-4">
-          <input type="submit" name="save" value="<?= __TRIAL_CRUD_ADD_SAVE ?>" class="btn btn-shadow btn-primary">
-        </div>
-      </div>
+		</div>
+		<div class="row">
+			<div class="col-md-6 col-md-offset-3">
+				<form action="<?= $_SERVER["PHP_SELF"] ?>" method="POST" class="valid" autocomplete="off">
+					<input type="hidden" name="id" value="<?= _request("id") ?>">
+					<div class="form-group">
+						<label for="name">Name <span class="red">*</span></label>
+						<input name="name" type="text" class="form-control required" id="name" value="<?= _post("name") ?>" placeholder="Name">
+					</div>
+					<div class="form-group">
+						<label for="description">Description</label>
+						<input name="description" type="text" class="form-control" id="description" value="<?= _post("description") ?>" placeholder="Description">
+					</div>
+					<div class="form-group">
+						<label for="fieldType">Type <span class="red">*</span></label>
+						<?php
+						$fieldTypes = obj2arr(Entity::listMe("FieldType","active"));
+						printSelect("fieldType", _post("fieldType"), $fieldTypes, null, "select2","" );
+						?>
+					</div>
+					<div class="form-group">
+						<input name="save_add" type="submit" class="btn btn-primary" value="Save and add another">
+						<input name="save_back" type="submit" class="btn btn-primary" value="Save and finish">
+						<a href="index.php?id=<?= $variableGroup->id ?>" class="btn btn-default">Discard this and finish</a>
+					</div>
+				</form>
+			</div>
+		</div>
 
-    </fieldset>
-  </form>
+	</div>
 </div>
-</div>
-<?php 
-require __ROOT."files/php/template/footer.php";
+<?php
+require __ROOT . "files/php/template/footer.php";
 ?>
+<script type="text/javascript">
+	$("#fieldType").change(function(){
+
+	});
+</script>

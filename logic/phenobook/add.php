@@ -9,17 +9,8 @@ if($_POST){
   $item = new Phenobook();
   $item->name = _post("name");
   $item->description = _post("description");
-
-  $dir = __ROOT."files/uploads/" . date("Y") . "/". date("m") ."/";
-
-  if (!file_exists($dir)) {
-    mkdir($dir, 0777, true);
-  }
-
-  $result = subir($_FILES["archivo"],array("csv"));
-  if(!empty($result["error"])){
-    $alert->addError($result["msg"]);
-  }
+  $item->variableGroup = Entity::load("VariableGroup",_post("variableGroup"));
+  $item->experimentalUnitsNumber = _post("experimentalUnitsNumber");
 
   if(!$alert->hasError){
     Entity::save($item);
@@ -35,18 +26,13 @@ if($_POST){
     $phenobookGroup = _post("userGroups");
     foreach((array)$phenobookGroup  as $pg){
       $us_obj = new PhenobookUserGroup();
-      $us_obj->group = Entity::load("Group", $pg);
+      $us_obj->userGroup = Entity::load("UserGroup", $pg);
       $us_obj->phenobook = $item;
       Entity::save($us_obj);
     }
 
-    $import = new Import();
-    $import->file = $result["filename"];
-    $import->path = $result["name"];
-    $import->phenobook = $item;
-    Entity::save($import);
     Entity::commit();
-    redirect("add_result.php?id=$item->id&m=Phenobook added");
+    redirect("index.php?id=$item->id&m=Phenobook added");
   }
 
 }

@@ -1,96 +1,69 @@
-<?php 
-$admin = true;
-require "../../../files/php/config/require.php";
+<?php
+require "../../files/php/config/require.php";
+$classNamePlural = "Variables";
+$className = "Variable";
+$classNameShow = "Variable";
 $id = _request("id");
-
-$operadores = obj2arr(Entity::listMe("User", "active AND type = '".User::$TYPE_OPERADOR. "'"));
-
-$item = Entity::load("Campana", $id);
-
-//operadores
-$rels = Entity::listMe("ManyCampanaUser", "active AND campana = '$id'");
-$selectedOperadores = array();
-foreach((array)$rels as $rel){
-  $selectedOperadores[] =  $rel->user;
-}
-if(!empty($selectedOperadores)){
-  $selectedOperadores = obj2arr($selectedOperadores);
-}
-//end operadores
+$item = Entity::search($className,"id = '$id' AND active");
 
 if($_POST){
-  
-  $item->nombre = _post("nombre");
-
-
-  $rels = Entity::listMe("ManyCampanaUser", "active AND campana = '$id'");
-  foreach((array)$rels as $rel){
-    $rel->active = "0";
-    Entity::update($rel);
-  }
-
-
-  $ops = _post("operadores");
-  foreach((array)$ops  as $o){
-    $mcu = new ManyCampanaUser();
-    $mcu->campana = $item;
-    $mcu->user = Entity::load("User", $o);
-    Entity::save($mcu);
-  }
-
-  if(!$alert->hasError){
-    Entity::update($item);
-
-    redirect("index.php?m=".__VARIABLE_CRUD_EDIT_EDITED);
-  }
-
+	$idgv = _post("idgv");
+	Entity::begin();
+	$item->name = _post("name");
+	$item->description = _post("description");
+	$item->fieldType = Entity::load("FieldType",_post("fieldType"));
+	if(!$alert->hasError){
+		Entity::update($item);
+		Entity::commit();
+		redirect("index.php?id=$idgv&m=$classNameShow edited");
+	}
 }
-
 ?>
 
 <div class="row">
-  <div class="col-sm-8 col-md-offset-1">
-    <form autocomplete="off" enctype="multipart/form-data" class="form-horizontal valid" 
-    method="POST" action="<?= $_SERVER["PHP_SELF"]?>">
-    <input type="hidden" name="id" value="<?= _request("id"); ?>">
-    <fieldset>
-      <!-- Form Name -->
-      <legend><?= __VARIABLE_CRUD_EDIT_TITLE ?></legend>
+	<div class="col-xs-12">
 
-      <div class="form-group">
-        <label class="col-md-4 control-label" for="nombre"><?= __VARIABLE_CRUD_EDIT_NAME ?> *</label>  
-        <div class="col-md-5">
-          <input id="nombre" name="nombre" value="<?= $item->nombre; ?>" type="text"  class="form-control input-md required">
-          <span class="help-block"></span>  
-        </div>
-      </div>
+		<div class='row'>
 
+			<div class='col-md-11'>
+				<legend><?= "Edit " . $classNameShow ?></legend>
+			</div>
 
-      <div class="form-group">
-        <label class="col-md-4 control-label" for="operadores"><?= __VARIABLE_CRUD_EDIT_ASSIGNED_OPERATORS ?></label>  
-        <div class="col-md-5">
-          <?php
-          printSelect("operadores[]", $selectedOperadores, $operadores, null, "selectpicker required",'data-live-search="true" multiple data-selected-text-format="count>3"' );
-          ?>
-          <span class="help-block">
+			<div class='col-md-1'>
+				<a href='add.php' class='btn btn-default'>Add</a>
+			</div>
 
-          </span>  
-        </div>
-      </div>
+		</div>
+		<div class="row">
+			<div class="col-md-6 col-md-offset-3">
+				<form action="<?= $_SERVER["PHP_SELF"] ?>" method="POST" class="valid" autocomplete="off">
+					<input type="hidden" name="id" value="<?= _request("id") ?>">
+					<input type="hidden" name="idgv" value="<?= _request("idgv") ?>">
+					<div class="form-group">
+						<label for="name">Name <span class="red">*</span></label>
+						<input name="name" type="text" class="form-control required" id="name" value="<?= $item->name ?>" placeholder="Name">
+					</div>
+					<div class="form-group">
+						<label for="description">Description</label>
+						<input name="description" type="text" class="form-control" id="description" value="<?= $item->description ?>" placeholder="Description">
+					</div>
+					<div class="form-group">
+						<label for="fieldType">Type <span class="red">*</span></label>
+						<?php
+						$tiposCampo = obj2arr(Entity::listMe("FieldType","active"));
+						printSelect("fieldType", $item->fieldType->id, $tiposCampo, null, "select2 tiposCampo","" );
+						 ?>
+					</div>
+					<div class="form-group">
+						<input name="save" type="submit" class="btn btn-primary" value="Save">
+					</div>
+				</form>
+			</div>
+		</div>
 
-      <!-- Button -->
-      <div class="form-group">
-        <div class="col-md-4 col-md-offset-4">
-          <input type="submit" name="save" value="<?= __VARIABLE_CRUD_EDIT_SAVE ?>" class="btn btn-shadow btn-primary">
-        </div>
-      </div>
-
-    </fieldset>
-  </form>
-
+	</div>
 </div>
-</div>
 
-<?php 
-require __ROOT."files/php/template/footer.php";
+<?php
+require __ROOT . "files/php/template/footer.php";
 ?>

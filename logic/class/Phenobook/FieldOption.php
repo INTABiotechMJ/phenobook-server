@@ -8,9 +8,9 @@ class FieldOption extends Object{
 	var $name;
 
 	/**
-	*@class GenericVariable
+	*@class Variable
 	*/
-	var $genericVariable;
+	var $Variable;
 
 	/**
 	*@TYPE TINYINT DEFAULT 0

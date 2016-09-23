@@ -1,47 +1,13 @@
 <?php
-require "../../../files/php/config/require.php";
-$id_libroCampo = _get("id_ensayo");
-$libroCampo = Entity::search("Phenobook","id = '$id_libroCampo' AND active");
-
-
-$items = Entity::listMe("Parcela","active AND libroCampo = '$id_libroCampo' ORDER BY numero");
-$data = array();
-$cont = 1;
-
-foreach ($items as $key => $value) {
-	$c = $value;
-	$item = array();
-	$item["Parcela"] = $value->numero;
-
-	$valueNotEmpty = false;
-
-	$infoEnsayo = Entity::listMe("InfoEnsayo","active AND libroCampo = '".$c->libroCampo->id."'");
-	foreach ((array) $infoEnsayo as $k2 => $v2) {
-		$valorInfoEnsayo = Entity::search("ValorInfoEnsayo","active AND parcela = '$value->id' AND infoEnsayo = '$v2->id'");
-		if($valorInfoEnsayo){
-			$item[$valorInfoEnsayo->infoEnsayo->nombre] = "<div class='info-ensayo'>".$valorInfoEnsayo->valor."</div>";
-			$valueNotEmpty = true;
-		}else{
-			$item[$v2->nombre] = "";
-		}
-	}
-
-	$variables = Entity::listMe("Variable","active AND libroCampo = '".$c->libroCampo->id."'");
-	foreach ((array) $variables as $k2 => $v2) {
-		$reg = Entity::search("Registro","active AND parcela = '$value->id' AND variable = '$v2->id' AND status = '1' ORDER BY localStamp DESC");
-		if(!$reg){
-			$reg = Entity::search("Registro","active AND parcela = '$value->id' AND variable = '$v2->id' ORDER BY localStamp DESC");
-		}
-		if($reg){
-			$item[$reg->variable->nombreOriginal] = "<div data-id='$reg->id'>".$reg->calcValor()."</div>";
-			$valueNotEmpty = true;
-		}else{
-			$item[$v2->nombreOriginal] = "";
-		}
-	}
-
-	if(true || $valueNotEmpty){
-		$data[] = $item;
+require "../../files/php/config/require.php";
+$id = _get("id");
+$phenobook = Entity::search("Phenobook","id = '$id' AND active");
+$variableGroup = Entity::search("VariableGroup","active AND id = '" . $phenobook->variableGroup->id . "'");
+$variables = Entity::listMe("Variable","active AND variableGroup = '$variableGroup->id'");
+$informativeVariables = array();
+foreach((array)$variables as $var){
+	if($var->fieldType->isInformative()){		
+		$informativeVariables[] = $var;
 	}
 }
 ?>
@@ -50,39 +16,15 @@ foreach ($items as $key => $value) {
 <script src="<?= __URL ?>assets/libs/handsontable/handsontable.full.min.js"></script>
 <?php
 echo "<div class='botonera'>";
-echo btn(__BACK, "index.php", ICON_BACK, TYPE_DEFAULT);
+echo btn("Back to Phenobooks", "index.php", null);
 echo "</div>";
-echo "<legend>".__FIELDBOOK_CLASS_SHOW." <span class='object-name'>$libroCampo</span></legend>";
+echo "<legend>Load data for Phenobook <span class='object-name'>$phenobook</span></legend>";
 echo "<div id='hot'></div>";
 require __ROOT."files/php/template/footer.php";
 
-$items = Entity::listMe("Parcela","active AND libroCampo = '$id_libroCampo' ORDER BY numero");
-$data = array();
-$cont = 1;
-foreach ($items as $key => $value) {
-	$infoEnsayo = Entity::listMe("InfoEnsayo","active AND libroCampo = '".$c->libroCampo->id."'");
-	$i = array();
-	foreach ((array) $infoEnsayo as $k2 => $v2) {
-		$valorInfoEnsayo = Entity::search("ValorInfoEnsayo","active AND parcela = '$value->id' AND infoEnsayo = '$v2->id'");
-		if($valorInfoEnsayo){
-			$i[$valorInfoEnsayo->infoEnsayo->nombre] = $valorInfoEnsayo->valor;
-			$valueNotEmpty = true;
-		}else{
-			$i[$v2->nombre] = "";
-		}
-	}
-
-
-	$variables = Entity::listMe("Variable","active AND libroCampo = '".$c->libroCampo->id."'");
-	foreach ((array) $variables as $k2 => $v2) {
-		$i[$v2->nombreOriginal] = "";
-	}
-
-	$data[] = $i;
-}
 ?>
 <script>
-var dataObject = <?= json_encode($data) ?>;
+var dataObject = <?= json_encode(obj2arr($variables)) ?>;
 
 var hotElement = document.querySelector('#hot');
 var hotElementContainer = hotElement.parentNode;

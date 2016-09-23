@@ -2,19 +2,19 @@
 $admin = true;
 require "../../files/php/config/require.php";
 $id = _request("id");
-$variable = Entity::load("GenericVariable", $id);
+$variable = Entity::load("Variable", $id);
 if($_POST){
 
   $item = new FieldOption();
   $item->name = _post("name");
-  $item->genericVariable = $variable;
+  $item->Variable = $variable;
   if(!$alert->hasError){
     Entity::save($item);
     redirect("index.php?id=$id&m=Option added");
   }
 }
 echo "<div class='botonera'>";
-echo btn("Back to options", "index.php?id=".$variable->variableGroup->id, ICON_BACK, TYPE_DEFAULT);
+echo btn("Back to options", "index.php?id=".$variable->variableGroup->id, null, TYPE_DEFAULT);
 echo "</div>";
 ?>
 <div class="row">
