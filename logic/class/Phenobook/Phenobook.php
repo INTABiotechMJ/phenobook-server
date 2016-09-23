@@ -5,6 +5,10 @@ class Phenobook extends Object{
 	*/
 	var $name;
 	/**
+	*@type INT
+	*/
+	var $experimentalUnitsNumber;
+	/**
 	*@type VARCHAR(200)
 	* Experimental Unit name
 	*/

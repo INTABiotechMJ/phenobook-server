@@ -7,7 +7,7 @@ class UserGroup extends Object{
 
 
 	function __toString(){
-		return "$this->nombre";
+		return "$this->name";
 	}
 
 }

@@ -50,7 +50,7 @@ foreach ($items as $key => $value) {
 }
 echo "<div class='botonera'>";
 if($__user->isAdmin() || $__user->isSuperAdmin()){
-	echo btn("add Phenobook", "add.php", ICON_ADD);
+	echo btn("Add", "add.php", ICON_ADD);
 }
 echo "</div>";
 echo "<legend>Phenobooks</legend>";

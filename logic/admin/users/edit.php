@@ -1,8 +1,8 @@
-<?php 
+<?php
 $admin = true;
 require "../../../files/php/config/require.php";
 $item = Entity::load("User", _request("id"));
-$grupos = obj2arr(Entity::listMe("Group","active"));
+$grupos = obj2arr(Entity::listMe("UserGroup","active"));
 $checkedAdmin = "";
 $activeAdmin = "";
 $checkedOperador = "";
@@ -23,15 +23,43 @@ if($_POST){
   $item->name = _post("name");
   $item->lastName = _post("lastName");
   $item->type = _post("type");
-  $item->grupo = Entity::load("Group", _post("grupo"));
+
+  $selectedGroups = Entity::listMe("UserUserGroup","active AND user = '$item->id'");
+  foreach((array) $selectedGroups as $sg){
+    $is = false;
+    foreach(_post("groups") as $ng){
+      if($sg->userGroup->id == $ng){
+        $is = true;
+      }
+    }
+    if(!$is){
+      $sg->active = 0;
+      Entity::update($sg);
+    }
+  }
+  foreach(_post("groups") as $ng){
+    $is = false;
+    foreach((array) $selectedGroups as $sg){
+      if($sg->userGroup->id == $ng){
+        $is = true;
+      }
+    }
+    if(!$is){
+      $gr = Entity::search("UserGroup",$ng);
+      $cg = UserUserGroup();
+      $cg->user = $item;
+      $cg->userGroup = $gr;
+      Entity::save($cg);
+    }
+  }
 
   if(User::searchByEmail($email, $item->id)){
-    $alert->addError("El email $email ya se encuentra registrado en otro usuario");
+    $alert->addError("Email $email is already registered");
   }
 
   if(!$alert->hasError){
     Entity::update($item);
-    redirect("index.php?m=Usuario editado");
+    redirect("index.php?m=User edited");
   }
 }
 
@@ -43,72 +71,62 @@ if($_POST){
       <input type="hidden" name="id" value="<?= _request("id"); ?>">
       <fieldset>
         <!-- Form Name -->
-        <legend><?= __USER_CRUD_EDIT_TITLE ?></legend>
+        <legend>Edit user</legend>
         <!-- Text input-->
         <div class="form-group">
-          <label class="col-md-4 control-label" for="name"><?= __USER_CRUD_EDIT_NAME ?> *</label>  
+          <label class="col-md-4 control-label" for="name">Name <span class="red">*</span></label>
           <div class="col-md-4">
             <input id="name" value="<?= $item->name ?>" name="name" type="text"  class="form-control input-md required">
-            <span class="help-block"></span>  
+            <span class="help-block"></span>
           </div>
         </div>
 
         <div class="form-group">
-          <label class="col-md-4 control-label" for="lastName"><?= __USER_CRUD_EDIT_LAST_NAME ?> *</label>  
+          <label class="col-md-4 control-label" for="lastName">Last Name <span class="red">*</span></label>
           <div class="col-md-4">
             <input id="lastName" value="<?= $item->lastName ?>" name="lastName" type="text"  class="form-control input-md required">
-            <span class="help-block"></span>  
+            <span class="help-block"></span>
           </div>
         </div>
 
         <div class="form-group">
-          <label class="col-md-4 control-label" for="email">Email *</label>  
+          <label class="col-md-4 control-label" for="email">Email <span class="red">*</span></label>
           <div class="col-md-4">
             <input id="email" value="<?= $item->email ?>" name="email" type="text"  class="form-control input-md email required">
-            <span class="help-block"></span>  
+            <span class="help-block"></span>
           </div>
         </div>
 
-        <?php 
-        if($__user->isSuperAdmin()){
-         ?>
-         <div class="form-group ">
-          <label class="col-md-4 control-label" for="usuarios"><?= __USER_CRUD_EDIT_GROUP ?></label>  
+        <div class="form-group ">
+          <label class="col-md-4 control-label" for="usuarios">Groups</label>
           <div class="col-md-4">
             <?php
-            printSelect("grupo", $item->grupo->id, $grupos, null, "select","" );
+            $selectedGroups = Entity::listMe("UserUserGroup","active AND user = '$item->id'");
+            $arr = array();
+            foreach((array)$selectedGroups as $gr){
+              $arr[] = $gr->userGroup->id;
+            }
+            printSelect("groups[]", $arr, $grupos, null, "select-multiple","multiple" );
             ?>
-            <span class="help-block"></span>  
-          </div>
-        </div>
-        <?php } ?>
-
-        <div class="form-group">
-          <label class="col-md-4 control-label" for="email"><?= __USER_CRUD_ADD_LANG ?> *</label>  
-          <div class="col-md-4">
-            <?php 
-            $langs = array(0 => "English",1 => "Spanish");
-            printSelect("lang", $item->lang, $langs, null, "select","" );
-            ?>
-            <span class="help-block"></span>  
+            <span class="help-block"></span>
           </div>
         </div>
 
 
         <div class="form-group">
-          <label class="col-md-4 control-label" for="password"><?= __USER_CRUD_EDIT_USER_TYPE ?> *</label>  
+          <label class="col-md-4 control-label" for="password">Type <span class="red">*</span></label>
           <div class="col-md-4">
 
             <div class="btn-group" data-toggle="buttons">
 
               <label class="btn btn-default <?= $activeOperador ?>">
                 <input type="radio" <?= $checkedOperador ?> name="type" id="tipo2" value="<?= User::$TYPE_OPERADOR;?>">
-                <?= __USER_CRUD_EDIT_TYPE_OPERATOR ?>
-              </label>              
+                Operator
+              </label>
 
               <label class="btn btn-default <?= $activeAdmin ?>">
                 <input type="radio" <?= $checkedAdmin ?> name="type" id="tipo1" value="<?= User::$TYPE_ADMIN;?>">
-                <?= __USER_CRUD_EDIT_TYPE_ADMIN ?>
+                Admin
               </label>
 
             </div><!--END btn-group-->
@@ -122,10 +140,12 @@ if($_POST){
         <div class="form-group">
 
           <div class="col-md-4 col-md-offset-4">
-            <input type="submit" name="save" value="<?= __USER_CRUD_EDIT_SAVE ?>" class="btn btn-shadow btn-primary"> 
-            <a href="index.php" class="btn btn-shadow btn-default"><?= __USER_CRUD_EDIT_BACK ?></a>
+            <input type="submit" name="save" value="Save" class="btn btn-default">
           </div>
         </div>
+        <hr>
+        <span class="red">*</span> denotes a required field
+
 
       </fieldset>
     </form>
@@ -133,6 +153,6 @@ if($_POST){
   </div>
 </div>
 
-<?php 
+<?php
 require __ROOT."files/php/template/footer.php";
 ?>

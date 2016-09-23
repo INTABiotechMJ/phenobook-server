@@ -10,7 +10,7 @@ if($_POST){
   $user = Entity::search("User","email = '$email' AND pass = '$pass' AND active");
   if($user){
     $_SESSION["user".__HASH] = $user;
-    redirect(__URL."logic/");
+    redirect(__URL."logic/phenobook");
   }else{
     redirect("index.php?e=Wrong Password");
   }

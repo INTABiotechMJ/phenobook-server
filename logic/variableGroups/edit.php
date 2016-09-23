@@ -1,20 +1,19 @@
 <?php
-require "../../../files/php/config/require.php";
-$classNamePlural = __VARIABLE_GROUP_PLURAL;
-$className = __VARIABLE_GROUP_CLASS;
-$classNameShow = __VARIABLE_GROUP_CLASS_SHOW;
+require "../../files/php/config/require.php";
+$classNamePlural = "Variable Groups";
+$className = "VariableGroup";
+$classNameShow = "Variable Group";
 
 $id = _request("id");
 $item = Entity::search($className,"id = '$id' AND active");
 
 if($_POST){
 	Entity::begin();
-	$item->nombre = _post("nombre");
-
+	$item->name = _post("name");
 	if(!$alert->hasError){
 		Entity::update($item);
 		Entity::commit();
-		redirect("index.php?m=$classNameShow ".__EDITED);
+		redirect("index.php?m=$classNameShow edited");
 	}
 }
 ?>
@@ -25,11 +24,11 @@ if($_POST){
 		<div class='row'>
 
 			<div class='col-md-11'>
-				<legend><?= __EDIT . " " . $classNameShow ?></legend>
+				<legend><?= "Edit " . $classNameShow ?></legend>
 			</div>
 
 			<div class='col-md-1'>
-				<a href='add.php' class='btn btn-primary btn-sm btn-shadow'><?= __ADD ?></a>
+				<a href='index.php' class='btn btn-default'>Existents</a>
 			</div>
 
 		</div>
@@ -38,19 +37,17 @@ if($_POST){
 				<form action="<?= $_SERVER["PHP_SELF"] ?>" method="POST" class="valid" autocomplete="off">
 					<input type="hidden" name="id" value="<?= _request("id") ?>">
 					<div class="form-group">
-						<label for="nombre"><?= __NAME ?> *</label>
-						<input name="nombre" type="text" class="form-control required" id="nombre" value="<?= $item->nombre ?>" placeholder="<?= __NAME ?>">
+						<label for="name">Name <span class="red">*</span></label>
+						<input name="name" type="text" class="form-control required" id="name" value="<?= $item->name ?>" placeholder="Name">
 					</div>
 					<div class="form-group">
-						<input name="save" type="submit" class="btn btn-default" value="<?= __SAVE ?>">
+						<input name="save" type="submit" class="btn btn-primary" value="Save">
 					</div>
 				</form>
 			</div>
 		</div>
-
 	</div>
 </div>
-
 <?php
 require __ROOT . "files/php/template/footer.php";
 ?>

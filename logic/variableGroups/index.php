@@ -1,9 +1,8 @@
 <?php
-require "../../../files/php/config/require.php";
-$classNamePlural = "User Groups";
-$className = "UserGroup";
-$classNameShow = "User Group";
-
+require "../../files/php/config/require.php";
+$classNamePlural = "Variable Groups";
+$className = "VariableGroup";
+$classNameShow = "Variable Group";
 ?>
 <div class="row">
 	<div class="col-xs-12">
@@ -15,6 +14,7 @@ $classNameShow = "User Group";
 			$item = array();
 			$item["Name"] = $value;
 			$item["Actions"] = "<a href='edit.php?id=$value->id' class='btn btn-default btn-sm'>Edit</a> ";
+			$item["Actions"] .= "<a href='../genericVariable/index.php?id=$value->id' class='btn btn-default btn-sm'>Change variables</a> ";
 			$item["Actions"] .= "<a data-href='delete.php?id=$value->id' class='btn btn-danger btn-sm ask' data-what='Are you sure?'>Delete</a>";
 			$data[] = $item;
 

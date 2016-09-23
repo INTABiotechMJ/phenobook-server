@@ -1,6 +1,6 @@
 
 jQuery.extend(jQuery.validator.messages, {
-    required: "oblig.",
+    required: "Required",
     remote: "Please fix this field.",
     email: "Please enter a valid email address.",
     url: "Please enter a valid URL.",
@@ -86,7 +86,7 @@ function redirect(url){
 }
 
 String.prototype.toHHMMSS = function () {
-  var sec_num = parseInt(this, 10); 
+  var sec_num = parseInt(this, 10);
   var hours   = Math.floor(sec_num / 3600);
   var minutes = Math.floor((sec_num - (hours * 3600)) / 60);
   var seconds = sec_num - (hours * 3600) - (minutes * 60);
@@ -102,7 +102,7 @@ String.prototype.toHHMMSS = function () {
 $(".export").on('click', function (event) {
   // CSV
   var $table = $(this).parents("table");
-  exportTableToCSV.apply(this, [$table, 'export.csv']);  
+  exportTableToCSV.apply(this, [$table, 'export.csv']);
   // IF CSV, don't do event.preventDefault() or return false
   // We actually need this to be a typical hyperlink
 });
@@ -176,7 +176,7 @@ $(".int").keydown(function (e) {
   // Allow: backspace, delete, tab, escape, enter and f5
   if ($.inArray(e.keyCode, [46, 8, 9, 27, 13, 110, 116]) !== -1 ||
    // Allow: Ctrl+A
-   (e.keyCode == 65 && e.ctrlKey === true) || 
+   (e.keyCode == 65 && e.ctrlKey === true) ||
    // Allow: home, end, left, right
    (e.keyCode >= 35 && e.keyCode <= 39)) {
    // let it happen, don't do anything
@@ -196,7 +196,7 @@ $(".float").keydown(function (e) {
   // Allow: backspace, delete, tab, escape, enter . and f5
   if ($.inArray(e.keyCode, [46, 8, 9, 27, 13, 110, 190, 116]) !== -1 ||
    // Allow: Ctrl+A
-   (e.keyCode == 65 && e.ctrlKey === true) || 
+   (e.keyCode == 65 && e.ctrlKey === true) ||
    // Allow: home, end, left, right
    (e.keyCode >= 35 && e.keyCode <= 39)) {
    // let it happen, don't do anything

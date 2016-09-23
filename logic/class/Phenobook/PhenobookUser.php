@@ -7,6 +7,6 @@ class PhenobookUser extends Object{
 	/**
 	*@class Phenobook
 	*/
-	var $libroCampo;
+	var $phenobook;
 
 }

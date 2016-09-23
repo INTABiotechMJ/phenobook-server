@@ -223,7 +223,7 @@ function genTable($data, $footer = true, $totalResults = null, $divTableClass = 
         $out .= "</table>";
         $out .= "</div>";
     }else{
-        $out .= __NO_RESULTS;
+        $out .= "No results";
     }
 
     $out .= '';

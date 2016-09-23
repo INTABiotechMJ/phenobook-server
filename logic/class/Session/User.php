@@ -71,13 +71,13 @@ class User extends Object{
 	function calcTypeName(){
 		switch ($this->type) {
 			case User::$TYPE_ADMIN;
-			return __USER_CLASS__TYPE_ADMIN;
+			return "Administrator";
 			break;
 			case User::$TYPE_OPERADOR;
-			return __USER_CLASS_TYPE_FIELD;
+			return "Operator";
 			break;
 			case User::$TYPE_SUPER_ADMIN;
-			return __USER_CLASS_TYPE_SUPER_ADMIN;
+			return "SuperAdmin";
 			break;
 			default:
 			return "-";

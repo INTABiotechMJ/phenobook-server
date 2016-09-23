@@ -59,7 +59,7 @@ class FieldType extends Object{
 	*/
 	static $TYPE_AUDIO = 11;
 	function __toString(){
-		return "$this->bane";
+		return "$this->name";
 	}
 
 	function toForm($variable, $value){
@@ -75,7 +75,7 @@ class FieldType extends Object{
 		if($required){
 			$req = "required";
 		}
-		switch ($this->tipo) {
+		switch ($this->type) {
 			case FieldType::$TYPE_TEXT:
 			return "<input  type='text' name='$name' id='$name' value='$value' class='form-control input-lg $req'>";
 			break;
@@ -120,22 +120,22 @@ class FieldType extends Object{
 			return "<input  type='time' name='$name' id='$name' value='$value' class='form-control  input-lg $req'>";
 			break;
 			default:
-			return "Sin tipo";
+			return "No type";
 			break;
 		}
 	}
 
 	function isText(){
-		return $this->tipo == FieldType::$TYPE_TEXTO;
+		return $this->type == FieldType::$TYPE_TEXTO;
 	}
 	function isPhoto(){
-		return $this->tipo == FieldType::$TYPE_PHOTO;
+		return $this->type == FieldType::$TYPE_PHOTO;
 	}
 	function isAudio(){
-		return $this->tipo == FieldType::$TYPE_AUDIO;
+		return $this->type == FieldType::$TYPE_AUDIO;
 	}
 	function isOption(){
-		return $this->tipo == FieldType::$TYPE_OPTION;
+		return $this->type == FieldType::$TYPE_OPTION;
 	}
 	function searchGraphType(){
 		$tgtc = Entity::listMe("GrapTypeFieldType", "fieldType = '$this->id' AND active");

@@ -10,7 +10,7 @@ $registro = Entity::search("Registro","id = '$id_registro' AND active");
 $regActual = Entity::search("Registro","active AND parcela = '".$registro->parcela->id."' AND variable = '" . $registro->variable->id . "' ORDER BY localStamp DESC");
 
 echo "<div class='botonera'>";
-echo "<a href='index.php?id_ensayo=$id_ensayo' class='btn hide btn-primary btn-sm btn-shadow'>".__BACK."</a>";
+echo "<a href='index.php?id_ensayo=$id_ensayo' class='btn hide btn-primary btn-sm'>".__BACK."</a>";
 echo "</div>";
 echo "<legend>" . i($regActual->parcela) . " | " . i($regActual->variable) . " | " . i($regActual->variable->libroCampo) . "</legend>";
 echo reg2table($regActual);
