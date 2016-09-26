@@ -10,7 +10,7 @@ if($_POST){
   $item->name = _post("name");
   $item->description = _post("description");
   $item->variableGroup = Entity::load("VariableGroup",_post("variableGroup"));
-  $item->experimentalUnitsNumber = _post("experimentalUnitsNumber");
+  $item->experimental_units_number = _post("experimental_units_number");
 
   if(!$alert->hasError){
     Entity::save($item);
@@ -40,7 +40,6 @@ if($_POST){
 $users = obj2arr(Entity::listMe("User","active AND 1"));
 
 ?>
-
 <div class="row">
 
   <div class="col-sm-8 col-md-offset-1">
@@ -57,8 +56,8 @@ $users = obj2arr(Entity::listMe("User","active AND 1"));
 
 
       <div class="form-group">
-        <label class=" control-label" for="experimentalUnitsNumber">Experimental units <span class="red">*</span></label>
-        <input placeholder="Experimental units" id="experimentalUnitsNumber" name="experimentalUnitsNumber" value="<?= _post("experimentalUnitsNumber"); ?>" type="number" class="form-control int input-md required">
+        <label class=" control-label" for="experimental_units_number">Experimental units <span class="red">*</span></label>
+        <input placeholder="Experimental units" id="experimental_units_number" name="experimental_units_number" value="<?= _post("experimental_units_number"); ?>" type="number" class="form-control int input-md required">
         <span class="help-block">
           Number of experimental units
         </span>

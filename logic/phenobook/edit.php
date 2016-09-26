@@ -1,115 +1,146 @@
-<?php 
+<?php
 $admin = true;
-require "../../../files/php/config/require.php";
-$id = _request("id");
+require "../../files/php/config/require.php";
+$userGroups = obj2arr(Entity::listMe("UserGroup","active"));
+$users = obj2arr(Entity::listMe("User","active"));
+$variableGroups = obj2arr(Entity::listMe("VariableGroup","active"));
 
+$item = Entity::load("Phenobook",_request("id"));
 
-$users_ensayo = Entity::listMe("User", "active AND grupo = '".$__user->userGroup->id."'");
-if(!empty($users_ensayo)){
-  $users = obj2arr($users_ensayo);
-}
-
-$rels = Entity::listMe("UserPhenobook", "active AND libroCampo = '$id'");
-
+$userPhenobooksSelected = Entity::listMe("PhenobookUser","active AND phenobook = '$item->id' ORDER BY id DESC");
+$userGroupsSelected = Entity::listMe("PhenobookUserGroup","active AND phenobook = '$item->id' ORDER BY id DESC");
+$selectedGroups = array();
 $selectedUsers = array();
-
-
-foreach((array)$rels as $rel){
-  if(!empty($rel->user)){
-    $selectedUsers[] =  $rel->user;
-  }
+foreach ($userPhenobooksSelected as $value) {
+  $selectedUsers[] = $value->user;
 }
-
-if(!empty($selectedUsers)){
-  $selectedUsers = obj2arr($selectedUsers);
+foreach ($userGroupsSelected as $value) {
+  $selectedGroups[] = $value->userGroup;
 }
-
-
-$item = Entity::load("Phenobook", $id);
+$selectedUsers = obj2arr($selectedUsers);
+$selectedGroups = obj2arr($selectedGroups);
 if($_POST){
-
-  $rels = Entity::listMe("UserPhenobook", "active AND libroCampo = '$id'");
-  foreach((array)$rels as $rel){
-    $rel->active = "0";
-    Entity::update($rel);
-  }
-
-
-  $usrs = _post("usuarios");
-  foreach((array)$usrs  as $c){
-    $pc = new UserPhenobook();
-    $pc->libroCampo = $item;
-    $pc->user = Entity::load("User", $c);
-    Entity::save($pc);
-  }
-
-  $item->nombre = _post("nombre");
-  $item->descripcion = _post("descripcion");
-
+  Entity::begin();
+  $item->name = _post("name");
+  $item->description = _post("description");
+  $item->variableGroup = Entity::load("VariableGroup",_post("variableGroup"));
+  $item->experimental_units_number = _post("experimental_units_number");
 
   if(!$alert->hasError){
     Entity::update($item);
 
-    redirect("index.php?m=".__TRIAL_EDITED);
+    foreach ($userPhenobooksSelected as $value) {
+      $value->active = 0;
+      Entity::update($value);
+    }
+    foreach ($userGroupsSelected as $value) {
+      $value->active = 0;
+      Entity::update($value);
+    }
+
+    $phenobookUsers = _post("users");
+    foreach((array)$phenobookUsers  as $pu){
+      if(empty($pu)){
+        continue;
+      }
+      $us_obj = new PhenobookUser();
+      $us_obj->user = Entity::load("User", $pu);
+      $us_obj->phenobook = $item;
+      Entity::save($us_obj);
+    }
+
+    $phenobookGroup = _post("userGroups");
+    foreach((array)$phenobookGroup  as $pg){
+      if(empty($pg)){
+        continue;
+      }
+      $us_obj = new PhenobookUserGroup();
+      $us_obj->userGroup = Entity::load("UserGroup", $pg);
+      $us_obj->phenobook = $item;
+      Entity::save($us_obj);
+    }
+
+    Entity::commit();
+    redirect("index.php?id=$item->id&m=Phenobook edited");
   }
 
 }
 
 ?>
-
 <div class="row">
+
   <div class="col-sm-8 col-md-offset-1">
-    <form autocomplete="off" enctype="multipart/form-data" class="form-horizontal valid" 
+    <form autocomplete="off" enctype="multipart/form-data" class="form-horizontal valid"
     method="POST" action="<?= $_SERVER["PHP_SELF"]?>">
-    <input type="hidden" name="id" value="<?= _request("id"); ?>">
+    <input type="hidden" name="id" value="<?= _request("id") ?>">
     <fieldset>
       <!-- Form Name -->
-      <legend>Edit Phenobook</legend>
+      <legend>Edit Phenobook <i><?= $item ?></i></legend>
 
       <div class="form-group">
-        <label class="col-md-4 control-label" for="nombre"><?= __TRIAL_EDIT_NAME ?> *</label>  
-        <div class="col-md-5">
-          <input id="nombre" name="nombre" value="<?= $item->nombre; ?>" type="text"  class="form-control input-md required">
-          <span class="help-block"></span>  
-        </div>
+        <label class=" control-label" for="name">Name <span class="red">*</span></label>
+        <input placeholder="Phenobook name" id="name" name="name" value="<?= $item->name; ?>" type="text" class="form-control input-md required">
       </div>
 
 
-      <div class="form-group ">
-        <label class="col-md-4 control-label" for="usuarios"><?= __TRIAL_EDIT_ASSIGNED_USERS ?></label>  
-        <div class="col-md-4">
+      <div class="form-group">
+        <label class=" control-label" for="experimental_units_number">Experimental units <span class="red">*</span></label>
+        <input placeholder="Experimental units" id="experimental_units_number" name="experimental_units_number" value="<?= $item->experimental_units_number; ?>" type="number" class="form-control int input-md required">
+        <span class="help-block">
+          Number of experimental units
+        </span>
+      </div>
+
+      <div class="form-content">
+        <b>
+          Visible for
+        </b>
+        <div class="form-group ">
+          <label class=" control-label" for="users">Users</label>
           <?php
-          printSelect("usuarios[]", $selectedUsers, $users, null, "select-multiple select2",'multiple' );
+          printSelect("users[]", $selectedUsers, $users, null, "select-multiple users","multiple" );
           ?>
-          <span class="help-block"></span>  
+          <span class="help-block">These uses will have access to this Phenobook</span>
+        </div>
+        <div class="form-group ">
+          <label class=" control-label" for="userGroups">Groups</label>
+          <?php
+          printSelect("userGroups[]", $selectedGroups, $userGroups, null, "select-multiple userGroups","multiple" );
+          ?>
+          <span class="help-block">Users of these groups will have access to this Phenobook</span>
         </div>
       </div>
-
 
       <div class="form-group">
-        <label class="col-md-4 control-label" for="descripcion"><?= __TRIAL_EDIT_DESCRIPTIONS ?> *</label>  
-        <div class="col-md-5">
-          <textarea name="descripcion" id="descripcion" class="form-control" cols="30" rows="5"><?= $item->descripcion; ?></textarea>
-          <span class="help-block"></span>  
-        </div>
+        <label class=" control-label" for="description">Description</label>
+        <textarea name="description" id="description" class="form-control" cols="30" rows="3"><?= $item->description; ?></textarea>
+        <span class="help-block"></span>
+      </div>
+
+      <div class="form-group">
+        <label class=" control-label" for="file">Select Variable Group <span class="red">*</span></label>
+        <?php
+        printSelect("variableGroup", $item->variableGroup, $variableGroups, null, "select2",null );
+        ?>
+        <span class="help-block">
+        </span>
       </div>
 
 
-
-
+      <hr>
       <!-- Button -->
       <div class="form-group">
-        <div class="col-md-4 col-md-offset-4">
-          <input type="submit" name="save" value="<?= __TRIAL_EDIT_SAVE ?>" class="btn btn-shadow btn-primary">
+        <div class="">
+          <input type="submit" name="save" value="Save" class="btn btn-shadow btn-primary">
         </div>
       </div>
+      <hr>
+      <span class="red">*</span> denotes a required field
 
     </fieldset>
   </form>
-
 </div>
 </div>
-
-<?php 
+<?php
 require __ROOT."files/php/template/footer.php";
 ?>

@@ -7,7 +7,7 @@ class Phenobook extends Object{
 	/**
 	*@type INT
 	*/
-	var $experimentalUnitsNumber;
+	var $experimental_units_number;
 	/**
 	*@type TINYINT DEFAULT 1
 	*/

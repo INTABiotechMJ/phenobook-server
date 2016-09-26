@@ -124,9 +124,17 @@ class FieldType extends Object{
 			break;
 		}
 	}
-
+	function isCheck(){
+		return $this->type == FieldType::$TYPE_CHECK;
+	}
+	function isNumeric(){
+		return $this->type == FieldType::$TYPE_NUMBER;
+	}
+	function isDate(){
+		return $this->type == FieldType::$TYPE_DATE;
+	}
 	function isText(){
-		return $this->type == FieldType::$TYPE_TEXTO;
+		return $this->type == FieldType::$TYPE_TEXT;
 	}
 	function isPhoto(){
 		return $this->type == FieldType::$TYPE_PHOTO;

@@ -32,7 +32,16 @@ class Variable extends Object{
 	*@class Phenobook
 	*/
 	var $phenobook;
-
+	function formatValue(){
+		if($this->fieldType->isCheck()){
+			if($this->value){
+				return true;
+			}else{
+				return false;
+			}
+		}
+		return $this->value;
+	}
 	function __toString(){
 		if(!empty($this->originalName)){
 			return "$this->originalName";
@@ -52,6 +61,9 @@ class Variable extends Object{
 		$name = str_replace("ó", "o", $name);
 		$name = str_replace("ú", "u", $name);
 		return $name;
+	}
+	function getOptions(){
+		return Entity::listMe("FieldOption","active AND Variable = '$this->id' ORDER BY id DESC");
 	}
 
 }

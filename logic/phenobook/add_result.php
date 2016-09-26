@@ -1,5 +1,4 @@
 <?php
-set_time_limit(0);
 $admin = true;
 require "../../../files/php/config/require.php";
 

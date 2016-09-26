@@ -6,6 +6,10 @@ class Registry extends Object{
 	*/
 	var $user;
 	/**
+	*@type INT
+	*/
+	var $experimental_unit_number;
+	/**
 	*@type DATETIME
 	*/
 	var $stamp;
