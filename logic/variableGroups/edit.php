@@ -24,7 +24,6 @@ if($_POST){
 		<div class='row'>
 
 			<div class='col-md-11'>
-				<legend><?= "Edit " . $classNameShow ?></legend>
 			</div>
 
 			<div class='col-md-1'>
@@ -33,7 +32,8 @@ if($_POST){
 
 		</div>
 		<div class="row">
-			<div class="col-md-6 col-md-offset-3">
+			  <div class="col-sm-8 col-md-offset-1">
+				<legend><?= "Edit " . $classNameShow ?></legend>
 				<form action="<?= $_SERVER["PHP_SELF"] ?>" method="POST" class="valid" autocomplete="off">
 					<input type="hidden" name="id" value="<?= _request("id") ?>">
 					<div class="form-group">

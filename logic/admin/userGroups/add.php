@@ -23,16 +23,16 @@ if($_POST){
 		<div class='row'>
 
 			<div class='col-md-11'>
-				<legend><?= "Add " . $classNameShow ?></legend>
 			</div>
 
 			<div class='col-md-1'>
-				<a href='index.php' class='btn btn-primary btn-sm'>Existents</a>
+				<a href='index.php' class='btn btn-primary '>Existents</a>
 			</div>
 
 		</div>
 		<div class="row">
-			<div class="col-md-6 col-md-offset-3">
+			<div class="col-sm-8 col-md-offset-1">
+				<legend><?= "Add " . $classNameShow ?></legend>
 				<form action="<?= $_SERVER["PHP_SELF"] ?>" method="POST" class="valid" autocomplete="off">
 					<div class="form-group">
 						<label for="name">Name <span class="red">*</span></label>
@@ -42,7 +42,7 @@ if($_POST){
 						<input name="save" type="submit" class="btn btn-primary" value="Save">
 					</div>
 					<hr>
-		      <span class="red">*</span> denotes a required field
+					<span class="red">*</span> denotes a required field
 				</form>
 			</div>
 		</div>

@@ -36,7 +36,7 @@ if($_POST){
 			</div>
 
 			<div class='col-md-1'>
-				<a href='index.php?id=<?= $variableGroup->id ?>' class='btn btn-default btn-sm'>Existents</a>
+				<a href='index.php?id=<?= $variableGroup->id ?>' class='btn btn-default '>Existents</a>
 			</div>
 
 		</div>

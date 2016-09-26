@@ -120,7 +120,7 @@ if($_POST){
       <div class="form-group">
         <label class=" control-label" for="file">Select Variable Group <span class="red">*</span></label>
         <?php
-        printSelect("variableGroup", $item->variableGroup, $variableGroups, null, "select2",null );
+        printSelect("variableGroup", $item->variableGroup->id, $variableGroups, null, "select2",null );
         ?>
         <span class="help-block">
         </span>

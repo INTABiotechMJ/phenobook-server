@@ -59,9 +59,17 @@ function randomPassword($length) {
 
 ?>
 
-<legend>Add user</legend>
+<div class='row'>
+	<div class='col-md-11'>
+	</div>
+	<div class='col-md-1'>
+		<a href='index.php' class='btn btn-default '>Existents</a>
+	</div>
+</div>
+
 <div class="row">
-  <div class="col-sm-4 col-md-offset-1">
+  <div class="col-sm-8 col-md-offset-1">
+    <legend>Add user</legend>
     <form class="form-horizontal valid" method="POST" action="<?= $_SERVER["PHP_SELF"]?>">
       <fieldset>
         <!-- Form Name -->

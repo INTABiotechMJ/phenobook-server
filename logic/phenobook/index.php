@@ -40,10 +40,10 @@ foreach ($items as $key => $value) {
 	$item["Variable Group"] = $value->variableGroup;
 	$item["Status"] = $value->visible? "In course" : "Ended";
 
-	$item["Actions"] = "<div class='nowrap'><a href='open.php?id=$value->id' class='btn btn-default btn-sm'>Data report</a> ";
-	$item["Actions"] .= "<a href='load.php?id=$value->id' class='btn btn-default btn-sm'>Load data</a> ";
+	$item["Actions"] = "<div class='nowrap'><a href='data_report.php?id=$value->id' class='btn btn-default btn-sm'>Data report</a> ";
+	$item["Actions"] .= "<a href='load.php?id=$value->id' class='btn btn-default btn-sm'>Load data manually</a> ";
 	if($__user->isAdmin()){
-		$item["Actions"] .= "<a href='edit.php?id=$value->id' class='btn btn-default btn-sm'>Edit metadata</a> ";
+		$item["Actions"] .= "<a href='edit.php?id=$value->id' class='btn btn-default btn-sm'>Edit</a> ";
 		if($value->visible){
 			$item["Actions"] .= "<a data-href='".__URL."logic/phenobook/end.php?status=0&id=$value->id' class='btn btn-warning btn-sm ask' data-what='Are you sure?'>End</a> ";
 		}else{

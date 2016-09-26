@@ -33,6 +33,8 @@ if(isset($__user)){
 
 <script type="text/javascript" src="<?= __URL; ?>assets/libs/jquery-validation/jquery.validate.min.js"></script>
 <script type="text/javascript" src="<?= __URL; ?>assets/libs/jquery-validation/messages_es_AR.js"></script>
+<script type="text/javascript" src="<?= __URL; ?>assets/libs/bootstrap-growl/jquery.bootstrap-growl.min.js"></script>
+
 <script type="text/javascript" src="<?= __URL; ?>assets/js/defaults.js"></script>
 <script type="text/javascript" src="<?= __URL; ?>assets/js/script.js"></script>
 </html>

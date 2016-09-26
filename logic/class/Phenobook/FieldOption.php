@@ -1,7 +1,6 @@
 <?php
 class FieldOption extends Object{
 
-
 	/**
 	*@type VARCHAR(100)
 	*/
@@ -10,7 +9,7 @@ class FieldOption extends Object{
 	/**
 	*@class Variable
 	*/
-	var $Variable;
+	var $variable;
 
 	/**
 	*@TYPE TINYINT DEFAULT 0

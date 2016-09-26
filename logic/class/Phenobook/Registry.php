@@ -23,7 +23,6 @@ class Registry extends Object{
 	* 0: old (just for the record)
 	*/
 	var $status;
-
 	/**
 	*@type TEXT
 	*/
@@ -40,51 +39,51 @@ class Registry extends Object{
 	*@type DATETIME
 	*/
 	var $localStamp;
+	/**
+	*@type TINYINT DEFAULT 0
+	*/
+	var $mobile;
+	/**
+	*@type TINYINT DEFAULT 0
+	*/
+	var $fixed;
 
 
 	function __toString(){
-		return $this->value;
+		switch ($this->variable->fieldType->type) {
+			case FieldType::$TYPE_OPTION:
+			$option = Entity::search("FieldOption","variable = '".$this->variable->id."' AND id = '$this->value'");
+			$value = $option->name;
+			break;
+			case FieldType::$TYPE_CHECK:
+			$value = $reg->value?"<span class='yes'>yes</i>":"";
+			break;
+			case FieldType::$TYPE_PHOTO:
+			$value = $this->calcPhoto();
+			break;
+			default:
+			$value = $this->value;
+			break;
+		}
+		if(empty($value)){
+			return "";
+		}
+		return $value;
 	}
 
 
-	function calcValor(){
-		switch ($this->variable->fieldType->type) {
-			case FieldType::$TYPE_DATE:
-			//return  date("d/m/Y", strtotime($this->value));
-			return  $this->value;
-			case FieldType::$TYPE_PHOTO:
-			if(empty($this->value)){
-				return null;
-			}
-			$root =  __ROOT."$this->value";
-			$url =  __URL."$this->value";
-
-			if(file_exists($root)){
-				$link = thumb($this->value,30,30);
-				return $link;
-			}else{
-				return "[X]";
-			}
-			break;
-
-			case FieldType::$TYPE_CHECK:
-			if($this->value == "1"){
-				return "Si";
-			}else{
-				return "No";
-			}
-			break;
-
-			case FieldType::$TYPE_OPTION:
-			return Entity::search("Opcion","id = '$this->value'");
-			break;
-			default:
-			return $this->value;
-			break;
+	function calcPhoto(){
+		$root =  __ROOT."$this->value";
+		$url =  __URL."$this->value";
+		if(file_exists($root)){
+			$link = thumb($this->value,30,30);
+			return $link;
+		}else{
+			return "[X]";
 		}
 	}
 
-	function existePhoto(){
+	function existsPhoto(){
 		if(empty($this->value)){
 			return false;
 		}
@@ -98,7 +97,6 @@ class Registry extends Object{
 		return false;
 	}
 	function calPhotoLink(){
-
 		switch ($this->variable->fieldType->type) {
 			case FieldType::$TYPE_PHOTO:
 			if(empty($this->value)){

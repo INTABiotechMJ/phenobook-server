@@ -12,12 +12,19 @@ $data = array();
 for ($i=1; $i <= $phenobook->experimental_units_number; $i++) {
 	$row = array();
 	foreach((array)$variables as $v){
-		$reg = Entity::search("Registry","active AND experimental_unit_number = '$i' AND variable = '$v->id' ORDER BY experimental_unit_number");
+		$reg = Entity::search("Registry","active AND status AND experimental_unit_number = '$i' AND variable = '$v->id' ORDER BY experimental_unit_number, id DESC");
 		if($reg){
-			if($v->fieldType->isCheck()){
+			switch ($v->fieldType->type) {
+				case FieldType::$TYPE_OPTION:
+				$option = Entity::search("FieldOption","variable = '$v->id' AND id = '$reg->value'");
+				$row["$v"] = $option->name;
+				break;
+				case FieldType::$TYPE_CHECK:
 				$row["$v"] = $reg->value?"true":"false";
-			}else{
+				break;
+				default:
 				$row["$v"] = $reg->value;
+				break;
 			}
 		}else{
 			if($v->fieldType->isCheck()){
@@ -61,10 +68,9 @@ echo "<div id='hot'></div>";
 </div>
 <div class="form-group">
 	<hr>
-	<input type="submit" name="save" value="Save" class="btn btn-primary">
-	<hr>
 	<span style="background-color:rgba(160, 204, 12, 0.14);color: black">Informative field</span> <br>
 	Photo variables are hidden in this section <br>
+	You can copy and paste from Excel like programs in above table <br>
 </div>
 <?php
 require __ROOT."files/php/template/footer.php";
@@ -83,6 +89,7 @@ var hotSettings = {
 	data: dataObject,
 	columns: [
 		<?php
+		$countInformative = 0;
 		foreach ((array) $variables as $k2 => $v) {
 			$editor = "";
 			#https://docs.handsontable.com/pro/1.7.0/tutorial-cell-types.html
@@ -90,26 +97,26 @@ var hotSettings = {
 			#'numeric'  format: '0.00%'  format: '0.00%'
 			#'date' format 'MM/DD/YYYY'
 			if($v->fieldType->isCheck()){
-				echo "{data:'$v',type:'checkbox',allowInvalid: false,width:'auto'}, ";
+				echo "{data:'$v',type:'checkbox'}, ";
 			}
 			#'date' format 'MM/DD/YYYY'
 			if($v->fieldType->isDate()){
-				echo "{data:'$v',type: 'date', allowInvalid: false,dateFormat: 'YYYY-MM-DD',width:'auto'}, ";
+				echo "{data:'$v',width:110,type: 'date',dateFormat: 'YYYY-MM-DD',width:'auto'}, ";
 			}
 			if($v->fieldType->isInformative()){
-				echo "{data:'$v',renderer: yellowRenderer,allowInvalid: false,type:'text',width:'auto'}, ";
+				$countInformative++;
+				echo "{data:'$v',renderer: yellowRenderer,type:'text',width:'auto'}, ";
 			}
 			if($v->fieldType->isNumeric()){
-				echo "{data:'$v',type:'numeric',allowInvalid: false,width:'auto'}, ";
+				echo "{data:'$v',type:'numeric',width:'auto'}, ";
 			}
 			if($v->fieldType->isText()){
-				echo "{data:'$v',type:'text',allowInvalid: false,width:'auto'}, ";
+				echo "{data:'$v',type:'text',width:'auto'}, ";
 			}
 			if($v->fieldType->isOption()){
 				$options = $v->getOptions();
 				echo "{data:'$v',
 					type:'autocomplete',
-					allowInvalid: false,
 					strict:'true',
 					source: ['".implode($options,"','")."'],
 					width:'auto',
@@ -123,6 +130,10 @@ var hotSettings = {
 		stretchH: 'all',
 		startRows: <?= $phenobook->experimental_units_number; ?>,
 		rowHeaders: true,
+		fixedColumnsLeft: <?= $countInformative ?>,
+    manualColumnFreeze: true,
+		manualRowResize: true,
+		manualColumnResize: true,
 		colHeaders: [
 			<?php
 			foreach ((array) $variables as $k => $v) {
@@ -131,11 +142,16 @@ var hotSettings = {
 			?>
 		],
 		afterChange: function (change, source) {
+
 			if (source === 'loadData') {
 				return; //don't save this change
 			}
+			this.validateCells( function (valid) {
+				if (!valid) {
+					$(".status").html("Please correct format of red cells");
+				}
+			});
 			$(".status").html("saving...");
-			console.log(change)
 			$.ajax({
 				method: "POST",
 				url: "ajax/save_data.php",

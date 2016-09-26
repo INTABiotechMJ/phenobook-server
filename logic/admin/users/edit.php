@@ -65,41 +65,49 @@ if($_POST){
 
 ?>
 
+<div class='row'>
+	<div class='col-md-11'>
+	</div>
+	<div class='col-md-1'>
+		<a href='index.php' class='btn btn-default '>Existents</a>
+	</div>
+</div>
+
 <div class="row">
   <div class="col-sm-8 col-md-offset-1">
+    <legend>Edit user</legend>
     <form class="form-horizontal valid" method="POST" action="<?= $_SERVER["PHP_SELF"]?>">
       <input type="hidden" name="id" value="<?= _request("id"); ?>">
       <fieldset>
         <!-- Form Name -->
-        <legend>Edit user</legend>
         <!-- Text input-->
         <div class="form-group">
-          <label class="col-md-4 control-label" for="name">Name <span class="red">*</span></label>
-          <div class="col-md-4">
+          <label class=" control-label" for="name">Name <span class="red">*</span></label>
+          <div class="">
             <input id="name" value="<?= $item->name ?>" name="name" type="text"  class="form-control input-md required">
             <span class="help-block"></span>
           </div>
         </div>
 
         <div class="form-group">
-          <label class="col-md-4 control-label" for="lastName">Last Name <span class="red">*</span></label>
-          <div class="col-md-4">
+          <label class=" control-label" for="lastName">Last Name <span class="red">*</span></label>
+          <div class="">
             <input id="lastName" value="<?= $item->lastName ?>" name="lastName" type="text"  class="form-control input-md required">
             <span class="help-block"></span>
           </div>
         </div>
 
         <div class="form-group">
-          <label class="col-md-4 control-label" for="email">Email <span class="red">*</span></label>
-          <div class="col-md-4">
+          <label class=" control-label" for="email">Email <span class="red">*</span></label>
+          <div class="">
             <input id="email" value="<?= $item->email ?>" name="email" type="text"  class="form-control input-md email required">
             <span class="help-block"></span>
           </div>
         </div>
 
         <div class="form-group ">
-          <label class="col-md-4 control-label" for="usuarios">Groups</label>
-          <div class="col-md-4">
+          <label class=" control-label" for="usuarios">Groups</label>
+          <div class="">
             <?php
             $selectedGroups = Entity::listMe("UserUserGroup","active AND user = '$item->id'");
             $arr = array();
@@ -114,8 +122,8 @@ if($_POST){
 
 
         <div class="form-group">
-          <label class="col-md-4 control-label" for="password">Type <span class="red">*</span></label>
-          <div class="col-md-4">
+          <label class=" control-label" for="password">Type <span class="red">*</span></label>
+          <div class="">
 
             <div class="btn-group" data-toggle="buttons">
 
@@ -131,17 +139,15 @@ if($_POST){
 
             </div><!--END btn-group-->
 
-          </div><!--END col-md-4 -->
+          </div><!--END  -->
 
 
         </div>
 
         <!-- Button -->
         <div class="form-group">
+          <input type="submit" name="save" value="Save" class="btn btn-primary">
 
-          <div class="col-md-4 col-md-offset-4">
-            <input type="submit" name="save" value="Save" class="btn btn-default">
-          </div>
         </div>
         <hr>
         <span class="red">*</span> denotes a required field
