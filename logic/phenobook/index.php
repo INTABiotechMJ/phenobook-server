@@ -18,6 +18,7 @@ if($__user->isOperador()){
 $data = array();
 $cont = 1;
 foreach ($items as $key => $value) {
+	$assignedString = "";
 	$up = Entity::listMe("PhenobookUser", "active AND phenobook = '$value->id'");
 	if(!empty($up)){
 		$assignedString = "Users: ";
@@ -40,8 +41,9 @@ foreach ($items as $key => $value) {
 	$item["Variable Group"] = $value->variableGroup;
 	$item["Status"] = $value->visible? "In course" : "Ended";
 
-	$item["Actions"] = "<div class='nowrap'><a href='data_report.php?id=$value->id' class='btn btn-default btn-sm'>Data report</a> ";
-	$item["Actions"] .= "<a href='load.php?id=$value->id' class='btn btn-default btn-sm'>Load data manually</a> ";
+	$item["Actions"] = "<div class='nowrap'><a href='pheno_report.php?id=$value->id' class='btn btn-default btn-sm'>Inspect results</a> ";
+	$item["Actions"] .= "<a href='load.php?id=$value->id' class='btn btn-default btn-sm'>Load manually</a> ";
+	$item["Actions"] .= "<a data-href='".__URL."logic/phenobook/export.php?id=$value->id' class='btn btn-default btn-sm'>CSV</a> ";
 	if($__user->isAdmin()){
 		$item["Actions"] .= "<a href='edit.php?id=$value->id' class='btn btn-default btn-sm'>Edit</a> ";
 		if($value->visible){
@@ -50,6 +52,7 @@ foreach ($items as $key => $value) {
 			$item["Actions"] .= "<a data-href='".__URL."logic/phenobook/end.php?status=1&id=$value->id' class='btn btn-success btn-sm ask' data-what='Are you sure?'>Continue</a> ";
 		}
 		$item["Actions"] .= "<a data-href='".__URL."logic/phenobook/delete.php?id=$value->id' class='btn btn-danger btn-sm ask' data-what='Are you sure?'>Delete</a></div> ";
+		$item["Actions"] .= "</div>";
 	}
 	$data[] = $item;
 

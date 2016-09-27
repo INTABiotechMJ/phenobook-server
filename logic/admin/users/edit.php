@@ -19,7 +19,6 @@ if($item->type == User::$TYPE_ADMIN){
 if($_POST){
   $email = _post("email");
   $item->email = $email;
-  $item->lang = _post("lang");
   $item->name = _post("name");
   $item->lastName = _post("lastName");
   $item->type = _post("type");
@@ -46,7 +45,7 @@ if($_POST){
     }
     if(!$is){
       $gr = Entity::search("UserGroup",$ng);
-      $cg = UserUserGroup();
+      $cg = new UserUserGroup();
       $cg->user = $item;
       $cg->userGroup = $gr;
       Entity::save($cg);

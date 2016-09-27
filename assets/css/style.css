@@ -1,6 +1,9 @@
 body{
 
 }
+.downlight{
+	color: rgba(125, 125, 125, 0.72);
+}
 .red{
 	color: rgb(244, 26, 52);
 }

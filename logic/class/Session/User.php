@@ -35,10 +35,6 @@ class User extends Object{
 	*/
 	var $active;
 	/**
-	*@type TINYINT DEFAULT 0
-	*/
-	var $lang;
-	/**
 	*@ignore
 	*/
 	static $LANG_EN = 0;

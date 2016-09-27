@@ -12,12 +12,14 @@ $data = array();
 for ($i=1; $i <= $phenobook->experimental_units_number; $i++) {
 	$row = array();
 	foreach((array)$variables as $v){
-		$reg = Entity::search("Registry","active AND status AND experimental_unit_number = '$i' AND variable = '$v->id' ORDER BY experimental_unit_number, id DESC");
+		$reg = Entity::search("Registry","active AND phenobook = '$phenobook->id' AND status AND experimental_unit_number = '$i' AND variable = '$v->id' ORDER BY experimental_unit_number, id DESC");
 		if($reg){
 			switch ($v->fieldType->type) {
 				case FieldType::$TYPE_OPTION:
 				$option = Entity::search("FieldOption","variable = '$v->id' AND id = '$reg->value'");
-				$row["$v"] = $option->name;
+				if($option){
+					$row["$v"] = $option->name;
+				}
 				break;
 				case FieldType::$TYPE_CHECK:
 				$row["$v"] = $reg->value?"true":"false";
@@ -63,14 +65,15 @@ echo "</div>";
 echo "</div>";
 echo "<div id='hot'></div>";
 ?>
-<div class="status">
-	ready
-</div>
-<div class="form-group">
-	<hr>
-	<span style="background-color:rgba(160, 204, 12, 0.14);color: black">Informative field</span> <br>
-	Photo variables are hidden in this section <br>
-	You can copy and paste from Excel like programs in above table <br>
+<div class="alert alert-info" style="margin-top:1em">
+	<ul>
+		<li>
+			Photo variables are hidden in this section
+		</li>
+		<li>
+			You can copy and paste from Excel like programs in above table
+		</li>
+	</ul>
 </div>
 <?php
 require __ROOT."files/php/template/footer.php";
@@ -80,7 +83,7 @@ var dataObject = <?= json_encode($data) ?>;
 
 yellowRenderer = function(instance, td, row, col, prop, value, cellProperties) {
 	Handsontable.renderers.TextRenderer.apply(this, arguments);
-	td.style.backgroundColor = 'rgba(160, 204, 12, 0.14)';
+	td.style.backgroundColor = '#d9edf7';
 };
 
 var hotElement = document.querySelector('#hot');
@@ -131,7 +134,7 @@ var hotSettings = {
 		startRows: <?= $phenobook->experimental_units_number; ?>,
 		rowHeaders: true,
 		fixedColumnsLeft: <?= $countInformative ?>,
-    manualColumnFreeze: true,
+		manualColumnFreeze: true,
 		manualRowResize: true,
 		manualColumnResize: true,
 		colHeaders: [
@@ -148,21 +151,30 @@ var hotSettings = {
 			}
 			this.validateCells( function (valid) {
 				if (!valid) {
-					$(".status").html("Please correct format of red cells");
+					$.bootstrapGrowl("Please correct format of red cells", {
+						type: 'warning',
+						align: 'left',
+						delay: 1500,
+					});
+					return false;
 				}
+				$.ajax({
+					method: "POST",
+					url: "ajax/save_data.php",
+					data: {
+						data:JSON.stringify({change}),
+						phenobook: "<?= $phenobook->id ?>",
+					}
+				})
+				.done(function( msg ) {
+					$.bootstrapGrowl("Data has been updated", {
+						type: 'success',
+						align: 'left',
+						delay: 1500,
+					});
+				});
 			});
-			$(".status").html("saving...");
-			$.ajax({
-				method: "POST",
-				url: "ajax/save_data.php",
-				data: {
-					data:JSON.stringify({change}),
-					phenobook: "<?= $phenobook->id ?>",
-				}
-			})
-			.done(function( msg ) {
-				$(".status").html("saved");
-			});
+
 		}
 	};
 	var hot = new Handsontable(hotElement, hotSettings);

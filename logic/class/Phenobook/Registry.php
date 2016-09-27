@@ -32,6 +32,10 @@ class Registry extends Object{
 	*/
 	var $latitude;
 	/**
+	*@class Phenobook
+	*/
+	var $phenobook;
+	/**
 	*@type VARCHAR(100)
 	*/
 	var $longitude;
@@ -56,7 +60,7 @@ class Registry extends Object{
 			$value = $option->name;
 			break;
 			case FieldType::$TYPE_CHECK:
-			$value = $reg->value?"<span class='yes'>yes</i>":"";
+			$value = $this->value?"yes":"";
 			break;
 			case FieldType::$TYPE_PHOTO:
 			$value = $this->calcPhoto();

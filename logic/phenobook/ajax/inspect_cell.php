@@ -4,10 +4,12 @@ $noMenu = true;
 require "../../../files/php/config/require.php";
 $eu = _request("eu");
 $variable = _request("variable");
+$id = _request("phenobook");
+$phenobook = Entity::search("Phenobook","id = '$id' AND active");
 
 $change_registry = _request("change_registry");
 if($change_registry){
-	$registry_all = Entity::listMe("Registry","active AND variable = '$variable' AND experimental_unit_number = '$eu' ORDER BY id DESC");
+	$registry_all = Entity::listMe("Registry","active AND phenobook = '$phenobook->id' AND variable = '$variable' AND experimental_unit_number = '$eu' ORDER BY id DESC");
 	foreach((array)$registry_all as $r){
 		if($r->id != $change_registry){
 			$r->status = 0;
@@ -20,20 +22,20 @@ if($change_registry){
 
 $fix_registry = _request("fix_registry");
 if($fix_registry){
-	$registry = Entity::search("Registry","active AND id = '$fix_registry'");
+	$registry = Entity::search("Registry","active AND phenobook = '$phenobook->id' AND id = '$fix_registry'");
 	$registry->fixed = 1;
 	Entity::update($registry);
 }
 
 $unfix_registry = _request("unfix_registry");
 if($unfix_registry){
-	$registry = Entity::search("Registry","active AND id = '$unfix_registry'");
+	$registry = Entity::search("Registry","active AND phenobook = '$phenobook->id' AND id = '$unfix_registry'");
 	$registry->fixed = 0;
 	Entity::update($registry);
 }
 
-$registry = Entity::search("Registry","active AND status AND variable = '$variable' AND experimental_unit_number = '$eu' ORDER BY id DESC");
-$registry_other = Entity::listMe("Registry","active AND NOT status AND variable = '$variable' AND experimental_unit_number = '$eu' ORDER BY id DESC");
+$registry = Entity::search("Registry","active AND phenobook = '$phenobook->id' AND status AND variable = '$variable' AND experimental_unit_number = '$eu' ORDER BY id DESC");
+$registry_other = Entity::listMe("Registry","active AND phenobook = '$phenobook->id' AND NOT status AND variable = '$variable' AND experimental_unit_number = '$eu' ORDER BY id DESC");
 ?>
 <h5>Registry </h5>
 <b>Variable:</b> <?= $variable ?> <br>

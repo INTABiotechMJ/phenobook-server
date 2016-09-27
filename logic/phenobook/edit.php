@@ -6,16 +6,20 @@ $users = obj2arr(Entity::listMe("User","active"));
 $variableGroups = obj2arr(Entity::listMe("VariableGroup","active"));
 
 $item = Entity::load("Phenobook",_request("id"));
-
 $userPhenobooksSelected = Entity::listMe("PhenobookUser","active AND phenobook = '$item->id' ORDER BY id DESC");
 $userGroupsSelected = Entity::listMe("PhenobookUserGroup","active AND phenobook = '$item->id' ORDER BY id DESC");
 $selectedGroups = array();
 $selectedUsers = array();
-foreach ($userPhenobooksSelected as $value) {
-  $selectedUsers[] = $value->user;
+if(!empty($userPhenobooksSelected)){
+  foreach ($userPhenobooksSelected as $value) {
+    d($value);
+    $selectedUsers[] = $value->user;
+  }
 }
-foreach ($userGroupsSelected as $value) {
-  $selectedGroups[] = $value->userGroup;
+if(!empty($userGroupsSelected)){
+  foreach ($userGroupsSelected as $value) {
+    $selectedGroups[] = $value->userGroup;
+  }
 }
 $selectedUsers = obj2arr($selectedUsers);
 $selectedGroups = obj2arr($selectedGroups);
@@ -65,6 +69,7 @@ if($_POST){
   }
 
 }
+
 
 ?>
 <div class="row">

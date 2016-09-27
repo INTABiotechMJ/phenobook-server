@@ -663,6 +663,9 @@ function obj2arr($objects, $toStringField = false, $idField = false, $htmlentiti
     if(!$idField){
         $idField = "id";
     }
+    if(empty($objects)){
+      return array();
+    }
     foreach((array)$objects as $o){
         if($toStringField){
             if($htmlentities){

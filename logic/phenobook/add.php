@@ -9,6 +9,7 @@ if($_POST){
   $item = new Phenobook();
   $item->name = _post("name");
   $item->description = _post("description");
+  $item->stamp = stamp();
   $item->variableGroup = Entity::load("VariableGroup",_post("variableGroup"));
   $item->experimental_units_number = _post("experimental_units_number");
 
@@ -88,7 +89,6 @@ $users = obj2arr(Entity::listMe("User","active AND 1"));
         <textarea name="description" id="description" class="form-control" cols="30" rows="3"><?= _post("description"); ?></textarea>
         <span class="help-block"></span>
       </div>
-
       <div class="form-group">
         <label class=" control-label" for="file">Select Variable Group <span class="red">*</span></label>
         <?php
@@ -97,8 +97,6 @@ $users = obj2arr(Entity::listMe("User","active AND 1"));
         <span class="help-block">
         </span>
       </div>
-
-
       <hr>
       <!-- Button -->
       <div class="form-group">

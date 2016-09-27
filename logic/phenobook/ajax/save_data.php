@@ -14,7 +14,7 @@ foreach ($data->change as $value) {
   if(!$variable){
     return false;
   }
-  $prev_registry = Entity::listMe("Registry","variable = '$variable->id' AND experimental_unit_number = '$position'");
+  $prev_registry = Entity::listMe("Registry","active AND phenobook = '$phenobook->id' AND variable = '$variable->id' AND experimental_unit_number = '$position'");
   foreach ($prev_registry as $pr) {
     if($pr){
       $pr->status = 0;
@@ -23,6 +23,7 @@ foreach ($data->change as $value) {
   }
   $registry = new Registry();
   $registry->variable = $variable;
+  $registry->phenobook = $phenobook;
   $registry->experimental_unit_number = $position;
   $registry->stamp = stamp();
   $registry->status = 1;

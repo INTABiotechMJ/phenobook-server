@@ -13,6 +13,10 @@ class Phenobook extends Object{
 	*/
 	var $visible;
 	/**
+	*@type DATETIME
+	*/
+	var $stamp;
+	/**
 	*@type TEXT
 	*/
 	var $description;

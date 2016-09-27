@@ -11,7 +11,7 @@ if($_POST){
 	Entity::begin();
 	$item->name = _post("name");
 	$item->description = _post("description");
-	$item->fieldType = Entity::load("FieldType",_post("fieldType"));
+	//$item->fieldType = Entity::load("FieldType",_post("fieldType"));
 	if(!$alert->hasError){
 		Entity::update($item);
 		Entity::commit();
@@ -51,7 +51,7 @@ if($_POST){
 						<label for="fieldType">Type <span class="red">*</span></label>
 						<?php
 						$tiposCampo = obj2arr(Entity::listMe("FieldType","active"));
-						printSelect("fieldType", $item->fieldType->id, $tiposCampo, null, "select2 tiposCampo","" );
+						printSelect("fieldType", $item->fieldType->id, $tiposCampo, null, "select2 disabled tiposCampo","disabled='disabled'" );
 						 ?>
 					</div>
 					<div class="form-group">

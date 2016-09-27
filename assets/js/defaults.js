@@ -49,7 +49,7 @@ $.validator.addMethod(
     }
     return value.match(/^(0?[1-9]|[12][0-9]|3[01])[\/\-](0?[1-9]|1[012])[\/\-]\d{4}$/);
   },
-  "Escriba una fecha válida"
+  "Write a valid date"
   );
 
 
@@ -63,7 +63,7 @@ $(".ask").click(function(){
         label: "No"
       },
       confirm: {
-        label: "Si"
+        label: "Yes"
       }
     },
     callback: function(result) {
@@ -148,29 +148,7 @@ function exportTableToCSV($table, filename) {
   });
 }
 
-
-$(".python-exec").each(function(ele){
-  var ele = $(this);
-  var src = $(this).data("src");
-  var params = $(this).data("params");
-  ele.html("Cargando...");
-  $.ajax({
-    url: URL + "logic/python/exec.php?src=" + src + "&" + params
-  })
-  .done(function( data ) {
-    ele.html(data);
-  });
-});
-
-function tab(url) {
-  var win = window.open(url, '_blank');
-  win.focus();
-}
-
 $(".select-multiple").select2();
-
-
-
 
 $(".int").keydown(function (e) {
   // Allow: backspace, delete, tab, escape, enter and f5
@@ -207,43 +185,3 @@ $(".float").keydown(function (e) {
     e.preventDefault();
   }
 });
-
-
-
-
-$('.sercheable').keyup(function() {
-  var val = '^(?=.*\\b' + $.trim($(this).val()).split(/\s+/).join('\\b)(?=.*\\b') + ').*$',
-  reg = RegExp(val, 'i'),
-  text;
-  var $rows = $('table.'+$(this).data("target") + " tr");
-  console.log($(this).data("target"));
-  $rows.show().filter(function() {
-    text = $(this).text().replace(/\s+/g, ' ');
-    return !reg.test(text);
-}).hide();
-});
-
-
-
-
-$.fn.shiftSelectable = function() {
-    var lastChecked,
-        $boxes = this;
-
-    $boxes.click(function(evt) {
-        if(!lastChecked) {
-            lastChecked = this;
-            return;
-        }
-
-        if(evt.shiftKey) {
-            var start = $boxes.index(this),
-                end = $boxes.index(lastChecked);
-            $boxes.slice(Math.min(start, end), Math.max(start, end) + 1)
-                .attr('checked', lastChecked.checked)
-                .trigger('change');
-        }
-
-        lastChecked = this;
-    });
-};
