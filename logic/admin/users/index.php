@@ -13,8 +13,13 @@ foreach ($items as $key => $value) {
 	$item["Name"] = $value;
 	$item["Email"] = $value->email;
 	$item["Type"] = $value->calcTypeName();
-
-	$item["Group"] = $value->userGroup;
+	$groups = $value->getUserGroups();
+	if(!$groups){
+		$groups = array();
+	}else{
+		$groups = obj2arr($groups);
+	}
+	$item["Groups"] = implode(",",$groups);
 
 	if($value->id == $__user->id){
 		$item["Actions"] = "";

@@ -177,7 +177,7 @@ $("body").on("click",".unfix",function(){
 $("body").on("click",".fix",function(){
 
 	var id = $(this).data("id");
-	$.bootstrapGrowl("Registry has been fixed and it is not allowed to overwrite", {
+	$.bootstrapGrowl("Registry has been fixed and it is not allowed to be overwritten", {
 		type: 'success',
 	});
 	$.ajax({

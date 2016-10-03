@@ -13,10 +13,6 @@ class User extends Object{
 	*/
 	var $email;
 	/**
-	*@class UserGroup
-	*/
-	var $userGroup;
-	/**
 	*@type VARCHAR(200)
 	*/
 	var $pass;
@@ -89,5 +85,13 @@ class User extends Object{
 			$exclude = " AND id != $idExclude ";
 		}
 		return Entity::search("User","email = '$email' AND active $exclude");
+	}
+	function getUserGroups(){
+		$ug =  Entity::listMe("UserUserGroup","user = '$this->id' AND active");
+		$res = array();
+		foreach ($ug as $u) {
+			$res[] = $u->userGroup;
+		}
+		return $res;
 	}
 }

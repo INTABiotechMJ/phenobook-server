@@ -2,7 +2,7 @@
 $admin = true;
 require "../../../files/php/config/require.php";
 $item = Entity::load("User", _request("id"));
-$grupos = obj2arr(Entity::listMe("UserGroup","active"));
+$groups = obj2arr(Entity::listMe("UserGroup","active"));
 $checkedAdmin = "";
 $activeAdmin = "";
 $checkedOperador = "";
@@ -25,26 +25,13 @@ if($_POST){
 
   $selectedGroups = Entity::listMe("UserUserGroup","active AND user = '$item->id'");
   foreach((array) $selectedGroups as $sg){
-    $is = false;
-    foreach(_post("groups") as $ng){
-      if($sg->userGroup->id == $ng){
-        $is = true;
-      }
-    }
-    if(!$is){
-      $sg->active = 0;
-      Entity::update($sg);
-    }
+    $sg->active = 0;
+    Entity::update($sg);
   }
-  foreach(_post("groups") as $ng){
-    $is = false;
-    foreach((array) $selectedGroups as $sg){
-      if($sg->userGroup->id == $ng){
-        $is = true;
-      }
-    }
-    if(!$is){
-      $gr = Entity::search("UserGroup",$ng);
+
+  if(_post("userGroups")){
+    foreach(_post("userGroups") as $ng){
+      $gr = Entity::load("UserGroup",$ng);
       $cg = new UserUserGroup();
       $cg->user = $item;
       $cg->userGroup = $gr;
@@ -65,11 +52,11 @@ if($_POST){
 ?>
 
 <div class='row'>
-	<div class='col-md-11'>
-	</div>
-	<div class='col-md-1'>
-		<a href='index.php' class='btn btn-default '>Existents</a>
-	</div>
+  <div class='col-md-11'>
+  </div>
+  <div class='col-md-1'>
+    <a href='index.php' class='btn btn-default '>Existents</a>
+  </div>
 </div>
 
 <div class="row">
@@ -111,9 +98,10 @@ if($_POST){
             $selectedGroups = Entity::listMe("UserUserGroup","active AND user = '$item->id'");
             $arr = array();
             foreach((array)$selectedGroups as $gr){
-              $arr[] = $gr->userGroup->id;
+              $arr[] = $gr->userGroup;
             }
-            printSelect("groups[]", $arr, $grupos, null, "select-multiple","multiple" );
+            $arr = obj2arr($arr);
+            printSelect("userGroups[]", $arr, $groups, null, "select-multiple","multiple" );
             ?>
             <span class="help-block"></span>
           </div>

@@ -18,7 +18,8 @@ if($_POST){
   $item->lastName = _post("lastName");
   $item->pass = $password;
   $item->type = _post("type");
-  $item->userGroup = Entity::load("UserGroup", _post("grupo"));
+
+
 
 
   if(_post("sendEmail")){
@@ -36,6 +37,13 @@ if($_POST){
 
   if(!$alert->hasError){
     Entity::save($item);
+    $userGroups = _post("userGroups");
+    foreach((array)$userGroups  as $o){
+      $us_obj = new UserUserGroup();
+      $us_obj->user = Entity::load("User", $item);
+      $us_obj->userGroup = $o;
+      Entity::save($us_obj);
+    }
     if(_post("sendEmail")){
       Entity::save($email_obj);
     }
@@ -87,9 +95,9 @@ function randomPassword($length) {
         </div>
 
         <div class="form-group">
-          <label class="control-label" for="userGroup">Group</label>
+          <label class="control-label" for="userGroup">Groups</label>
           <?php
-          printSelect("userGroup", null, $grupos, null, "select","" );
+          printSelect("userGroups[]", _post("userGroups"), $grupos, null, "select select-multiple","multiple" );
           ?>
           <span class="help-block"></span>
         </div>

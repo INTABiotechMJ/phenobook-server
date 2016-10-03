@@ -36,35 +36,38 @@ th{
 		<legend>Data report</legend>
 	</div>
 </div>
-<div class="filters row">
-	<div class="col-md-offset-1 col-md-3">
-	<div class="form-group">
-			<label class="control-label" for="file">Select Variable Group <span class="red">*</span></label>
-			<?php
-			printSelect("variableGroup", _post("variableGroup"), $variableGroups, null, "select2 variableGroup" ,null );
-			?>
-			<span class="help-block">
-			</span>
+<form class="valid" action="data_csv.php" method="post">
+	<div class="filters row">
+		<div class="col-md-offset-1 col-md-3">
+			<div class="form-group">
+				<label class="control-label" for="file">Select Variable Group <span class="red">*</span></label>
+				<?php
+				printSelect("variableGroup", _post("variableGroup"), $variableGroups, null, "select2 required variableGroup" ,null );
+				?>
+				<span class="help-block">
+				</span>
+			</div>
+		</div>
+		<div class="col-md-3">
+			<div class="form-group">
+				<label class="control-label" for="phenobooks">Select Phenobooks <span class="red">*</span></label>
+				<?php
+				printSelect("phenobooks[]", _post("phenobooks"), null, null, "select2 required phenobooks select-multiple","multiple" );
+				?>
+				<span class="help-block">
+				</span>
+			</div>
 		</div>
 	</div>
-	<div class="col-md-3">
-		<div class="form-group">
-			<label class="control-label" for="file">Select Phenobooks <span class="red">*</span></label>
-			<?php
-			printSelect("phenobooks[]", _post("phenobooks"), null, null, "select2 phenobooks select-multiple","multiple" );
-			?>
-			<span class="help-block">
-			</span>
+	<div class="row">
+		<div class="col-md-offset-1 col-md-3">
+			<input type="submit" name="submit" value="Search" id="search" class="btn btn-primary">
+			<input type="submit" name="download" value="Download CSV" id="download" class="btn btn-primary">
+			<hr>
+			<span class="red">*</span> denotes a required field
 		</div>
 	</div>
-</div>
-<div class="row">
-	<div class="col-md-offset-1 col-md-3">
-		<input type="submit" name="name" value="Search" id="search" class="btn btn-primary">
-		<hr>
-		<span class="red">*</span> denotes a required field
-	</div>
-</div>
+</form>
 <div class="row">
 	<div class="col-md-offset-1 col-md-9" style="margin-top:1em;">
 		<div class="alert alert-info">

@@ -12,7 +12,6 @@ $selectedGroups = array();
 $selectedUsers = array();
 if(!empty($userPhenobooksSelected)){
   foreach ($userPhenobooksSelected as $value) {
-    d($value);
     $selectedUsers[] = $value->user;
   }
 }
