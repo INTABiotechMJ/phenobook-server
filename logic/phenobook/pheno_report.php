@@ -139,9 +139,9 @@ require __ROOT."files/php/template/footer.php";
 function reload_table(){
 	$.ajax({
 		method: "POST",
-		url: "ajax/pheno_report.php",
+		url: "ajax/data_report.php",
 		data: {
-			id:<?= _request("id") ?>,
+			phenobook:<?= _request("id") ?>,
 		}
 	})
 	.done(function( msg ) {
@@ -242,7 +242,7 @@ $("body").on("click","td",function(){
 });
 $("body").on("click",".summary a",function(){
 	var id_variable = $(this).data("id_variable");
-	var id_phenobook = $(this).data("id_phenobook");
+	var id_phenobook = $(this).data("id_phenobooks");
 	$.ajax({
 		method: "POST",
 		url: "ajax/variable_summary.php",

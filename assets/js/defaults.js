@@ -148,7 +148,9 @@ function exportTableToCSV($table, filename) {
   });
 }
 
-$(".select-multiple").select2();
+$(".select-multiple").select2(
+  {width: '100%'}
+);
 
 $(".int").keydown(function (e) {
   // Allow: backspace, delete, tab, escape, enter and f5

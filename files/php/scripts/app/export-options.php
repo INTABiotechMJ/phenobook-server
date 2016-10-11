@@ -11,5 +11,4 @@ $user = Entity::search("User", "email = '$email' AND pass = '$pass' AND active")
 if(!$user){
 	die("error");
 }
-
 echo json_encode(Entity::listMe("FieldOption","active"));

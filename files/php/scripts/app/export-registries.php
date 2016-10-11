@@ -11,7 +11,6 @@ $user = Entity::search("User", "email = '$email' AND pass = '$pass' AND active")
 if(!$user){
 	die("error");
 }
-
 $registries = Entity::listMe("Registry","active AND status");
 foreach((array)$registries as $r){
 	if($r->variable->fieldType->isPhoto()){

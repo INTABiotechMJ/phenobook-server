@@ -6,6 +6,21 @@ $variableGroups = obj2arr(Entity::listMe("VariableGroup","active"));
 .more {
 	background-color: rgba(219, 133, 18, 0.05);
 }
+.has_val:hover{
+	background-color: rgba(11, 245, 73, 0.27)!important;
+	cursor: pointer;
+}
+td{
+	border: 1px solid rgb(173, 173, 173, 0.2)!important;
+}
+th.summary a{
+	cursor: pointer;
+	text-decoration: underline;
+	color: rgb(37, 153, 161, 0.7);
+}
+th{
+	border: 1px solid rgb(173, 173, 172)!important;
+}
 .yes{
 	color:rgba(13, 172, 4, 0.85);
 }
@@ -15,12 +30,7 @@ $variableGroups = obj2arr(Entity::listMe("VariableGroup","active"));
 .grey{
 	background-color: rgba(221, 221, 221, 0.37);
 }
-td{
-	border: 1px solid rgb(173, 173, 173, 0.2)!important;
-}
-th{
-	border: 1px solid rgb(173, 173, 172)!important;
-}
+</style>
 </style>
 <div class='row'>
 	<div class='col-md-8'>
@@ -77,8 +87,28 @@ th{
 		</div>
 	</div>
 </div>
+<?php
+
+ ?>
 <div class="table-container">
 
+</div>
+<hr>
+<div class="alert alert-info">
+	<ul>
+		<li>
+			Cells modified more than once are <span class="more">highlighted</span><br>
+		</li>
+		<li>
+			Click on a cell to inspect information about each registry, replace for previous values or fix cells <br>
+		</li>
+		<li>
+			Fixed values <i class='glyphicon glyphicon-pushpin'></i> (not allowed to be modified on mobile)
+		</li>
+		<li>
+			Click on the variable name to see a summary
+		</li>
+	</ul>
 </div>
 <?php
 if($_POST){
@@ -95,9 +125,7 @@ require __ROOT."files/php/template/footer.php";
 
 $("body").on("change",".variableGroup",function(){
 	var $pheno = $(".phenobooks");
-
 	$pheno.select2('val', '')
-
 	var id = $(this).val();
 	$.ajax({
 		method: "POST",
@@ -115,15 +143,20 @@ $("body").on("change",".variableGroup",function(){
 	});
 	return false;
 });
+
 $(".variableGroup").trigger("change");
+
 $("#search").click(function(){
+	if(!$(".valid").valid()){
+		return;
+	}
 	var ids = $(".phenobooks").val();
 	var variableGroup = $(".variableGroup").val();
 	$.ajax({
 		method: "POST",
 		url: "ajax/data_report.php",
 		data: {
-			ids:ids,
+			phenobooks:ids,
 			variableGroup:variableGroup,
 		}
 	})
@@ -132,4 +165,131 @@ $("#search").click(function(){
 	});
 	return false;
 });
+
+
+$("body").on("click",".unfix",function(){
+	var id = $(this).data("id");
+	$.bootstrapGrowl("Registry has been unfixed and it is allowed to overwrite", {
+		type: 'success',
+	});
+	$.ajax({
+		method: "POST",
+		url: "ajax/inspect_cell.php",
+		data: {
+			unfix_registry:id,
+			variable:g_variable,
+			eu:g_eu,
+		}
+	})
+	.done(function( msg ) {
+		$(".modal").modal();
+		$(".modal-body").html(msg);
+		reload_table();
+	});
+	return false;
+});
+
+$("body").on("click",".fix",function(){
+	var id = $(this).data("id");
+	$.bootstrapGrowl("Registry has been fixed and it is not allowed to be overwritten", {
+		type: 'success',
+	});
+	$.ajax({
+		method: "POST",
+		url: "ajax/inspect_cell.php",
+		data: {
+			fix_registry:id,
+			variable:g_variable,
+			eu:g_eu,
+		}
+	})
+	.done(function( msg ) {
+		$(".modal").modal();
+		$(".modal-body").html(msg);
+		reload_table();
+	});
+	return false;
+});
+$("body").on("click",".replace-value",function(){
+	var id = $(this).data("id");
+	var id_phenobook = $(this).data("id_phenobook");
+	$.bootstrapGrowl("Current value has been replaced", {
+		type: 'success',
+	});
+	$.ajax({
+		method: "POST",
+		url: "ajax/inspect_cell.php",
+		data: {
+			change_registry:id,
+			variable:g_variable,
+			eu:g_eu,
+			id_phenobook:id_phenobook,
+		}
+	})
+	.done(function( msg ) {
+		$(".modal").modal();
+		$(".modal-body").html(msg);
+		reload_table();
+	});
+	return false;
+});
+var g_variable;
+var g_eu;
+
+$("body").on("click","td",function(){
+	var variable = $(this).data("variable");
+	var eu = $(this).data("eu");
+	var id_phenobook = $(this).data("id_phenobook");
+	g_variable = variable;
+	g_eu = eu;
+	$.ajax({
+		method: "POST",
+		url: "ajax/inspect_cell.php",
+		data: {
+			variable:variable,
+			phenobook:id_phenobook,
+			eu:eu,
+		}
+	})
+	.done(function( msg ) {
+		$(".modal").modal();
+		$(".modal-body").html(msg);
+	});
+});
+
+$("body").on("click",".summary a",function(){
+	var id_variable = $(this).data("id_variable");
+	var id_phenobooks = $(this).data("id_phenobooks");
+	$.ajax({
+		method: "POST",
+		url: "ajax/variable_summary.php",
+		data: {
+			id_phenobooks:id_phenobooks,
+			id_variable:id_variable,
+		}
+	})
+	.done(function( msg ) {
+		$(".modal").modal();
+		$(".modal-body").html(msg);
+	});
+	return false;
+});
 </script>
+
+
+<div class="modal fade" id="myModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+	<div class="modal-dialog">
+		<div class="modal-content">
+			<div class="modal-header">
+				<button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+				<h4 class="modal-title" id="myModalLabel">Information</h4>
+			</div>
+			<div class="modal-body">
+
+			</div>
+			<div class="modal-footer">
+				<button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+			</div>
+		</div>
+	</div>
+</div>

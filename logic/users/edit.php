@@ -1,44 +1,21 @@
 <?php
-$admin = true;
-require "../../../files/php/config/require.php";
+require "../../files/php/config/require.php";
 $item = Entity::load("User", _request("id"));
+if($__user->id != $item->id && !$__user->isAdmin){
+  die("");
+}
 $groups = obj2arr(Entity::listMe("UserGroup","active"));
-$checkedAdmin = "";
-$activeAdmin = "";
-$checkedOperador = "";
-$activeOperador = "";
-if($item->type == User::$TYPE_OPERADOR){
-  $checkedOperador = "checked";
-  $activeOperador = "active";
-}
-if($item->type == User::$TYPE_ADMIN){
-  $checkedAdmin = "checked";
-  $activeAdmin = "active";
-}
 
 if($_POST){
   $email = _post("email");
   $item->email = $email;
   $item->name = _post("name");
   $item->lastName = _post("lastName");
-  $item->type = _post("type");
-
-  $selectedGroups = Entity::listMe("UserUserGroup","active AND user = '$item->id'");
-  foreach((array) $selectedGroups as $sg){
-    $sg->active = 0;
-    Entity::update($sg);
+  $item->isAdmin = _post("isAdmin")?1:0;
+  $item->userGroup = Entity::load("UserGroup",_post("userGroup"));
+  if(_post("password")){
+    $item->pass = _post("password");
   }
-
-  if(_post("userGroups")){
-    foreach(_post("userGroups") as $ng){
-      $gr = Entity::load("UserGroup",$ng);
-      $cg = new UserUserGroup();
-      $cg->user = $item;
-      $cg->userGroup = $gr;
-      Entity::save($cg);
-    }
-  }
-
   if(User::searchByEmail($email, $item->id)){
     $alert->addError("Email $email is already registered");
   }
@@ -61,7 +38,17 @@ if($_POST){
 
 <div class="row">
   <div class="col-sm-8 col-md-offset-1">
-    <legend>Edit user</legend>
+    <?php
+    if($__user->id == $item->id){
+      ?>
+      <legend>Your profile</legend>
+      <?php
+    }else{
+      ?>
+      <legend>Edit user</legend>
+      <?php
+    }
+    ?>
     <form class="form-horizontal valid" method="POST" action="<?= $_SERVER["PHP_SELF"]?>">
       <input type="hidden" name="id" value="<?= _request("id"); ?>">
       <fieldset>
@@ -90,62 +77,67 @@ if($_POST){
             <span class="help-block"></span>
           </div>
         </div>
+        <?php
 
-        <div class="form-group ">
-          <label class=" control-label" for="usuarios">Groups</label>
-          <div class="">
-            <?php
-            $selectedGroups = Entity::listMe("UserUserGroup","active AND user = '$item->id'");
-            $arr = array();
-            foreach((array)$selectedGroups as $gr){
-              $arr[] = $gr->userGroup;
-            }
-            $arr = obj2arr($arr);
-            printSelect("userGroups[]", $arr, $groups, null, "select-multiple","multiple" );
-            ?>
-            <span class="help-block"></span>
+        if($__user->id == $item->id){
+          ?>
+          <div class="form-group">
+            <label class="control-label" for="password">Change password </label>
+            <input minlength="4" value="" id="password" name="password" type="password"  class="form-control input-md">
+            <span class="help-block">Type something to change your password</span>
           </div>
-        </div>
+          <?php
+        }
+        ?>
+        <?php
+        if($__user->isAdmin){
+          ?>
+          <div class="form-group ">
+            <label class=" control-label" for="usuarios">Group <span class="red">*</span></label>
+            <div class="">
+              <?php
+              printSelect("userGroup",$item->userGroup->id, $groups,  null, "select2","" );
+              ?>
+              <span class="help-block"></span>
+            </div>
+          </div>
 
-
-        <div class="form-group">
-          <label class=" control-label" for="password">Type <span class="red">*</span></label>
-          <div class="">
-
-            <div class="btn-group" data-toggle="buttons">
-
-              <label class="btn btn-default <?= $activeOperador ?>">
-                <input type="radio" <?= $checkedOperador ?> name="type" id="tipo2" value="<?= User::$TYPE_OPERADOR;?>">
-                Operator
-              </label>
-
-              <label class="btn btn-default <?= $activeAdmin ?>">
-                <input type="radio" <?= $checkedAdmin ?> name="type" id="tipo1" value="<?= User::$TYPE_ADMIN;?>">
-                Admin
-              </label>
-
-            </div><!--END btn-group-->
-
-          </div><!--END  -->
-
-
-        </div>
-
+          <div class="form-group">
+            <?php
+            echo check("isAdmin",$item->isAdmin);
+            ?>
+            <label class="control-label" for="isAdmin"> Is administrator</label>
+            <span class="help-block">
+              Administrator users are able to:
+              <ul>
+                <li>
+                  Manage other users
+                </li>
+                <li>
+                  Manage user groups
+                </li>
+                <li>
+                  Manage variable groups
+                </li>
+                <li>
+                  Assign phenobooks to different groups
+                </li>
+              </ul>
+            </span>
+          </div>
+          <?php
+        }
+        ?>
         <!-- Button -->
         <div class="form-group">
           <input type="submit" name="save" value="Save" class="btn btn-primary">
-
         </div>
         <hr>
         <span class="red">*</span> denotes a required field
-
-
       </fieldset>
     </form>
-
   </div>
 </div>
-
 <?php
 require __ROOT."files/php/template/footer.php";
 ?>

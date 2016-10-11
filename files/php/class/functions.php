@@ -178,7 +178,7 @@ function pageTable($resultsPerPage, $totalResults, $currentPage){
   return $out;
 }
 
-function genTable($data, $footer = true, $totalResults = null, $divTableClass = null){
+function genTable($data, $footer = true, $divTableClass = null){
   $printed = false;
   $cont = 0;
   $out = "";
@@ -208,13 +208,8 @@ function genTable($data, $footer = true, $totalResults = null, $divTableClass = 
   if($printed){
     if($footer){
       $out .= "<tr class='trfooter'>";
-
       $out .= "<td colspan='100%'>";
-      if($totalResults != null){
-        $out .= "<b>&Sigma; $cont / $totalResults</b> | ";
-      }else{
-        $out .= "<b>&Sigma; $cont</b> | ";
-      }
+      $out .= "<b>&Sigma; $cont</b> | ";
       $out .= "<a href='#' class='export'><span class='badge'>csv</span></a>";
       $out .= "</td>";
 

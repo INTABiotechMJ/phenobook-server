@@ -1,5 +1,5 @@
 <?php
-require "../../../files/php/config/require.php";
+require "../../files/php/config/require.php";
 $classNamePlural = "User Groups";
 $className = "UserGroup";
 $classNameShow = "User Group";

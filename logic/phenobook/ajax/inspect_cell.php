@@ -3,13 +3,13 @@ $noHeader = true;
 $noMenu = true;
 require "../../../files/php/config/require.php";
 $eu = _request("eu");
-$variable = _request("variable");
+$id_variable = _request("variable");
 $id = _request("phenobook");
 $phenobook = Entity::search("Phenobook","id = '$id' AND active");
 
 $change_registry = _request("change_registry");
 if($change_registry){
-	$registry_all = Entity::listMe("Registry","active AND phenobook = '$phenobook->id' AND variable = '$variable' AND experimental_unit_number = '$eu' ORDER BY id DESC");
+	$registry_all = Entity::listMe("Registry","active AND phenobook = '$phenobook->id' AND variable = '$id_variable' AND experimental_unit_number = '$eu' ORDER BY id DESC");
 	foreach((array)$registry_all as $r){
 		if($r->id != $change_registry){
 			$r->status = 0;
@@ -34,11 +34,11 @@ if($unfix_registry){
 	Entity::update($registry);
 }
 
-$registry = Entity::search("Registry","active AND phenobook = '$phenobook->id' AND status AND variable = '$variable' AND experimental_unit_number = '$eu' ORDER BY id DESC");
-$registry_other = Entity::listMe("Registry","active AND phenobook = '$phenobook->id' AND NOT status AND variable = '$variable' AND experimental_unit_number = '$eu' ORDER BY id DESC");
+$registry = Entity::search("Registry","active AND phenobook = '$phenobook->id' AND status AND variable = '$id_variable' AND experimental_unit_number = '$eu' ORDER BY id DESC");
+$registry_other = Entity::listMe("Registry","active AND phenobook = '$phenobook->id' AND NOT status AND variable = '$id_variable' AND experimental_unit_number = '$eu' ORDER BY id DESC");
 ?>
 <h5>Registry </h5>
-<b>Variable:</b> <?= $variable ?> <br>
+<b>Variable:</b> <?= $registry->variable ?> <br>
 <b>Experimental Unit: </b><?= $eu ?>
 
 <hr>

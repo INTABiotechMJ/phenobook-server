@@ -1,6 +1,6 @@
 <?php
 $admin = true;
-require "../../../files/php/config/require.php";
+require "../../files/php/config/require.php";
 $items = array();
 
 $items = Entity::listMe("User","active");
@@ -12,23 +12,10 @@ foreach ($items as $key => $value) {
 	$item["#"] = $cont++;
 	$item["Name"] = $value;
 	$item["Email"] = $value->email;
-	$item["Type"] = $value->calcTypeName();
-	$groups = $value->getUserGroups();
-	if(!$groups){
-		$groups = array();
-	}else{
-		$groups = obj2arr($groups);
-	}
-	$item["Groups"] = implode(",",$groups);
-
-	if($value->id == $__user->id){
-		$item["Actions"] = "";
-		$item["Actions"] .= "";
-	}else{
-
-		$item["Actions"] = "<a href='edit.php?id=$value->id' class='btn btn-default btn-sm'>Edit</a>";
-		$item["Actions"] .= "<a data-href='delete.php?id=$value->id' class='btn btn-danger btn-sm ask' data-what='Are you sure?'>Delete</a>";
-	}
+	$item["Admin"] = $value->isAdmin?"Yes":"No";
+	$item["Group"] = $value->userGroup;
+	$item["Actions"] = "<a href='edit.php?id=$value->id' class='btn btn-default btn-sm'>Edit</a> ";
+	$item["Actions"] .= "<a data-href='delete.php?id=$value->id' class='btn btn-danger btn-sm ask' data-what='Are you sure?'>Delete</a>";
 	$data[] = $item;
 
 }

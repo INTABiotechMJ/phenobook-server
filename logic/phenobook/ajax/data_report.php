@@ -2,38 +2,41 @@
 $noMenu = true;
 $noHeader = true;
 require "../../../files/php/config/require.php";
-if(empty(_request("variableGroup"))){
-	die("No results");
+
+$phenobook = false;
+if(!empty(_request("variableGroup")) && !empty(_request("phenobooks"))){
+	$ids = _request("phenobooks");
+	$variableGroup = Entity::load("VariableGroup",_request("variableGroup"));
+	$informative = Entity::search("FieldType","active AND type = '" . FieldType::$TYPE_INFORMATIVE . "'");
+	$variables = Entity::listMe("Variable","active AND variableGroup = '$variableGroup->id' ORDER BY field(fieldType, ".$informative->id.") DESC");
 }
-if(empty(_request("ids"))){
-	die("No results");
+if(!empty(_request("phenobook"))){
+	$phenobook = Entity::load("Phenobook",_request("phenobook"));
+	$ids = array(_request("phenobook"));
+	$variableGroup = Entity::load("VariableGroup",$phenobook->variableGroup->id);
+	$informative = Entity::search("FieldType","active AND type = '" . FieldType::$TYPE_INFORMATIVE . "'");
+	$variables = Entity::listMe("Variable","active AND variableGroup = '$variableGroup->id' ORDER BY field(fieldType, ".$informative->id.") DESC");
 }
-$variableGroup = Entity::load("VariableGroup",_request("variableGroup"));
-$informative = Entity::search("FieldType","active AND type = '" . FieldType::$TYPE_INFORMATIVE . "'");
-$variables = Entity::listMe("Variable","active AND variableGroup = '$variableGroup->id' ORDER BY field(fieldType, ".$informative->id.") DESC");
 $data = array();
 
 $header = false;
 echo "<div class='table-responsive '>";
 echo "<table class='table table-hover table-stripped'>";
 echo "<tr>";
-echo "<th class='grey'>";
-echo "Phenobook";
-echo "</th>";
+if(!$phenobook){
+	echo "<th class='grey'>";
+	echo "Phenobook";
+	echo "</th>";
+}
 echo "<th class='grey'>";
 echo "EU";
 echo "</th>";
 foreach((array)$variables as $v){
-	if($v->fieldType->isInformative()){
-		echo "<th class=''>";
-	}else{
-		echo "<th>";
-	}
-	echo $v;
+	echo "<th class='summary'>";
+	echo "<a href='#'  data-id_variable='$v->id' data-id_phenobooks='".implode($ids,",")."'>".$v."</a>";
 	echo "</th>";
 }
 echo "</tr>";
-$ids = _request("ids");
 $ids_str = "(".implode($ids,",").")";
 $phenos = Entity::listMe("Phenobook","active AND id IN $ids_str ORDER BY id");
 foreach ($phenos as $pheno) {
@@ -46,12 +49,11 @@ foreach ($phenos as $pheno) {
 				break;
 			}
 		}
-		#if($anyreg){
-			echo "<tr><td class='grey'>$pheno</td>";
-			echo "<td class='grey'>$i</td>";
-		#}else{
-			#continue;
-		#}
+		echo "<tr>";
+		if(!$phenobook){
+			echo "<td class='grey'>$pheno</td>";
+		}
+		echo "<td class='grey'>$i</td>";
 		foreach((array)$variables as $v){
 			$class = "";
 			$has_val = "";
@@ -94,7 +96,7 @@ foreach ($phenos as $pheno) {
 					$value = "";
 				}
 			}
-			echo "<td data-variable='$v->id' data-eu='$i' class='$has_val $class $more'>";
+			echo "<td data-variable='$v->id' data-id_phenobook='$pheno->id' data-eu='$i' class='$has_val $class $more'>";
 			echo $value;
 			if($reg && $reg->fixed){
 				echo "<i class='glyphicon glyphicon-pushpin'></i>";
@@ -102,7 +104,7 @@ foreach ($phenos as $pheno) {
 			echo "</td>";
 		}
 		#if($anyreg){
-			echo "</tr>";
+		echo "</tr>";
 		#}
 	}
 }

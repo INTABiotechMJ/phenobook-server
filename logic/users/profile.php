@@ -1,5 +1,5 @@
-<?php 
-require "../../../files/php/config/require.php";
+<?php
+require "../../files/php/config/require.php";
 $item = Entity::load("User", $__user->id);
 
 if($_POST){
@@ -40,62 +40,62 @@ if($_POST){
         <!-- Text input-->
 
          <div class="form-group">
-          <label class="col-md-4 control-label" for="name"><?= __USER_PROFILE_USER_TYPE ?> </label>  
+          <label class="col-md-4 control-label" for="name"><?= __USER_PROFILE_USER_TYPE ?> </label>
           <div class="col-md-4">
             <?= $__user->calcTypeName() ?>
-            <span class="help-block"></span>  
+            <span class="help-block"></span>
           </div>
         </div>
-        
-      <?php 
+
+      <?php
       if(!$__user->isSuperAdmin()){
        ?>
 
        <div class="form-group">
-        <label class="col-md-4 control-label" for="name"><?= __USER_PROFILE_GROUP_NAME ?> </label>  
+        <label class="col-md-4 control-label" for="name"><?= __USER_PROFILE_GROUP_NAME ?> </label>
         <div class="col-md-4">
           <?= $__user->userGroup ?>
-          <span class="help-block"></span>  
+          <span class="help-block"></span>
         </div>
       </div>
-      <?php 
+      <?php
     }
     ?>
 
     <div class="form-group">
-      <label class="col-md-4 control-label" for="name"><?= __USER_PROFILE_NAME ?> *</label>  
+      <label class="col-md-4 control-label" for="name"><?= __USER_PROFILE_NAME ?> *</label>
       <div class="col-md-4">
         <input id="name" value="<?= $item->name ?>" name="name" type="text"  class="form-control input-md required">
-        <span class="help-block"></span>  
+        <span class="help-block"></span>
       </div>
     </div>
 
 
     <div class="form-group">
-      <label class="col-md-4 control-label" for="lastName"><?= __USER_PROFILE_LAST_NAME ?> *</label>  
+      <label class="col-md-4 control-label" for="lastName"><?= __USER_PROFILE_LAST_NAME ?> *</label>
       <div class="col-md-4">
         <input id="lastName" value="<?= $item->lastName ?>" name="lastName" type="text"  class="form-control input-md required">
-        <span class="help-block"></span>  
+        <span class="help-block"></span>
       </div>
     </div>
 
     <div class="form-group">
-      <label class="col-md-4 control-label" for="email"><?= __USER_PROFILE_EMAIL ?> *</label>  
+      <label class="col-md-4 control-label" for="email"><?= __USER_PROFILE_EMAIL ?> *</label>
       <div class="col-md-4">
         <input id="email" value="<?= $item->email ?>" name="email" type="text"  class="form-control input-md email required">
-        <span class="help-block"></span>  
+        <span class="help-block"></span>
       </div>
     </div>
 
 
     <div class="form-group">
-      <label class="col-md-4 control-label" for="email"><?= __USER_PROFILE_LANG ?> *</label>  
+      <label class="col-md-4 control-label" for="email"><?= __USER_PROFILE_LANG ?> *</label>
       <div class="col-md-4">
-        <?php 
+        <?php
         $langs = array(0 => "English",1 => "Spanish");
         printSelect("lang", $item->lang, $langs, null, "select","" );
         ?>
-        <span class="help-block"></span>  
+        <span class="help-block"></span>
       </div>
     </div>
 
@@ -120,26 +120,26 @@ if($_POST){
       <!-- Text input-->
 
       <div class="form-group">
-        <label class="col-md-4 control-label" for="oldPassword"><?= __USER_PROFILE_CURRENT_PASSWORD ?>*</label>  
+        <label class="col-md-4 control-label" for="oldPassword"><?= __USER_PROFILE_CURRENT_PASSWORD ?>*</label>
         <div class="col-md-4">
           <input id="oldPassword" value="" name="oldPassword" type="password"  class="form-control input-md required">
-          <span class="help-block"></span>  
+          <span class="help-block"></span>
         </div>
       </div>
 
       <div class="form-group">
-        <label class="col-md-4 control-label" for="password"><?= __USER_PROFILE_NEW_PASSWORD ?> *</label>  
+        <label class="col-md-4 control-label" for="password"><?= __USER_PROFILE_NEW_PASSWORD ?> *</label>
         <div class="col-md-4">
           <input minlength="5" id="password" value="" name="password" type="password"  class="form-control input-md required">
-          <span class="help-block"></span>  
+          <span class="help-block"></span>
         </div>
       </div>
 
       <div class="form-group">
-        <label class="col-md-4 control-label" for="password2"><?= __USER_PROFILE_REPEAT_PASSWORD ?> *</label>  
+        <label class="col-md-4 control-label" for="password2"><?= __USER_PROFILE_REPEAT_PASSWORD ?> *</label>
         <div class="col-md-4">
           <input  minlength="5" id="password2" value="" name="password2" type="password"  class="form-control input-md required">
-          <span class="help-block"></span>  
+          <span class="help-block"></span>
         </div>
       </div>
 
@@ -156,6 +156,6 @@ if($_POST){
 
 </div>
 </div>
-<?php 
+<?php
 require __ROOT."files/php/template/footer.php";
 ?>

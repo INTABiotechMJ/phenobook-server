@@ -9,10 +9,6 @@ class Variable extends Object{
 	*/
 	var $name;
 	/**
-	*@type VARCHAR(200)
-	*/
-	var $originalName;
-	/**
 	*@type VARCHAR(300)
 	*/
 	var $defaultValue;
@@ -28,10 +24,7 @@ class Variable extends Object{
 	*@class FieldType
 	*/
 	var $fieldType;
-	/**
-	*@class Phenobook
-	*/
-	var $phenobook;
+
 	function formatValue(){
 		if($this->fieldType->isCheck()){
 			if($this->value){

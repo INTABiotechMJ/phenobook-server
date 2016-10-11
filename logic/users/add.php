@@ -1,6 +1,6 @@
 <?php
 $admin = true;
-require "../../../files/php/config/require.php";
+require "../../files/php/config/require.php";
 $grupos = obj2arr(Entity::listMe("UserGroup","active"));
 
 if($_POST){
@@ -17,9 +17,8 @@ if($_POST){
   $item->lang = _post("lang");
   $item->lastName = _post("lastName");
   $item->pass = $password;
-  $item->type = _post("type");
-
-
+  $item->isAdmin = _post("isAdmin");
+  $item->userGroup = Entity::load("UserGroup",_post("userGroup"));
 
 
   if(_post("sendEmail")){
@@ -37,16 +36,6 @@ if($_POST){
 
   if(!$alert->hasError){
     Entity::save($item);
-    $userGroups = _post("userGroups");
-    foreach((array)$userGroups  as $o){
-      $us_obj = new UserUserGroup();
-      $us_obj->user = Entity::load("User", $item);
-      $us_obj->userGroup = $o;
-      Entity::save($us_obj);
-    }
-    if(_post("sendEmail")){
-      Entity::save($email_obj);
-    }
     redirect("index.php?m=User added");
   }
 
@@ -68,11 +57,11 @@ function randomPassword($length) {
 ?>
 
 <div class='row'>
-	<div class='col-md-11'>
-	</div>
-	<div class='col-md-1'>
-		<a href='index.php' class='btn btn-default '>Existents</a>
-	</div>
+  <div class='col-md-11'>
+  </div>
+  <div class='col-md-1'>
+    <a href='index.php' class='btn btn-default '>Existents</a>
+  </div>
 </div>
 
 <div class="row">
@@ -94,13 +83,6 @@ function randomPassword($length) {
           <span class="help-block"></span>
         </div>
 
-        <div class="form-group">
-          <label class="control-label" for="userGroup">Groups</label>
-          <?php
-          printSelect("userGroups[]", _post("userGroups"), $grupos, null, "select select-multiple","multiple" );
-          ?>
-          <span class="help-block"></span>
-        </div>
 
         <div class="form-group">
           <label class="control-label" for="email">Email <span class="red">*</span></label>
@@ -114,13 +96,34 @@ function randomPassword($length) {
         </div>
 
         <div class="form-group">
-          <label class="control-label" for="type">User type <span class="red">*</span> </label>
-          <div class="btn-group" data-toggle="buttons">
-            <?= form_option_grouped("Operator", "type", "type1", User::$TYPE_OPERADOR, _post("type"), true ); ?>
-            <?= form_option_grouped("Administrator", "type", "type2", User::$TYPE_ADMIN, _post("type")); ?>
-          </div><!--END btn-group-->
+          <label class="control-label" for="userGroup">Group <span class="red">*</span> </label>
+          <?php
+          printSelect("userGroup", _post("userGroup"), $grupos, null, "select2","" );
+          ?>
           <span class="help-block">
-
+            Non administrator users can only access phenobooks
+            of their own groups
+          </span>
+        </div>
+        <div class="form-group">
+          <input type="checkbox" name="isAdmin" value="1" id="isAdmin">
+          <label class="control-label" for="isAdmin"> Is administrator</label>
+          <span class="help-block">
+            Administrator users are able to:
+            <ul>
+              <li>
+                Manage other users
+              </li>
+              <li>
+                Manage user groups
+              </li>
+              <li>
+                Manage variable groups
+              </li>
+              <li>
+                Assign phenobooks to different groups
+              </li>
+            </ul>
           </span>
         </div>
 

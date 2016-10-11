@@ -7,7 +7,7 @@ $classNameShow = "Variable Group";
 <div class="row">
 	<div class="col-xs-12">
 		<?php
-		$items = Entity::listMe($className,"active");
+		$items = Entity::listMe($className,"active  AND userGroup = '" + $__user->userGroup->id + "'");
 		$data = array();
 		$cont = 1;
 		foreach ($items as $key => $value) {

@@ -1,19 +1,8 @@
 <?php
 require "../../files/php/config/require.php";
-$items = array();
-if($__user->isAdmin()){
-	$items = Entity::listMe("Phenobook","active ORDER BY id DESC");
-}
-if($__user->isOperador()){
-	$UserPhenobooks = Entity::listMe("PhenobookUser","active AND user = '$__user->id' ORDER BY id DESC");
-	$items = array();
-	foreach((array)$UserPhenobooks as $ue){
-		$phenos = Entity::listMe("Phenobook","active AND id = '" . $ue->phenobook->id . "' ORDER BY id DESC");
-		$items = array_merge($items, $phenos);
-	}
-	$phenos = Entity::listMe("Phenobook","active AND userGroup = '" . $ue->group->id . "' ORDER BY id DESC");
-	$items = array_merge($items, $phenos);
-}
+
+$items = Entity::listMe("Phenobook","active AND userGroup = '" . $__user->userGroup->id . "' ORDER BY id DESC");
+
 
 $data = array();
 $cont = 1;

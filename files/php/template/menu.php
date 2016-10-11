@@ -13,16 +13,15 @@
     <!-- Collect the nav links, forms, and other content for toggling -->
     <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
       <ul class="nav navbar-nav">
-        <li><a href="<?= __URL ?>logic/phenobook/add.php">Add</a></li>
-        <li><a href="<?= __URL ?>logic/phenobook/index.php">List</a></li>
+        <li><a href="<?= __URL ?>logic/phenobook/index.php">Phenobooks</a></li>
         <li><a href="<?= __URL ?>logic/phenobook/data_report.php">Data Report</a></li>
         <li><a href="<?= __URL ?>logic/variableGroups">Variable Groups</a></li>
         <?php
-        if($__user->isAdmin())
+        if($__user->isAdmin)
         {
           ?>
-          <li><a href="<?= __URL ?>logic/admin/userGroups">Users Groups</a></li>
-          <li><a href="<?= __URL ?>logic/admin/users">Users</a></li>
+          <li><a href="<?= __URL ?>logic/userGroups">Users Groups</a></li>
+          <li><a href="<?= __URL ?>logic/users">Users</a></li>
           <?php
         }
         ?>
@@ -30,8 +29,8 @@
       </ul>
       <ul class="nav navbar-nav navbar-right">
         <li>
-          <a href="<?= __URL."logic/admin/User/profile.php"?>"><?= $__user; ?>
-            <?= !empty($__user->userGroup)?"|":"".$__user->userGroup; ?>
+          <a href="<?= __URL."logic/users/edit.php?id=$__user->id"?>"><?= $__user; ?> | 
+            <?= $__user->userGroup; ?>
           </a>
         </li>
         <li><a href="<?= __URL."logic/session/logout.php"?>">Exit</a></li>

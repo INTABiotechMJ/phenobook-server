@@ -3,15 +3,33 @@ $noMenu = true;
 $noHeader = true;
 require "../../../files/php/config/require.php";
 $id_variable = _request("id_variable");
-$id_phenobook = _request("id_phenobook");
 $variable = Entity::search("Variable","active AND id = '$id_variable'");
-$phenobook = Entity::search("Phenobook","active AND id = '$id_phenobook'");
-$regs = Entity::listMe("Registry","active AND value IS NOT NULL AND phenobook = '$phenobook->id' AND status AND variable = '$variable->id'");
+if(_request("id_phenobook")){
+  $id_phenobook = _request("id_phenobook");
+  $phenobook = Entity::search("Phenobook","active AND id = '$id_phenobook'");
+  $regs = Entity::listMe("Registry","active AND value IS NOT NULL AND phenobook = '$phenobook->id' AND status AND variable = '$variable->id'");
+}
+if(_request("id_phenobooks")){
+  $ids = _request("id_phenobooks");
+  //$ids_str = "(".implode($ids,",").")";
+  $phenos = Entity::listMe("Phenobook","active AND id IN ($ids) ORDER BY id");
+  $regs = Entity::listMe("Registry","active AND value IS NOT NULL AND phenobook IN ($ids) AND status AND variable = '$variable->id'");
+}
 if(empty($regs)){
   die("<h5>No results for this variable yet</h5>");
 }
 $out = "";
 $data = array();
+
+$out .= "<h5>In phenobooks</h5>";
+if(!empty($phenobook)){
+  $out .= "$phenobook"."<br/>";
+}
+if(!empty($phenos)){
+  foreach ((array)$phenos as $pheno) {
+    $out .= "$pheno"."<br/>";
+  }
+}
 
 if($variable->fieldType->isNumeric()){
   foreach ((array)$regs as $r) {

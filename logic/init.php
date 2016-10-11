@@ -34,11 +34,11 @@
 			}
 		}
 	}
+	echo "<hr>";
+	echo "INSERT INTO UserGroup (name ) VALUES ('Default'); <br/>";
 
 	echo "<hr>";
-	echo "INSERT INTO User (name, email, pass ) VALUES ('admin','admin','admin'); <br/>";
-	echo "<hr>";
-	echo "INSERT INTO User (name, email, pass, type ) VALUES ('admin','op','op','2'); <br/>";
+	echo "INSERT INTO User (name, email, pass,userGroup ) VALUES ('admin','admin','admin','1'); <br/>";
 	echo "<hr>";
 	echo "INSERT INTO FieldType (name, type ) VALUES ('Text','1'); <br/>";
 	echo "<hr>";
@@ -63,18 +63,6 @@
 
 
 
-	echo "INSERT INTO GraphType (name,number) VALUES ('Cake','".GraphType::$TPYE_CAKE."'); <br/>";
-	echo "INSERT INTO GraphType (name,number) VALUES ('Bar','".GraphType::$TPYE_BAR."'); <br/>";
-	echo "INSERT INTO GraphType (name,number) VALUES ('Timeline','".GraphType::$TPYE_TIMELINE."'); <br/>";
-	echo "INSERT INTO GraphTypeFieldType (graphType, fieldType ) VALUES ('".GraphType::$TPYE_CAKE."','2'); <br/>";
-	echo "INSERT INTO GraphTypeFieldType (graphType, fieldType ) VALUES ('".GraphType::$TPYE_BAR."','2'); <br/>";
-	echo "INSERT INTO GraphTypeFieldType (graphType, fieldType ) VALUES ('".GraphType::$TPYE_CAKE."','3'); <br/>";
-	echo "INSERT INTO GraphTypeFieldType (graphType, fieldType ) VALUES ('".GraphType::$TPYE_BAR."','3'); <br/>";
-	echo "INSERT INTO GraphTypeFieldType (graphType, fieldType ) VALUES ('".GraphType::$TPYE_CAKE."','4'); <br/>";
-	echo "INSERT INTO GraphTypeFieldType (graphType, fieldType ) VALUES ('".GraphType::$TPYE_BAR."','4'); <br/>";
-	echo "INSERT INTO GraphTypeFieldType (graphType, fieldType ) VALUES ('".GraphType::$TPYE_TIMELINE."','5'); <br/>";
-	echo "INSERT INTO GraphTypeFieldType (graphType, fieldType ) VALUES ('".GraphType::$TPYE_TIMELINE."','7'); <br/>";
-	echo "<hr>";
 	?>
 
 </body>

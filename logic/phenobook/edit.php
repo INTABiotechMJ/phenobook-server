@@ -3,25 +3,10 @@ $admin = true;
 require "../../files/php/config/require.php";
 $userGroups = obj2arr(Entity::listMe("UserGroup","active"));
 $users = obj2arr(Entity::listMe("User","active"));
-$variableGroups = obj2arr(Entity::listMe("VariableGroup","active"));
+$variableGroups = obj2arr(Entity::listMe("VariableGroup","active AND userGroup = '" + $__user->userGroup->id + "' "));
 
 $item = Entity::load("Phenobook",_request("id"));
-$userPhenobooksSelected = Entity::listMe("PhenobookUser","active AND phenobook = '$item->id' ORDER BY id DESC");
-$userGroupsSelected = Entity::listMe("PhenobookUserGroup","active AND phenobook = '$item->id' ORDER BY id DESC");
-$selectedGroups = array();
-$selectedUsers = array();
-if(!empty($userPhenobooksSelected)){
-  foreach ($userPhenobooksSelected as $value) {
-    $selectedUsers[] = $value->user;
-  }
-}
-if(!empty($userGroupsSelected)){
-  foreach ($userGroupsSelected as $value) {
-    $selectedGroups[] = $value->userGroup;
-  }
-}
-$selectedUsers = obj2arr($selectedUsers);
-$selectedGroups = obj2arr($selectedGroups);
+
 if($_POST){
   Entity::begin();
   $item->name = _post("name");
@@ -30,40 +15,7 @@ if($_POST){
   $item->experimental_units_number = _post("experimental_units_number");
 
   if(!$alert->hasError){
-    Entity::update($item);
-
-    foreach ($userPhenobooksSelected as $value) {
-      $value->active = 0;
-      Entity::update($value);
-    }
-    foreach ($userGroupsSelected as $value) {
-      $value->active = 0;
-      Entity::update($value);
-    }
-
-    $phenobookUsers = _post("users");
-    foreach((array)$phenobookUsers  as $pu){
-      if(empty($pu)){
-        continue;
-      }
-      $us_obj = new PhenobookUser();
-      $us_obj->user = Entity::load("User", $pu);
-      $us_obj->phenobook = $item;
-      Entity::save($us_obj);
-    }
-
-    $phenobookGroup = _post("userGroups");
-    foreach((array)$phenobookGroup  as $pg){
-      if(empty($pg)){
-        continue;
-      }
-      $us_obj = new PhenobookUserGroup();
-      $us_obj->userGroup = Entity::load("UserGroup", $pg);
-      $us_obj->phenobook = $item;
-      Entity::save($us_obj);
-    }
-
-    Entity::commit();
+    Entity::update($item);    Entity::commit();
     redirect("index.php?id=$item->id&m=Phenobook edited");
   }
 
@@ -94,27 +46,6 @@ if($_POST){
           Number of experimental units
         </span>
       </div>
-
-      <div class="form-content">
-        <b>
-          Visible for
-        </b>
-        <div class="form-group ">
-          <label class=" control-label" for="users">Users</label>
-          <?php
-          printSelect("users[]", $selectedUsers, $users, null, "select-multiple users","multiple" );
-          ?>
-          <span class="help-block">These uses will have access to this Phenobook</span>
-        </div>
-        <div class="form-group ">
-          <label class=" control-label" for="userGroups">Groups</label>
-          <?php
-          printSelect("userGroups[]", $selectedGroups, $userGroups, null, "select-multiple userGroups","multiple" );
-          ?>
-          <span class="help-block">Users of these groups will have access to this Phenobook</span>
-        </div>
-      </div>
-
       <div class="form-group">
         <label class=" control-label" for="description">Description</label>
         <textarea name="description" id="description" class="form-control" cols="30" rows="3"><?= $item->description; ?></textarea>

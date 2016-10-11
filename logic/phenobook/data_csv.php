@@ -7,7 +7,6 @@ if(!empty(_request("variableGroup")) && !empty(_request("phenobooks"))){
 	$variableGroup = Entity::load("VariableGroup",_request("variableGroup"));
 	$informative = Entity::search("FieldType","active AND type = '" . FieldType::$TYPE_INFORMATIVE . "'");
 	$variables = Entity::listMe("Variable","active AND variableGroup = '$variableGroup->id' ORDER BY field(fieldType, ".$informative->id.") DESC");
-	$data = array();
 }
 if(!empty(_request("pheno"))){
 	$phenobook = Entity::load("Phenobook",_request("pheno"));
@@ -15,7 +14,6 @@ if(!empty(_request("pheno"))){
 	$variableGroup = Entity::load("VariableGroup",$phenobook->variableGroup->id);
 	$informative = Entity::search("FieldType","active AND type = '" . FieldType::$TYPE_INFORMATIVE . "'");
 	$variables = Entity::listMe("Variable","active AND variableGroup = '$variableGroup->id' ORDER BY field(fieldType, ".$informative->id.") DESC");
-	$data = array();
 }
 
 $data = array();

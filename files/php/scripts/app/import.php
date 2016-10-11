@@ -49,4 +49,4 @@ foreach((array) $json as $j){
 
 	Entity::save($reg);
 }
-echo $user;
+die(stamp());

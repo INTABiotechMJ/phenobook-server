@@ -8,6 +8,7 @@ if($_POST){
 	Entity::begin();
 	$item = new VariableGroup();
 	$item->name = _post("name");
+	$item->userGroup = $__user->userGroup;
 
 	if(!$alert->hasError){
 		Entity::save($item);
@@ -21,7 +22,7 @@ if($_POST){
 	<div class='col-md-11'>
 	</div>
 	<div class='col-md-1'>
-		<a href='index.php' class='btn btn-default '>Existents</a>
+		<a href='index.php' class='btn btn-default'>Existents</a>
 	</div>
 </div>
 
@@ -30,12 +31,14 @@ if($_POST){
 		<legend>Add <?= $classNameShow ?></legend>
 		<form action="<?= $_SERVER["PHP_SELF"] ?>" method="POST" class="valid" autocomplete="off">
 			<div class="form-group">
-				<label for="name">Name *</label>
+				<label for="name">Name <span class="red">*</span></label>
 				<input name="name" type="text" class="form-control required" id="name" value="<?= _post("name") ?>" placeholder="Name">
 			</div>
 			<div class="form-group">
 				<input name="save" type="submit" class="btn btn-primary" value="Save and add variables">
 			</div>
+			<hr>
+			<span class="red">*</span> denotes a required field <br>
 		</form>
 	</div>
 </div>
