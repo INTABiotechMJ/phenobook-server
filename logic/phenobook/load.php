@@ -140,7 +140,7 @@ var hotSettings = {
 		colHeaders: [
 			<?php
 			foreach ((array) $variables as $k => $v) {
-				echo "'$v',";
+				echo "'$v [".$v->fieldType->name."]',";
 			}
 			?>
 		],

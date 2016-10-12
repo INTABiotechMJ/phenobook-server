@@ -7,16 +7,30 @@ if($_POST){
 
   $item = new FieldOption();
   $item->name = _post("name");
-  $item->Variable = $variable;
+  $item->variable = $variable;
   if(!$alert->hasError){
     Entity::save($item);
+    if(_post("saveOther")){
+      redirect("add.php?id=$id&m=Option added");
+    }
     redirect("index.php?id=$id&m=Option added");
   }
 }
-echo "<div class='botonera'>";
-echo btn("Back to options", "index.php?id=".$variable->variableGroup->id, null, TYPE_DEFAULT);
-echo "</div>";
 ?>
+<div class='row'>
+
+  <div class='col-md-8 col-xs-6'>
+    <legend>New option for variable <?=  i($variable) ?> </legend>
+  </div>
+  <div class='col-md-1'>
+
+  </div>
+
+  <div class='col-md-4'>
+    <a href='index.php?id=<?= $variable->id ?>' class='btn btn-default '>Back to options</a>
+  </div>
+</div>
+
 <div class="row">
   <div class="col-sm-8 col-md-offset-1">
     <form autocomplete="off" enctype="multipart/form-data" class="form-horizontal valid"
@@ -24,7 +38,6 @@ echo "</div>";
     <input type="hidden" name="id" value="<?= _request("id") ?>">
     <fieldset>
       <!-- Form Name -->
-      <legend>New option for variable <?=  i($variable) ?> </legend>
 
       <div class="form-group">
         <label class="col-md-4 control-label" for="name">Name <span class="red">*</span></label>
@@ -37,6 +50,7 @@ echo "</div>";
       <div class="form-group">
         <div class="col-md-4 col-md-offset-4">
           <input type="submit" name="save" value="Save" class="btn btn-primary">
+          <input type="submit" name="saveOther" value="Save and add another" class="btn btn-primary">
         </div>
       </div>
 

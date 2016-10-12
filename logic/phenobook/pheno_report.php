@@ -74,12 +74,12 @@ th{
 }
 </style>
 <div class='row'>
-	<div class='col-md-8'>
+	<div class='col-md-8 col-xs-6'>
 		<legend>Results for <span class='object-name'><?= $phenobook ?></span></legend>
 	</div>
-	<div class='col-md-2'>
-	</div>
 	<div class='col-md-1'>
+	</div>
+	<div class='col-md-2'>
 		<a href='index.php' class='btn btn-default'>Back to phenobooks</a>
 	</div>
 </div>
@@ -112,24 +112,22 @@ th{
 		<li>
 			<b>Last update:</b> <?= $last_update ?>
 		</li>
-		<li>
+		<li class="hide">
 			<b>Informative variable count:</b> <?= $informative_variables_count ?>
 		</li>
-		<li>
+		<li class="hide">
 			<b>Variable count:</b> <?= $variable_count + $check_variables_count ?> <span class="downlight">(Informative variables do not count)</span>
 		</li>
-		<li>
+		<li class="hide">
 			<b>Informative cells count:</b> <?= $informative_cells_count."  <span class='downlight'>(filled: ".$informative_cells_filled ?>)</span>
 		</li>
-		<li>
+		<li class="hide">
 			<b>Variable cells count:</b> <?= $cell_count ?> <span class="downlight">(Check and informative variables do not count)</span>
 		</li>
 		<li>
-			<b>Completed cells:</b> <?= $completed_cells ?>  <span class="downlight">(Check and informative variables do not count)</span>
+			<b>Completed cells:</b> <?= $completed_cells ?> of <?= $cell_count ?> (<?= $completed_percentage ?>%)  <span class="downlight">(Check and informative variables do not count)</span>
 		</li>
-		<li>
-			<b>Completed:</b> <?= $completed_percentage ?> % <span class="downlight">(Check and informative variables do not count)</span>
-		</li>
+
 	</ul>
 </div>
 <?php
@@ -177,7 +175,7 @@ $("body").on("click",".unfix",function(){
 $("body").on("click",".fix",function(){
 
 	var id = $(this).data("id");
-	$.bootstrapGrowl("Registry has been fixed and it is not allowed to be overwritten", {
+	$.bootstrapGrowl("Registry has been fixed and it is not allowed to be overwritten on mobile", {
 		type: 'success',
 	});
 	$.ajax({
@@ -221,7 +219,7 @@ $("body").on("click",".replace-value",function(){
 });
 var g_variable;
 var g_eu;
-$("body").on("click","td",function(){
+$("body").on("click","td.has_val",function(){
 	var variable = $(this).data("variable");
 	var eu = $(this).data("eu");
 	g_variable = variable;

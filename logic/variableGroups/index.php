@@ -20,7 +20,7 @@ $classNameShow = "Variable Group";
 		}
 
 		echo "<div class='row'>";
-		echo "<div class='col-md-8'>";
+		echo "<div class='col-md-8 col-xs-6'>";
 		echo "<legend>$classNamePlural</legend>";
 		echo "</div>";
 		echo "<div class='col-md-3'>";

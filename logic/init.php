@@ -5,17 +5,12 @@
 	<title>Document</title>
 </head>
 <body>
-
-
 	<?php
-
 	require "../files/php/config/config.php";
 	require "../files/php/class/Object.php";
-
 	$classes = array();
 	foreach (glob(__ROOT . 'logic/class/*', GLOB_ONLYDIR) as $dir) {
 		foreach (glob("$dir/*.php") as $filename) {
-			//echo $filename."<br>";
 			include_once $filename;
 			$basename = basename($filename, ".php");
 			$classes[] = $basename;

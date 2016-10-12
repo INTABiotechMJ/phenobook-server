@@ -31,11 +31,14 @@ if($_POST){
 
 		<div class='row'>
 
-			<div class='col-md-11'>
+			<div class='col-md-8 col-xs-6'>
 				<legend>Add <i>variable</i> to group <?= "<i>$variableGroup</i> " ?> </legend>
 			</div>
+			<div class='col-md-3'>
 
-			<div class='col-md-1'>
+			</div>
+
+			<div class='col-md-2'>
 				<a href='index.php?id=<?= $variableGroup->id ?>' class='btn btn-default '>Existents</a>
 			</div>
 

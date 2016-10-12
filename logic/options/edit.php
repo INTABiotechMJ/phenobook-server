@@ -1,27 +1,39 @@
 <?php
 $admin = true;
 require "../../files/php/config/require.php";
-$id_opcion = _request("id");
-
-$item = Entity::load("FieldOption", $id_opcion);
+$id = _request("id");
+$item = Entity::load("FieldOption", $id);
 if($_POST){
   $item->name = _post("name");
   if(!$alert->hasError){
     Entity::update($item);
-    redirect("index.php?id=".$item->Variable->id."&m=Option edited");
+    redirect("index.php?id=".$item->variable->id."&m=Option edited");
   }
 
 }
 ?>
+<div class='row'>
 
+  <div class='col-md-8 col-xs-6'>
+    <legend>
+      Edit option <?= i($item) ?> from variable <?=  i($item->variable) ?>
+    </legend>
+  </div>
+  <div class='col-md-1'>
+
+  </div>
+
+  <div class='col-md-4'>
+    <a href='index.php?id=<?= $item->variable->id ?>' class='btn btn-default '>Back to options</a>
+  </div>
+</div>
 <div class="row">
   <div class="col-sm-8 col-md-offset-1">
     <form autocomplete="off" enctype="multipart/form-data" class="form-horizontal valid"
     method="POST" action="<?= $_SERVER["PHP_SELF"]?>">
     <input type="hidden" name="id" value="<?= _request("id") ?>">
     <fieldset>
-      <!-- Form Name -->
-      <legend>Edit option <?= i($item) ?> from variable <?=  i($item->Variable) ?> </legend>
+
 
       <div class="form-group">
         <label class="col-md-4 control-label" for="name">Name <span class="red">*</span></label>

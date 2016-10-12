@@ -27,7 +27,7 @@ $grupo = Entity::load("VariableGroup",_request("id"));
 
 		echo "<div class='row'>";
 
-		echo "<div class='col-md-8'>";
+		echo "<div class='col-md-8 col-xs-6'>";
 		echo "<legend>$classNamePlural - Group: <i>$grupo</i></legend>";
 		echo "</div>";
 

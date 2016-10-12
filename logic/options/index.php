@@ -17,10 +17,25 @@ foreach ($items as $key => $value) {
 	$data[] = $item;
 
 }
-echo "<div class='botonera'>";
-echo btn("Back to variables", "../Variable/index.php?id=".$variable->variableGroup->id, null, TYPE_DEFAULT);
-echo btn("Add option", "add.php?id=$id");
+
+
+echo "<div class='row'>";
+
+echo "<div class='col-md-8 col-xs-6'>";
+echo "<legend>Phenobooks</legend>";
 echo "</div>";
+
+echo "<div class='col-md-1'>";
+
+echo "</div>";
+
+echo "<div class='col-md-4'>";
+echo "<a href='".__URL."logic/variables/index.php?id=".$variable->id."' class='btn btn-default'>Back to variable</a> ";
+echo "<a href='add.php?id=".$id."' class='btn  btn-primary'>Add option</a>";
+echo "</div>";
+
+echo "</div>";
+
 echo "<legend>Options of variable <span class='object-name'>$variable</span></legend>";
 
 echo genTable($data);

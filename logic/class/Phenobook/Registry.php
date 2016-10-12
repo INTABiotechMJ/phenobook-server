@@ -60,7 +60,7 @@ class Registry extends Object{
 			$value = $option->name;
 			break;
 			case FieldType::$TYPE_CHECK:
-			$value = $this->value?"yes":"";
+			$value = $this->value?"yes":"no";
 			break;
 			case FieldType::$TYPE_PHOTO:
 			$value = $this->calcPhoto();

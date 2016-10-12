@@ -89,7 +89,7 @@ th{
 </div>
 <?php
 
- ?>
+?>
 <div class="table-container">
 
 </div>
@@ -147,6 +147,11 @@ $("body").on("change",".variableGroup",function(){
 $(".variableGroup").trigger("change");
 
 $("#search").click(function(){
+	reload_table();
+	return false;
+});
+
+function reload_table(){
 	if(!$(".valid").valid()){
 		return;
 	}
@@ -164,11 +169,13 @@ $("#search").click(function(){
 		$(".table-container").html(data);
 	});
 	return false;
-});
+}
+
 
 
 $("body").on("click",".unfix",function(){
 	var id = $(this).data("id");
+	var phenobook = $(this).data("id_phenobook");
 	$.bootstrapGrowl("Registry has been unfixed and it is allowed to overwrite", {
 		type: 'success',
 	});
@@ -178,6 +185,7 @@ $("body").on("click",".unfix",function(){
 		data: {
 			unfix_registry:id,
 			variable:g_variable,
+			phenobook:phenobook,
 			eu:g_eu,
 		}
 	})
@@ -191,7 +199,8 @@ $("body").on("click",".unfix",function(){
 
 $("body").on("click",".fix",function(){
 	var id = $(this).data("id");
-	$.bootstrapGrowl("Registry has been fixed and it is not allowed to be overwritten", {
+	var phenobook = $(this).data("id_phenobook");
+	$.bootstrapGrowl("Registry has been fixed and it is not allowed to be overwritten on mobile", {
 		type: 'success',
 	});
 	$.ajax({
@@ -199,6 +208,7 @@ $("body").on("click",".fix",function(){
 		url: "ajax/inspect_cell.php",
 		data: {
 			fix_registry:id,
+			phenobook:phenobook,
 			variable:g_variable,
 			eu:g_eu,
 		}
@@ -236,7 +246,7 @@ $("body").on("click",".replace-value",function(){
 var g_variable;
 var g_eu;
 
-$("body").on("click","td",function(){
+$("body").on("click","td.has_val",function(){
 	var variable = $(this).data("variable");
 	var eu = $(this).data("eu");
 	var id_phenobook = $(this).data("id_phenobook");

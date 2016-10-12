@@ -9,13 +9,16 @@ $email = _post("email");
 $pass = _post("pass");
 $user = Entity::search("User", "email = '$email' AND pass = '$pass' AND active");
 if(!$user){
-	die("error");
+	$res = array();
+	$res["status"] = "auth_error";
+	$res["msg"] = "auth_error";
+	die(json_encode($res));
 }
 
 $data = _post("data");
 $json = json_decode($data);
 foreach((array) $json as $j){
-	$oldRegs = Entity::listMe("Registry", "active AND experimental_unit_number = '$j->eu' variable = '$j->variable'");
+	$oldRegs = Entity::listMe("Registry", "active AND experimental_unit_number = '$j->experimental_unit_number' AND variable = '$j->variable'");
 	foreach((array)$oldRegs as $oldReg){
 		$oldReg->status = '0';
 		Entity::update($oldReg);
@@ -27,7 +30,7 @@ foreach((array) $json as $j){
 	$reg->localStamp = $j->localStamp;
 	$reg->latitude = $j->latitude;
 	$reg->longitude = $j->longitude;
-	$reg->experimental_unit_number = $j->eu;
+	$reg->experimental_unit_number = $j->experimental_unit_number;
 	$reg->variable = Entity::load("Variable", $j->variable);
 	$reg->phenobook = Entity::load("Phenobook", $j->phenobook);
 
@@ -36,7 +39,10 @@ foreach((array) $json as $j){
 		$dir = __ROOT . $dir_rel;
 		if (!file_exists($dir)) {
 			if(!@mkdir($dir, 0777, true)){
-				die("Cannot create directory");
+				$res = array();
+				$res["status"] = "error";
+				$res["msg"] = "Cannot create directory";
+				die(json_encode($res));
 			}
 		}
 		$filename = time() . rand(0, 10000) .".jpg";
@@ -46,7 +52,9 @@ foreach((array) $json as $j){
 	}else{
 		$reg->value = $j->value;
 	}
-
 	Entity::save($reg);
 }
-die(stamp());
+$res = array();
+$res["status"] = "ok";
+$res["msg"] = stamp();
+die(json_encode($res));

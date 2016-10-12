@@ -73,7 +73,7 @@ foreach ($phenos as $pheno) {
 					}
 					break;
 					case FieldType::$TYPE_CHECK:
-					$value = $reg->value?"<span class='yes'>yes</i>":"";
+					$value = $reg->value==1?"<span class='yes'>yes</i>":"";
 					break;
 					case FieldType::$TYPE_PHOTO:
 					$value = $reg->calcPhoto();

@@ -13,8 +13,12 @@ if($_POST){
   $item->lastName = _post("lastName");
   $item->isAdmin = _post("isAdmin")?1:0;
   $item->userGroup = Entity::load("UserGroup",_post("userGroup"));
-  if(_post("password")){
-    $item->pass = _post("password");
+  if($__user->id == $item->id && _post("password")){
+    if(_post("password") == _post("password2")){
+      $item->pass = _post("password");
+    }else{
+      $alert->addError("Passwords do not match");
+    }
   }
   if(User::searchByEmail($email, $item->id)){
     $alert->addError("Email $email is already registered");
@@ -86,11 +90,17 @@ if($_POST){
             <input minlength="4" value="" id="password" name="password" type="password"  class="form-control input-md">
             <span class="help-block">Type something to change your password</span>
           </div>
+
+          <div class="form-group">
+            <label class="control-label" for="password">Type your password again </label>
+            <input minlength="4" value="" id="password2" name="password2" type="password2"  class="form-control input-md">
+            <span class="help-block"></span>
+          </div>
           <?php
         }
         ?>
         <?php
-        if($__user->isAdmin){
+        if($__user->isAdmin && $__user->id != $item->id){
           ?>
           <div class="form-group ">
             <label class=" control-label" for="usuarios">Group <span class="red">*</span></label>
