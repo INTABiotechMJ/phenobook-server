@@ -1,70 +1,243 @@
 <!doctype html>
 <html>
-  <head>
-    <meta charset="utf-8">
-    <meta http-equiv="X-UA-Compatible" content="chrome=1">
-    <title>Phenobook-server by INTABiotechMJ</title>
+<head>
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="chrome=1">
+  <title>phenobook-server by INTABiotechMJ</title>
 
-    <link rel="stylesheet" href="stylesheets/styles.css">
-    <link rel="stylesheet" href="stylesheets/github-light.css">
-    <meta name="viewport" content="width=device-width">
-    <!--[if lt IE 9]>
-    <script src="//html5shiv.googlecode.com/svn/trunk/html5.js"></script>
-    <![endif]-->
-  </head>
-  <body>
-    <div class="wrapper">
-      <header>
-        <h1>Phenobook-server</h1>
-        <p>Phenotypic data collection</p>
-
-        <p class="view"><a href="https://github.com/INTABiotechMJ/phenobook-server">View the Project on GitHub <small>INTABiotechMJ/phenobook-server</small></a></p>
-
-
+  <link rel="stylesheet" href="stylesheets/styles.css">
+  <link rel="stylesheet" href="stylesheets/github-light.css">
+  <meta name="viewport" content="width=device-width">
+  <!--[if lt IE 9]>
+  <script src="//html5shiv.googlecode.com/svn/trunk/html5.js"></script>
+  <![endif]-->
+  <style>
+  section p{
+    text-align:justify;
+  }
+  </style>
+</head>
+<body>
+  <div class="wrapper">
+    <header>
+      <h2>phenobook-server</h2>
+      <h2>phenobook-mobile</h2>
+      <p>
+        phenotypic data collection tool <br>
+        <a href="http://getphenobook.com" target="_blank">Go to Phenobook web page</a>
+      </p>
+      <p class="view"><a href="https://github.com/INTABiotechMJ/phenobook-server">View the Project on GitHub <small>INTABiotechMJ/phenobook-server</small></a></p>
+      <ul>
+        <li><a href="https://github.com/INTABiotechMJ/phenobook-server/zipball/master">Download <strong>ZIP File</strong></a></li>
+        <li><a href="https://github.com/INTABiotechMJ/phenobook-server/tarball/master">Download <strong>TAR Ball</strong></a></li>
+        <li><a href="https://github.com/INTABiotechMJ/phenobook-server">View On <strong>GitHub</strong></a></li>
+      </ul>
+    </header>
+    <section>
+      <h3>
+        Documentation content
+      </h3>
+      <p>
         <ul>
-          <li><a href="https://github.com/INTABiotechMJ/phenobook-server/zipball/master">Download <strong>ZIP File</strong></a></li>
-          <li><a href="https://github.com/INTABiotechMJ/phenobook-server/tarball/master">Download <strong>TAR Ball</strong></a></li>
-          <li><a href="https://github.com/INTABiotechMJ/phenobook-server">View On <strong>GitHub</strong></a></li>
+          <li>
+            <a href="#what-is-phenobook">What is Phenobook?</a>
+          </li>
+          <li>
+            <a href="#variables">Variables</a>
+            <ul>
+              <li>
+                <a href="variables-adding-options-to-variables">Adding options to variables</a>
+              </li>
+            </ul>
+          </li>
+          <li>
+            <a href="#creating-phenobooks">Creating Phenobooks</a>
+            <ul>
+              <li>
+                <a href="creating-phenobooks-inspect-results">Inspect results</a>
+              </li>
+              <li>
+                <a href="creating-phenobooks-load-data-manually">Load data manually</a>
+              </li>
+              <li>
+                <a href="creating-phenobooks-csv-export">CSV Export</a>
+              </li>
+              <li>
+                <a href="creating-phenobooks-edit">Edit</a>
+              </li>
+            </ul>
+          </li>
+          <li>
+            <a href="#data-report">Data Report</a>
+          </li>
+          <li>
+            <a href="#user-management">User management</a>
+            <ul>
+              <li>
+                <a href="user-management-user-groups">Users groups</a>
+              </li>
+              <li>
+                <a href="user-management-creating-users">Creating users</a>
+              </li>
+            </ul>
+          </li>
+          <li>
+            <a href="#mobile-application">Mobile application</a>
+            <ul>
+              <li>
+                <a href="#mobile-application-installing">Installing</a>
+              </li>
+              <li>
+                <a href="#mobile-application-compiling">Compiling</a>
+              </li>
+              <li>
+                <a href="#mobile-application-usage">Usage</a>
+              </li>
+              <li>
+                <a href="#mobile-application-updating">Updating</a>
+              </li>
+            </ul>
+          </li>
+          <li>
+            <a href="#deploying-your-own-phenobook-server">Deploying you own Phenobook Server</a>
+          </li>
+          <li>
+            <a href="#compiling-phenobook-mobile">Compiling Phenobook Mobile</a>
+          </li>
         </ul>
-      </header>
-      <section>
-        <h3>
-<a id="welcome-to-github-pages" class="anchor" href="#welcome-to-github-pages" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a>Welcome to GitHub Pages.</h3>
+      </p>
+      <p>
+        <h3 id="what-is-phenobook">
+          What is Phenobook?
+        </h3>
 
-<p>This automatic page generator is the easiest way to create beautiful pages for all of your projects. Author your page content here <a href="https://guides.github.com/features/mastering-markdown/">using GitHub Flavored Markdown</a>, select a template crafted by a designer, and publish. After your page is generated, you can check out the new <code>gh-pages</code> branch locally. If you’re using GitHub Desktop, simply sync your repository and you’ll see the new branch.</p>
+        Phenobook is an open source tool for field data collection.
+        It allows researchers to record observations (including photos) in an organized way.
+        Research groups can manage phenobooks by specifying their data structure and granting permissions to collaborators.
+        It consists in two main modules: A <a target="_blank" href="https://github.com/INTABiotechMJ/phenobook-server">server application</a> (in php)
+        and a <a target="_blank"  href="https://github.com/INTABiotechMJ/phenobook-mobile">mobile application</a> (in Apache Cordova).
+        <br>
+        In the server module, phenobooks are created and maintained, and in the mobile application, observations can be registered offline and syncronized later with the server.
 
-<ul>
-<li>adads</li>
-<li>ads</li>
-</ul>
+      </p>
+      <p>
+        <h3 id="variables">
+          Variables
+        </h3>
+        Each Phenobook is a spreadsheet like document and each column is represented by a variable.
+        Variables are organized in Variable Groups and has a data type associated.
+        To create variables, select the option <code>Variable Groups</code> in upper menu.
+        Click on <code>Add</code> button and insert the desired Variable Group name. After clicking <code>Save and add variables</code> you will be asked to start entering variables. Each variable must have a name and a data type, description is optional.
+        Data type can be: Text, number, check, date, option and photo. You can add as many variables as you want.
+        <p>
+          <h4 id="variables-adding-options-to-variables">Adding options to variables</h4>
+          Optional variables needs explicit specification of the options it can contain.
+          In order to add options go to <code>Variable Groups</code> -> <code>Change variables</code> and in the table, click the <code>Options</code> button next to the variable you want to specify (notice that the Option button is only visible for Option variable type)
+        </p>
+      </p>
+      <p>
+        <h3 id="creating-phenobooks">
+          Creating Phenobooks
+        </h3>
+        Once you have Variable Groups specified, you can start to add Phenobboks. Go to <code>Phenobooks</code> menu in the upper menu and click on the <code>Add</code> button. Each Phenobook has a name, the quantity of experimental units (rows) an optional description and a Variable Group. Once created, the Phenobook will be visible to all users within the same <a href="#user-management">Group</a> as the creator. The available actions for each created Phenobook are:
+        <p>
 
-<h3>
-<a id="designer-templates" class="anchor" href="#designer-templates" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a>Designer Templates</h3>
+          <h4 id="creating-phenobooks-inspect-results">
+            Inspect results
+          </h4>
+          It shows a table with the data of the selected Phenobook.
+          On the bottom you can see a summary indicating creation date, last update and the completeness percentage.
+          By clicking on each cell you can access information about the registry. It contains how the data was taken (mobile or server), when, by who, and a historical record with all modifications done to the record (cells with historical record are highlighted). It is possible to fix a value (disable modification on mobile device) by clicking in <code>Fix this value</code> button. It is also possible to change the value to a previous one by clicking on <code>use this value</code> on each historical record. Ypu can also access a variable summary by clicking on each variable name. The summary structure depends on the variable data type.
+        </p>
+        <p>
+          <h4 id="creating-phenobooks-load-data-manually">
+            Load data manually
+          </h4>
+          Observations can be registered from the Server application.
+          This table allows to copy and paste from / to MS Excel, OpenOffice Calc and similar spreadsheet software. Information is automatically saved when changed, excepting the case when cell has a format error (ie. alfabetic characters in a numberic variable). In this case the cells are highlighted in red.
+        </p>
+        <p>
+          <h4 id="creating-phenobooks-csv-export">
+            CSV export
+          </h4>
+          By clicking in this option, the Phenobook data is exported to CSV (comma separated file) and can be opened by any spreadsheet program.
+        </p>
+        <p>
+          <h4 id="creating-phenobooks-edit">
+            Edit
+          </h4>
+          Allows the edition of the Phenobook information.
+        </p>
+      </p>
+      <p>
+        <h3 id="data-report">
+          Data Report
+        </h3>
+        It is possible to merge different Phenobooks data by accessing this option in the top menu. It is required that Phenobooks have the same Variable Group in order to merge them. Once selected the variable group, you can select as many Phenobooks as you want. It is possible to show the results or download a CSV file. In the results table, you can access record information by clicking on each cell, also a summary is provided when clicking on each variable name.
+      </p>
+      <h3 id="user-management">
+        User management
+      </h3>
+      <p>
+        <h4  id="user-management-user-groups">
+          User Groups
+        </h4>
+        Users are organized in User Groups. This structure allows one single installation of Phenobook Server work for large organizations where multiple working groups work separately. Phenobooks are only visible for users that belong to the same User Group that the user that created it. In order to add or edit <code>Users Groups</code> you can access the option with the same name in the top menu.
+      </p>
+      <p>
 
-<p>We’ve crafted some handsome templates for you to use. Go ahead and click 'Continue to layouts' to browse through them. You can easily go back to edit your page before publishing. After publishing your page, you can revisit the page generator and switch to another theme. Your Page content will be preserved.</p>
+        <h4 id="user-management-creating-users">
+          Creating users
+        </h4>
+        When adding new users, besides personal and access information, it is required to select a User Group, and check whether the user is administrator. Administrator users are able to: Manage other users, user groups and variable groups.
+      </p>
+    </p>
+    <p>
+      <h3 id="mobile-application">
+        Mobile application
+      </h3>
+      <p>
+        <h4 id="mobile-application-installing">
+          Installing
+        </h4>
+        For Android devices, you can download the official application from Google Play Store <a href="https://play.google.com/store/apps/details?id=manolo.field" target="_blank">here</a>, or download the APK file <a href="http://getphenobook.com/app.apk" target="_blank">here</a>.
+        For Iphone users, you can go to the app store link <a href="" target="_blank">here</a>.
+        If you are using a custom server, it is important to indicate its address in the <code>settings</code> button. Otherwise Phenobook Mobile will try to connect to a different server.
+      </p>
+      <p>
+        <h4 id="mobile-application-compiling">
+          Compiling
+        </h4>
+        Mobile application is developed in Apache Cordova, compiling for plenty devices can be done by following <a href="https://cordova.apache.org/docs/en/latest/reference/cordova-cli/#cordova-build-command" target="_blank">this</a> documentation. Apache Cordova and its dependencies as required for development of the mobile application. Installation is described <a href="https://cordova.apache.org/#getstarted" target="_blank">here</a>.
+      </p>
+      <p>
+        <h4 id="mobile-application-usage">
+          Usage
+        </h4>
+        Phenobook Mobile is created to save observations offline and syncronizing when a connection is available. First time you open the application, it is required to make an initial update, for this you need to enter a valid username and password. Existing Phenobooks will be downloaded and accessible on the application once the user log in. You can take observations by simply selecting the Phenobook name and clicking <code>Load data</code> button. You can change the variable and experimental unit from the top selectors and put the value in the bottom field. The value is saved automatically if the variable or experimental unit is changed. If you want to see a results table, you can press the <code>See table</code> button.
 
-<h3>
-<a id="creating-pages-manually" class="anchor" href="#creating-pages-manually" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a>Creating pages manually</h3>
+      </p>
+      <p>
+        <h4 id="mobile-application-updating">
+          Updating
+        </h4>
+        It is required to enter log in credentiales before updating. By clicking the <code>Update</code> button in the main screen, records locally saved are sent to the server and records taken by others are downloaded to the application.
+      </p>
+    </p>
+    <p>
+      <h3 id="deploying-your-own-phenobook-server">
+        Deploying your own Phenobook Server
+      </h3>
+      You need a server that runs a web server (we are using Apache), MySQL and PHP 5.
+      Once you have your database created, put your credentials in the configuration file (files/php/config/config.php). An initial database dump is provided in database.sql (remember to delete this file before uploading to the server). All initial configuration is set here, as well as an admin user (login: admin@admin.com and password: admin) and a default user group. It is important to change the main administrator user password.
+    </p>
 
-<p>If you prefer to not use the automatic generator, push a branch named <code>gh-pages</code> to your repository to create a page manually. In addition to supporting regular HTML content, GitHub Pages support Jekyll, a simple, blog aware static site generator. Jekyll makes it easy to create site-wide headers and footers without having to copy them across every page. It also offers intelligent blog support and other advanced templating features.
-great</p>
+  </section>
+  <footer>
+    <p>This project is maintained by <a href="https://github.com/INTABiotechMJ">INTABiotechMJ</a></p>
+  </footer>
+</div>
+<script src="javascripts/scale.fix.js"></script>
 
-<h3>
-<a id="authors-and-contributors" class="anchor" href="#authors-and-contributors" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a>Authors and Contributors</h3>
-
-<p>You can @mention a GitHub username to generate a link to their profile. The resulting <code>&lt;a&gt;</code> element will link to the contributor’s GitHub Profile. For example: In 2007, Chris Wanstrath (<a href="https://github.com/defunkt" class="user-mention">@defunkt</a>), PJ Hyett (<a href="https://github.com/pjhyett" class="user-mention">@pjhyett</a>), and Tom Preston-Werner (<a href="https://github.com/mojombo" class="user-mention">@mojombo</a>) founded GitHub.</p>
-
-<h3>
-<a id="support-or-contact" class="anchor" href="#support-or-contact" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a>Support or Contact</h3>
-
-<p>Having trouble with Pages? Check out our <a href="https://help.github.com/pages">documentation</a> or <a href="https://github.com/contact">contact support</a> and we’ll help you sort it out.</p>
-      </section>
-      <footer>
-        <p>This project is maintained by <a href="https://github.com/INTABiotechMJ">INTABiotechMJ</a></p>
-        <p><small>Hosted on GitHub Pages &mdash; Theme by <a href="https://github.com/orderedlist">orderedlist</a></small></p>
-      </footer>
-    </div>
-    <script src="javascripts/scale.fix.js"></script>
-    
-  </body>
+</body>
 </html>
