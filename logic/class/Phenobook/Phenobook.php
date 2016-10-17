@@ -9,6 +9,10 @@ class Phenobook extends Object{
 	*/
 	var $experimental_units_number;
 	/**
+	*@type VARCHAR(300)
+	*/
+	var $experimental_unit_name;
+	/**
 	*@type TINYINT DEFAULT 1
 	*/
 	var $visible;
@@ -24,10 +28,6 @@ class Phenobook extends Object{
 	*@class UserGroup
 	*/
 	var $userGroup;
-	/**
-	*@class VariableGroup
-	*/
-	var $variableGroup;
 
 	function __toString(){
 		return $this->name;
@@ -44,9 +44,32 @@ class Phenobook extends Object{
 		return implode(",", $selectedUsers);
 	}
 
-	function findExperimentalUnitNumber($num){
-		$eu = Entity::search("ExperimentalUnit", "phenobook = '$this->id' AND active AND number = '$num'");
-		return $eu;
+	function searchInformativeVariables(){
+		$pv = Entity::listMe("PhenobookVariable","active AND phenobook = '$this->id'");
+		$ret = array();
+		foreach ((array)$vars as $pv) {
+			if($pv->variable->isInformative){
+				$ret[] = $pv->variable;
+			}
+		}
+		return $ret;
+	}
+
+	function searchVariables($fieldType = false){
+		$pv = Entity::listMe("PhenobookVariable","active AND phenobook = '$this->id'");
+		$ret = array();
+		foreach ((array)$vars as $pv) {
+			if($fieldType){
+				if($pv->variable->fieldType != $fieldType){
+					continue;
+				}
+			}
+			if($pv->variable->isInformative){
+				continue;
+			}
+			$ret[] = $pv->variable;
+		}
+		return $ret;
 	}
 
 }

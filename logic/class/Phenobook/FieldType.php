@@ -16,15 +16,15 @@ class FieldType extends Object{
 	/**
 	*@ignore
 	*/
-	static $TYPE_OPTION = 2;
+	static $TYPE_CATEGORICAL = 2;
 	/**
 	*@ignore
 	*/
-	static $TYPE_CHECK = 3;
+	static $TYPE_BOOLEAN = 3;
 	/**
 	*@ignore
 	*/
-	static $TYPE_NUMBER = 4;
+	static $TYPE_NUERICAL = 4;
 	/**
 	*@ignore
 	*/
@@ -80,12 +80,12 @@ class FieldType extends Object{
 			return "<input  type='text' name='$name' id='$name' value='$value' class='form-control input-lg $req'>";
 			break;
 			case FieldType::$TYPE_OPTION:
-			$opciones = Entity::listMe("FieldOption","active AND variable = '$variable->id' ORDER BY defaultOption DESC");
+			$opciones = Entity::listMe("Category","active AND variable = '$variable->id' ORDER BY defaultOption DESC");
 			$opciones = obj2arr($opciones, false, false, true);
 			return html_select($name, $value, $opciones, "Sel.", "input-lg");
 			break;
 			case FieldType::$TYPE_OPTION_MULTIPLE:
-			$opciones = Entity::listMe("FieldOption","active AND variable = '$variable->id' ORDER BY defaultOption DESC");
+			$opciones = Entity::listMe("Category","active AND variable = '$variable->id' ORDER BY defaultOption DESC");
 			$opciones = obj2arr($opciones);
 			return html_select($name."[]", $value, $opciones, "Sel.", "multiple", "multiple");
 			break;

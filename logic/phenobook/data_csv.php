@@ -32,7 +32,7 @@ foreach ($phenos as $pheno) {
 			if($reg){
 				switch ($v->fieldType->type) {
 					case FieldType::$TYPE_OPTION:
-					$option = Entity::search("FieldOption","variable = '$v->id' AND id = '$reg->value'");
+					$option = Entity::search("Category","variable = '$v->id' AND id = '$reg->value'");
 					if($option){
 						$row[$v->name] = $option->name;
 					}else{

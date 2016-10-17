@@ -8,6 +8,9 @@ $informative = Entity::search("FieldType","active AND type = '" . FieldType::$TY
 $photo = Entity::search("FieldType","active AND type = '" . FieldType::$TYPE_PHOTO . "'");
 
 $variables = Entity::listMe("Variable","active AND fieldType != '$photo->id' AND variableGroup = '$variableGroup->id' ORDER BY field(fieldType, ".$informative->id.") DESC");
+if(empty($variables)){
+	redirect("index.php?e=Selected variable group has no variables yet");
+}
 $data = array();
 for ($i=1; $i <= $phenobook->experimental_units_number; $i++) {
 	$row = array();
@@ -16,7 +19,7 @@ for ($i=1; $i <= $phenobook->experimental_units_number; $i++) {
 		if($reg){
 			switch ($v->fieldType->type) {
 				case FieldType::$TYPE_OPTION:
-				$option = Entity::search("FieldOption","variable = '$v->id' AND id = '$reg->value'");
+				$option = Entity::search("Category","variable = '$v->id' AND id = '$reg->value'");
 				if($option){
 					$row["$v"] = $option->name;
 				}

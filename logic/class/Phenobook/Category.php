@@ -1,5 +1,5 @@
 <?php
-class FieldOption extends Object{
+class Category extends Object{
 
 	/**
 	*@type VARCHAR(100)

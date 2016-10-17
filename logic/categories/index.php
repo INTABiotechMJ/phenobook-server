@@ -3,7 +3,7 @@ $admin = true;
 require "../../files/php/config/require.php";
 $id = _get("id");
 $variable = Entity::load("Variable", $id);
-$items = Entity::listMe("FieldOption","active AND Variable = '$id' ORDER BY id DESC");
+$items = Entity::listMe("Category","active AND Variable = '$id' ORDER BY id DESC");
 $data = array();
 $cont = 1;
 foreach ($items as $key => $value) {
@@ -22,7 +22,7 @@ foreach ($items as $key => $value) {
 echo "<div class='row'>";
 
 echo "<div class='col-md-8 col-xs-6'>";
-echo "<legend>Phenobooks</legend>";
+echo "<legend>Categories for variable <i>$variable</i></legend>";
 echo "</div>";
 
 echo "<div class='col-md-1'>";
@@ -31,12 +31,10 @@ echo "</div>";
 
 echo "<div class='col-md-4'>";
 echo "<a href='".__URL."logic/variables/index.php?id=".$variable->id."' class='btn btn-default'>Back to variable</a> ";
-echo "<a href='add.php?id=".$id."' class='btn  btn-primary'>Add option</a>";
+echo "<a href='add.php?id=".$id."' class='btn  btn-primary'>Add category</a>";
 echo "</div>";
 
 echo "</div>";
-
-echo "<legend>Options of variable <span class='object-name'>$variable</span></legend>";
 
 echo genTable($data);
 require __ROOT."files/php/template/footer.php";

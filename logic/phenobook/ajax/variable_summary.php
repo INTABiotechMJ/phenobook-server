@@ -46,6 +46,26 @@ if($variable->fieldType->isNumeric()){
   $out .= "<b>Mean: </b>".number_format(array_sum($data)/count($data),2)."<br/>";
 }
 
+if($variable->fieldType->isDate()){
+  foreach ((array)$regs as $r) {
+    if(!is_null($r)){
+      $data[] = $r->value;
+    }
+  }
+
+  usort($data, function($a, $b) {
+    $dateTimestamp1 = strtotime($a);
+    $dateTimestamp2 = strtotime($b);
+    return $dateTimestamp1 < $dateTimestamp2 ? -1: 1;
+  });
+
+  $out .= "<h5>Date variable</h5>";
+  $out .= "<b>Name: </b>$variable"."<br/>";
+  $out .= "<b>Count: </b>".count($data)."<br/>";
+  $out .= "<b>Min date: </b>".$data[0]."<br/>";
+  $out .= "<b>Max date: </b>".$data[count($data) - 1]."<br/>";
+}
+
 if($variable->fieldType->isCheck()){
   $count = 0;
   foreach ((array)$regs as $r) {
@@ -97,7 +117,7 @@ if($variable->fieldType->isPhoto()){
 
 
 if($variable->fieldType->isOption()){
-  $opts = Entity::listMe("FieldOption","active AND variable = '$variable->id'");
+  $opts = Entity::listMe("Category","active AND variable = '$variable->id'");
   foreach ((array)$regs as $r) {
     if(!is_null($r)){
       $data[] = $r->value;

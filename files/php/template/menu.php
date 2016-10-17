@@ -8,14 +8,14 @@
         <span class="icon-bar"></span>
         <span class="icon-bar"></span>
       </button>
-      <a class="navbar-brand" href="<?= __URL ?>logic/phenobook/">Phenobook</a>
+
     </div>
     <!-- Collect the nav links, forms, and other content for toggling -->
     <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
       <ul class="nav navbar-nav">
         <li><a href="<?= __URL ?>logic/phenobook/index.php">Phenobooks</a></li>
         <li><a href="<?= __URL ?>logic/phenobook/data_report.php">Data Report</a></li>
-        <li><a href="<?= __URL ?>logic/variableGroups">Variable Groups</a></li>
+        <li><a href="<?= __URL ?>logic/variables">Variables</a></li>
         <?php
         if($__user->isAdmin)
         {
@@ -29,7 +29,7 @@
       </ul>
       <ul class="nav navbar-nav navbar-right">
         <li>
-          <a href="<?= __URL."logic/users/edit.php?id=$__user->id"?>"><?= $__user; ?> | 
+          <a href="<?= __URL."logic/users/edit.php?id=$__user->id"?>"><?= $__user; ?> |
             <?= $__user->userGroup; ?>
           </a>
         </li>

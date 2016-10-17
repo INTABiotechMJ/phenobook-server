@@ -37,24 +37,24 @@
 	echo "<hr>";
 	echo "INSERT INTO FieldType (name, type ) VALUES ('Text','1'); <br/>";
 	echo "<hr>";
-	echo "INSERT INTO FieldType (name, type ) VALUES ('Option','2'); <br/>";
+	echo "INSERT INTO FieldType (name, type ) VALUES ('Categorical','2'); <br/>";
 	echo "<hr>";
-	echo "INSERT INTO FieldType (name, type ) VALUES ('Check','3'); <br/>";
+	echo "INSERT INTO FieldType (name, type ) VALUES ('Boolean','3'); <br/>";
 	echo "<hr>";
-	echo "INSERT INTO FieldType (name, type ) VALUES ('Number','4'); <br/>";
+	echo "INSERT INTO FieldType (name, type ) VALUES ('Numerical','4'); <br/>";
 	echo "<hr>";
 	echo "INSERT INTO FieldType (name, type ) VALUES ('Date','5'); <br/>";
 	echo "<hr>";
 	echo "INSERT INTO FieldType (name, type ) VALUES ('Photo','6'); <br/>";
 	echo "<hr>";
-	echo "INSERT INTO FieldType (name, type ) VALUES ('Date Time','7'); <br/>";
-	echo "<hr>";
-	echo "INSERT INTO FieldType (name, type ) VALUES ('Time','8'); <br/>";
-	echo "<hr>";
-	echo "INSERT INTO FieldType (name, type ) VALUES ('Informative','12'); <br/>";
-	echo "<hr>";
+	//echo "INSERT INTO FieldType (name, type ) VALUES ('Date Time','7'); <br/>";
+	//echo "<hr>";
+	//echo "INSERT INTO FieldType (name, type ) VALUES ('Time','8'); <br/>";
+	//echo "<hr>";
+	//echo "INSERT INTO FieldType (name, type ) VALUES ('Informative','12'); <br/>";
+	//echo "<hr>";
 	//echo "INSERT INTO FieldType (name, type ) VALUES ('Audio','11'); <br/>";
-	echo "<hr>";
+	//echo "<hr>";
 
 
 

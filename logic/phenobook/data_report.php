@@ -103,7 +103,7 @@ th{
 			Click on a cell to inspect information about each registry, replace for previous values or fix cells <br>
 		</li>
 		<li>
-			Fixed values <i class='glyphicon glyphicon-pushpin'></i> (not allowed to be modified on mobile)
+			Fixed values are marked with <i class='glyphicon glyphicon-pushpin'></i> (not allowed to be modified on mobile)
 		</li>
 		<li>
 			Click on the variable name to see a summary

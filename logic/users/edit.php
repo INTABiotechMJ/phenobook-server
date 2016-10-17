@@ -11,8 +11,10 @@ if($_POST){
   $item->email = $email;
   $item->name = _post("name");
   $item->lastName = _post("lastName");
-  $item->isAdmin = _post("isAdmin")?1:0;
-  $item->userGroup = Entity::load("UserGroup",_post("userGroup"));
+  if($__user->isAdmin){
+    $item->isAdmin = _post("isAdmin")?1:0;
+    $item->userGroup = Entity::load("UserGroup",_post("userGroup"));
+  }
   if($__user->id == $item->id && _post("password")){
     if(_post("password") == _post("password2")){
       $item->pass = _post("password");
@@ -100,7 +102,7 @@ if($_POST){
         }
         ?>
         <?php
-        if($__user->isAdmin && $__user->id != $item->id){
+        if($__user->isAdmin){
           ?>
           <div class="form-group ">
             <label class=" control-label" for="usuarios">Group <span class="red">*</span></label>

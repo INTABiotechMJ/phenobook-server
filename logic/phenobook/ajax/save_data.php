@@ -28,7 +28,7 @@ foreach ($data->change as $value) {
   $registry->stamp = stamp();
   $registry->status = 1;
   if($variable->fieldType->isOption()){
-    $option = Entity::search("FieldOption","variable = '$variable->id' AND name = '$new_value'");
+    $option = Entity::search("Category","variable = '$variable->id' AND name = '$new_value'");
     $registry->value = $option->id;
   }else{
     $registry->value = $new_value;

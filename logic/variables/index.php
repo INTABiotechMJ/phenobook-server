@@ -3,12 +3,11 @@ require "../../files/php/config/require.php";
 $classNamePlural = "Variables";
 $className = "Variable";
 $classNameShow = "Variable";
-$grupo = Entity::load("VariableGroup",_request("id"));
 ?>
 <div class="row">
 	<div class="col-xs-12">
 		<?php
-		$items = Entity::listMe($className,"active AND variableGroup = '$grupo->id'");
+		$items = Entity::listMe($className,"active AND userGroup = '".$__user->userGroup->id."'");
 		$data = array();
 		$cont = 1;
 		foreach ($items as $key => $value) {
@@ -16,11 +15,11 @@ $grupo = Entity::load("VariableGroup",_request("id"));
 			$item["Name"] = $value;
 			$item["Type"] = $value->fieldType;
 			$item["Description"] = $value->description;
-			$img_url = "No";
-			$item["Actions"] = "<a href='edit.php?idgv=$grupo->id&id=$value->id' class='btn btn-default btn-sm'>Edit</a> ";
-			$item["Actions"] .= " <a data-href='delete.php?idgv=$grupo->id&id=$value->id' class='btn btn-default btn-sm ask' data-what='Are you sure?'>Delete</a>";
+			$item["Is informative"] = $value->isInformative?"yes":"no";
+			$item["Actions"] = "<a href='edit.php?id=$value->id' class='btn btn-default btn-sm'>Edit</a> ";
+			$item["Actions"] .= " <a data-href='delete.php?id=$value->id' class='btn btn-default btn-sm ask' data-what='Are you sure?'>Delete</a>";
 			if($value->fieldType->isOption())	{
-				$item["Actions"] .= " <a href='../options/index.php?id=$value->id' class='btn btn-primary btn-sm'>Options</a> ";
+				$item["Actions"] .= " <a href='../categories/index.php?id=$value->id' class='btn btn-primary btn-sm'>Categories</a> ";
 			}
 			$data[] = $item;
 		}
@@ -28,16 +27,15 @@ $grupo = Entity::load("VariableGroup",_request("id"));
 		echo "<div class='row'>";
 
 		echo "<div class='col-md-8 col-xs-6'>";
-		echo "<legend>$classNamePlural - Group: <i>$grupo</i></legend>";
+		echo "<legend>$classNamePlural</legend>";
 		echo "</div>";
 
 		echo "<div class='col-md-3'>";
 
 		echo "</div>";
 
-
 		echo "<div class='col-md-1'>";
-		echo "<a href='add.php?id=$grupo->id' class='btn btn-primary'>Add</a>";
+		echo "<a href='add.php' class='btn btn-primary'>Add</a>";
 		echo "</div>";
 
 		echo "</div>";

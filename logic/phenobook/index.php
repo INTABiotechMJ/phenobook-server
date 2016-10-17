@@ -3,7 +3,6 @@ require "../../files/php/config/require.php";
 
 $items = Entity::listMe("Phenobook","active AND userGroup = '" . $__user->userGroup->id . "' ORDER BY id DESC");
 
-
 $data = array();
 $cont = 1;
 foreach ($items as $key => $value) {
@@ -13,12 +12,11 @@ foreach ($items as $key => $value) {
 	$item["Id"] = $value->id;
 	$item["Name"] = $value;
 	$item["Group"] = $value->userGroup;
-	$item["Variable Group"] = $value->variableGroup;
 	$item["Status"] = $value->visible? "In course" : "Ended";
 
 	$item["Actions"] = "<div class='nowrap'><a href='pheno_report.php?id=$value->id' class='btn btn-default btn-sm'>Inspect results</a> ";
-	$item["Actions"] .= "<a href='load.php?id=$value->id' class='btn btn-default btn-sm'>Load manually</a> ";
-	$item["Actions"] .= "<a href='".__URL."logic/phenobook/data_csv.php?pheno=$value->id' class='btn btn-default btn-sm'>CSV</a> ";
+	$item["Actions"] .= "<a href='load.php?id=$value->id' class='btn btn-default btn-sm'>Load data manually</a> ";
+	$item["Actions"] .= "<a href='".__URL."logic/phenobook/data_csv.php?pheno=$value->id' class='btn btn-default btn-sm'>CSV export</a> ";
 	if($__user->isAdmin){
 		$item["Actions"] .= "<a href='edit.php?id=$value->id' class='btn btn-default btn-sm'>Edit</a> ";
 		if($value->visible){

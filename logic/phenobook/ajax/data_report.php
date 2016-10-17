@@ -17,6 +17,9 @@ if(!empty(_request("phenobook"))){
 	$informative = Entity::search("FieldType","active AND type = '" . FieldType::$TYPE_INFORMATIVE . "'");
 	$variables = Entity::listMe("Variable","active AND variableGroup = '$variableGroup->id' ORDER BY field(fieldType, ".$informative->id.") DESC");
 }
+if(empty($variables)){
+	die(eAlert("Selected variable group has no variables yet"));
+}
 $data = array();
 
 $header = false;
@@ -67,7 +70,7 @@ foreach ($phenos as $pheno) {
 				$has_val = "has_val";
 				switch ($v->fieldType->type) {
 					case FieldType::$TYPE_OPTION:
-					$option = Entity::search("FieldOption","variable = '$v->id' AND id = '$reg->value'");
+					$option = Entity::search("Category","variable = '$v->id' AND id = '$reg->value'");
 					if($option){
 						$value = $option->name;
 					}

@@ -7,15 +7,14 @@ $id = _request("id");
 $item = Entity::search($className,"id = '$id' AND active");
 
 if($_POST){
-	$idgv = _post("idgv");
 	Entity::begin();
 	$item->name = _post("name");
 	$item->description = _post("description");
-	//$item->fieldType = Entity::load("FieldType",_post("fieldType"));
+	$item->isInformative = _post("isInformative")?1:0;
 	if(!$alert->hasError){
 		Entity::update($item);
 		Entity::commit();
-		redirect("index.php?id=$idgv&m=$classNameShow edited");
+		redirect("index.php?m=$classNameShow edited");
 	}
 }
 ?>
@@ -26,11 +25,11 @@ if($_POST){
 		<div class='row'>
 
 			<div class='col-md-11'>
-				<legend><?= "Edit " . $classNameShow ?></legend>
+				<legend><?= "Edit $classNameShow <i>$item</i>"?></legend>
 			</div>
 
 			<div class='col-md-1'>
-				<a href='add.php' class='btn btn-default'>Add</a>
+				<a href='index.php' class='btn btn-default'>Existents</a>
 			</div>
 
 		</div>
@@ -38,7 +37,6 @@ if($_POST){
 			<div class="col-md-6 col-md-offset-3">
 				<form action="<?= $_SERVER["PHP_SELF"] ?>" method="POST" class="valid" autocomplete="off">
 					<input type="hidden" name="id" value="<?= _request("id") ?>">
-					<input type="hidden" name="idgv" value="<?= _request("idgv") ?>">
 					<div class="form-group">
 						<label for="name">Name <span class="red">*</span></label>
 						<input name="name" type="text" class="form-control required" id="name" value="<?= $item->name ?>" placeholder="Name">
@@ -52,7 +50,14 @@ if($_POST){
 						<?php
 						$tiposCampo = obj2arr(Entity::listMe("FieldType","active"));
 						printSelect("fieldType", $item->fieldType->id, $tiposCampo, null, "select2 disabled tiposCampo","disabled='disabled'" );
-						 ?>
+						?>
+					</div>
+					<div class="form-group">
+						<?php
+						echo check("isInformative",$item->isInformative);
+						?>
+						<label class="control-label" for="isInformative">Is informative</label>
+						<span class="help-block">Informative variables are pre-filled in Phenobook and serve as a visual guide to the user</span>
 					</div>
 					<div class="form-group">
 						<input name="save" type="submit" class="btn btn-primary" value="Save">

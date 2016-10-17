@@ -18,7 +18,7 @@ if(!$user){
 $data = _post("data");
 $json = json_decode($data);
 foreach((array) $json as $j){
-	$oldRegs = Entity::listMe("Registry", "active AND experimental_unit_number = '$j->experimental_unit_number' AND variable = '$j->variable'");
+	$oldRegs = Entity::listMe("Registry", "active AND phenobook = '$j->phenobook' AND experimental_unit_number = '$j->experimental_unit_number' AND variable = '$j->variable'");
 	foreach((array)$oldRegs as $oldReg){
 		$oldReg->status = '0';
 		Entity::update($oldReg);

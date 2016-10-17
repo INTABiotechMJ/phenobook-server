@@ -17,7 +17,9 @@ if($_POST){
   $item->lang = _post("lang");
   $item->lastName = _post("lastName");
   $item->pass = $password;
-  $item->isAdmin = _post("isAdmin");
+  $isAdmin = _post("isAdmin");
+  $item->isAdmin = !empty($isAdmin)?1:0;
+
   $item->userGroup = Entity::load("UserGroup",_post("userGroup"));
 
 
@@ -92,7 +94,7 @@ function randomPassword($length) {
 
         <div class="form-group">
           <label class="control-label" for="password">Password <span class="red">*</span> </label>
-          <input minlength="4" maxlength="4" value="<?= $password;?>" id="password" name="password" value="<?= _post("password"); ?>" type="text"  class="form-control input-md required">
+          <input minlength="4" value="<?= $password;?>" id="password" name="password" value="<?= _post("password"); ?>" type="text"  class="form-control input-md required">
         </div>
 
         <div class="form-group">

@@ -2,12 +2,12 @@
 require "../../files/php/config/require.php";
 $id = _get("id");
 $phenobook = Entity::search("Phenobook","id = '$id' AND active");
-$variableGroup = Entity::search("VariableGroup","active AND id = '" . $phenobook->variableGroup->id . "'");
 
 $informative = Entity::search("FieldType","active AND type = '" . FieldType::$TYPE_INFORMATIVE . "'");
 $check = Entity::search("FieldType","active AND type = '" . FieldType::$TYPE_CHECK . "'");
 
-$variables = Entity::listMe("Variable","active AND variableGroup = '$variableGroup->id' ORDER BY field(fieldType, ".$informative->id.") DESC");
+$variables = array_merge($phenobook->searchInformativeVariables(),$phenobook->searchVariables());
+
 $data = array();
 
 //data
@@ -19,12 +19,12 @@ if($lastReg){
 	$last_update = "Never";
 }
 
-$check_variables = Entity::listMe("Variable","active AND variableGroup = '$variableGroup->id' AND fieldType = '$check->id'");
-$check_variables_count = count($check_variables);
-$variables_to_fill = Entity::listMe("Variable","active AND variableGroup = '$variableGroup->id' AND fieldType != '$check->id' AND fieldType != '$informative->id'");
-$informative_variables_count = count(Entity::listMe("Variable","active AND variableGroup = '$variableGroup->id' AND fieldType = '$informative->id'"));
+
+$variables_boolean = $phenobook->searchVariables(FieldType::$TYPE_BOOLEAN);
+$variables_to_fill = $phenobook->searchVariables();
+$informative_variables_count = count($phenobook->searchInformativeVariables());
 $informative_cells_count = $phenobook->experimental_units_number * $informative_variables_count;
-$variable_count = count($variables_to_fill);
+$variable_count = count($variables_to_fill) - count($variables_boolean);
 $all_cell_count = count($variables) * $phenobook->experimental_units_number;
 $cell_count = count($variables_to_fill) * $phenobook->experimental_units_number;
 
@@ -41,7 +41,6 @@ foreach ((array)$reg as $value) {
 	$completed_cells++;
 }
 
-$variables_to_fill_no_check = Entity::listMe("Variable","active AND variableGroup = '$variableGroup->id' AND fieldType != '$informative->id' AND fieldType != '$check->id'");
 $completed_percentage = number_format($completed_cells * 100 / (count($variables_to_fill_no_check) * $phenobook->experimental_units_number),2);
 ?>
 <style media="screen">
@@ -96,7 +95,7 @@ th{
 			Click on a cell to inspect information about each registry, replace for previous values or fix cells <br>
 		</li>
 		<li>
-			Fixed values <i class='glyphicon glyphicon-pushpin'></i> (not allowed to be modified on mobile)
+			Fixed values are marked with <i class='glyphicon glyphicon-pushpin'></i> (not allowed to be modified on mobile)
 		</li>
 		<li>
 			Click on the variable name to see a summary

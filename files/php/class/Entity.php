@@ -49,14 +49,13 @@ class Entity{
 				if(self::_hasSaveIgnore($className, $var)){
 					continue;
 				}
-				if($object->{$var} == null){
+				if($object->{$var} === null){
 					continue;
 				}
 				$attrs[] = $var;
 				$_attrs[] = ":$var";
 				$values[":$var"] = $fakeObject->{$var};
 			}
-
 
 			$fields = implode($attrs, ",");
 			$_fields = implode($_attrs, ",");

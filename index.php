@@ -40,6 +40,11 @@ if(_get("e")){
   background-color: #fff;
   border: 1px solid rgba(0,0,0,0.1);
 }
+.img-logo{
+  width: 80px;
+  margin-left: 10px;
+  margin-top: 10px;
+}
 </style>
 <div class="container">
   <div class="row">
@@ -56,12 +61,16 @@ if(_get("e")){
         </span>
 
       </form>
+      <div class="text-center">
+        <img class="img-logo" src="assets/img/inta.png" alt="" />
+        <img class="img-logo" src="assets/img/conicet.png" alt="" />
+      </div>
     </div>
     <div class="col-md-8">
       <h4>
         What is Phenobook?
       </h4>
-      It is an open source software for phenotypic data collection. It consist
+      It is an open source software for phenotypic data collection. It consists
       on a server software and a mobile application.
       <p>
         It can be easily implemented in collaborative research and development projects involving data collecting and forward analyses. Adopting Phenobook is expected to improve the involved processes by minimizing input errors, resulting in higher quality and reliability of the research outcomes.
@@ -70,7 +79,7 @@ if(_get("e")){
       <h4>
         Getting started
       </h4>
-      You can check <a href="#" target="_blank">online doncumentation on github</a>.
+      You can check <a href="https://intabiotechmj.github.io/phenobook-server/" target="_blank">online doncumentation on github</a>.
       <hr>
       <h4>
         Get phenobook for mobile
@@ -79,7 +88,7 @@ if(_get("e")){
       <a href="https://play.google.com/store/apps/details?id=manolo.field" target="_blank"><img class="store-badge" src="<?= __URL ?>assets/img/app-store-badge.png" alt="Download on the Apple Store" /></a> <br>
       <p>
         You can also download the
-        <a href="https://play.google.com/store/apps/details?id=manolo.field" target="_blank">APK file</a> <br>
+        <a href="<?= __URL ?>app.apk" target="_blank">APK file</a> <br>
       </p>
       <hr>
       <h4>

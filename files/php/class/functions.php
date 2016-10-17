@@ -545,6 +545,10 @@ function paramError($msg = null){
   redirect(__URL."?e=Error de parámetros&m=$msg");
 }
 
+function eAlert($msg){
+  return '<div class="alert alert-danger alert-dismissable">'.$msg.'<button type="button" class="close" data-dismiss="alert" aria-hidden="true">×</button></div>';
+}
+
 
 
 

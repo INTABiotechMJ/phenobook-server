@@ -4,23 +4,23 @@ $classNamePlural = "Variables";
 $className = "Variable";
 $classNameShow = "Variable";
 
-$variableGroup = Entity::load("VariableGroup",_request("id"));
 if($_POST){
 	Entity::begin();
 	$item = new Variable();
 	$item->name = _post("name");
+	$item->isInformative = _post("isInformative")?1:0;
 	$item->description = _post("description");
-	$item->variableGroup = $variableGroup;
+	$item->userGroup = $__user->userGroup;
 	$item->fieldType = Entity::load("FieldType",_post("fieldType"));
 
 	if(!$alert->hasError){
 		Entity::save($item);
 		Entity::commit();
 		if(_post("save_add")){
-			redirect("add.php?id=$variableGroup->id&m=$classNameShow added");
+			redirect("add.php?m=$classNameShow added");
 		}
 		if(_post("save_back")){
-			redirect("index.php?id=$variableGroup->id&m=$classNameShow added");
+			redirect("index.php?m=$classNameShow added");
 		}
 	}
 }
@@ -32,7 +32,7 @@ if($_POST){
 		<div class='row'>
 
 			<div class='col-md-8 col-xs-6'>
-				<legend>Add <i>variable</i> to group <?= "<i>$variableGroup</i> " ?> </legend>
+				<legend>Add <i>variable</i></legend>
 			</div>
 			<div class='col-md-3'>
 
@@ -63,6 +63,11 @@ if($_POST){
 						?>
 					</div>
 					<div class="form-group">
+						<input type="checkbox" name="isInformative" value="1" id="isInformative">
+						<label class="control-label" for="isInformative">Is informative</label>
+						<span class="help-block">Informative variables are pre-filled in Phenobook and serve as a visual guide to the user</span>
+					</div>
+					<div class="form-group">
 						<input name="save_add" type="submit" class="btn btn-primary" value="Save and add another">
 						<input name="save_back" type="submit" class="btn btn-primary" value="Save and finish">
 						<a href="index.php?id=<?= $variableGroup->id ?>" class="btn btn-default">Discard this and finish</a>
@@ -77,7 +82,7 @@ if($_POST){
 require __ROOT . "files/php/template/footer.php";
 ?>
 <script type="text/javascript">
-	$("#fieldType").change(function(){
+$("#fieldType").change(function(){
 
-	});
+});
 </script>

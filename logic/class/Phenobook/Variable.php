@@ -1,17 +1,9 @@
 <?php
 class Variable extends Object{
 	/**
-	*@class VariableGroup
-	*/
-	var $variableGroup;
-	/**
 	*@type VARCHAR(200)
 	*/
 	var $name;
-	/**
-	*@type VARCHAR(300)
-	*/
-	var $defaultValue;
 	/**
 	*@type TINYINT DEFAULT 0
 	*/
@@ -21,9 +13,17 @@ class Variable extends Object{
 	*/
 	var $description;
 	/**
+	*@class UserGroup
+	*/
+	var $userGroup;
+	/**
 	*@class FieldType
 	*/
 	var $fieldType;
+	/**
+	*@type TINYINT DEFAULT 0
+	*/
+	var $isInformative;
 
 	function formatValue(){
 		if($this->fieldType->isCheck()){
@@ -56,7 +56,7 @@ class Variable extends Object{
 		return $name;
 	}
 	function getOptions(){
-		return Entity::listMe("FieldOption","active AND Variable = '$this->id' ORDER BY id DESC");
+		return Entity::listMe("Category","active AND Variable = '$this->id' ORDER BY id DESC");
 	}
 
 }
