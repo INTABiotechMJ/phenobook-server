@@ -54,16 +54,16 @@
             <a href="#creating-phenobooks">Creating Phenobooks</a>
             <ul>
               <li>
-                <a href="creating-phenobooks-inspect-results">Inspect results</a>
+                <a href="#creating-phenobooks-inspect-results">Inspect results</a>
               </li>
               <li>
-                <a href="creating-phenobooks-load-data-manually">Load data manually</a>
+                <a href="#creating-phenobooks-load-data-manually">Importing from Excel - Load data manually</a>
               </li>
               <li>
-                <a href="creating-phenobooks-csv-export">CSV Export</a>
+                <a href="#creating-phenobooks-csv-export">CSV Export</a>
               </li>
               <li>
-                <a href="creating-phenobooks-edit">Edit</a>
+                <a href="#creating-phenobooks-edit">Edit</a>
               </li>
             </ul>
           </li>
@@ -97,6 +97,9 @@
                 <a href="#mobile-application-updating">Updating</a>
               </li>
             </ul>
+          </li>
+          <li>
+            <a href="#api">API</a>
           </li>
           <li>
             <a href="#deploying-your-own-phenobook-server">Deploying you own Phenobook Server</a>
@@ -154,7 +157,7 @@
         </p>
         <p>
           <h4 id="creating-phenobooks-load-data-manually">
-            Load data manually
+            Importing from Excel - Load data manually
           </h4>
           Observations can be registered from the Server application.
           This table allows to copy and paste from / to MS Excel, OpenOffice Calc and similar spreadsheet software. Information is automatically saved when changed, excepting the case when cell has a format error (ie. alfabetic characters in a numberic variable). In this case the cells are highlighted in red.
@@ -228,17 +231,159 @@
       </p>
     </p>
     <p>
-      <h3 id="deploying-your-own-phenobook-server">
-        Deploying your own Phenobook Server
+      <h3 id="api">
+        API
       </h3>
-      You need a server that runs a web server (we are using Apache), MySQL and PHP 5.
-      Once you have your database created, put your credentials in the configuration file (files/php/config/config.php). An initial database dump is provided in database.sql (remember to delete this file before uploading to the server). All initial configuration is set here, as well as an admin user (login: admin@admin.com and password: admin) and a default user group. It is important to change the main administrator user password.
-    </p>
+      It is possible to query and update the database via a REST API.
 
-  </section>
-  <footer>
-    <p>This project is maintained by <a href="https://github.com/INTABiotechMJ">INTABiotechMJ</a></p>
-  </footer>
+      In order to make a request to the API it is requierd to pass the user and password, as well as some other parameters. Notice that the API will only return data associated with the current user's group. In this example we request all the variables, the response is a json representation of the objects:
+      <p class="text-align:left">
+        GET <br> http://getphenobook.com/api/get-variables.php?user=testuser&amp;pass=testpassword
+        <br>
+        <code>
+          [{"name":"Cultivar","required":"0","description":"","userGroup":{"name":"Default","id":"1","active":"1"},"fieldType":{"name":"Categorial","type":"2","id":"2","active":"1"},
+          "isInformative":"1","id":"5","active":"1"}]
+        </code>
+      </p>
+
+      Available methods are:
+      <table>
+        <tr>
+          <th>
+            Name
+          </th>
+          <th>
+            URL
+          </th>
+          <th>
+            Parameters
+          </th>
+          <th>
+            Description
+          </th>
+        </tr>
+
+        <tr>
+          <td>
+            Phenobook Variables
+          </td>
+          <td>
+            api/export-phenobooksVariables.php
+          </td>
+          <td>
+            user, pass
+          </td>
+          <td>
+            Will return an associative array of phenobooks and its variables.
+          </td>
+        </tr>
+
+        <tr>
+          <td>
+            User Group
+          </td>
+          <td>
+            api/export-userGroups.php
+          </td>
+          <td>
+            none
+          </td>
+          <td>
+            Will return all user groups
+          </td>
+        </tr>
+
+
+        <tr>
+          <td>
+            Users
+          </td>
+          <td>
+            api/export-users.php
+          </td>
+          <td>
+            user, pass
+          </td>
+          <td>
+            Will return all user corresponding to the user's group
+          </td>
+        </tr>
+
+
+        <tr>
+          <td>
+            Variables
+          </td>
+          <td>
+            api/export-variables.php
+          </td>
+          <td>
+            user, pass
+          </td>
+          <td>
+            Will return all variables available for the user's group
+          </td>
+        </tr>
+        <tr>
+          <td>
+            Registries
+          </td>
+          <td>
+            api/export-registries.php
+          </td>
+          <td>
+            user, pass, phenobook (optional, the phenobook id), variable (optional, the variable id), experimental_unit (optional, the experimental unit number).
+          </td>
+          <td>
+            Will return all registries by default. It is possible to specify phenobook, variable or experimental unit.
+          </td>
+        </tr>
+
+        <tr>
+          <td>
+            Phenobook
+          </td>
+          <td>
+            api/export-phenobooks.php
+          </td>
+          <td>
+            user, pass
+          </td>
+          <td>
+            Will return all the active phenobooks of the user groups
+          </td>
+        </tr>
+        <tr>
+          <td>
+            Import registry
+          </td>
+          <td>
+            api/import-registry.php
+          </td>
+          <td>
+            user, pass, experimental_unit, variable, phenobook, value
+          </td>
+          <td>
+            Will save value as a new record in specified phenobook, variable and experimental unit.
+          </td>
+        </tr>
+
+      </tr>
+    </table>
+  </p>
+
+  <p>
+    <h3 id="deploying-your-own-phenobook-server">
+      Deploying your own Phenobook Server
+    </h3>
+    You need a server that runs a web server (we are using Apache), MySQL and PHP 5.
+    Once you have your database created, put your credentials in the configuration file (files/php/config/config.php). An initial database dump is provided in database.sql (remember to delete this file before uploading to the server). All initial configuration is set here, as well as an admin user (login: admin@admin.com and password: admin) and a default user group. It is important to change the main administrator user password.
+  </p>
+
+</section>
+<footer>
+  <p>This project is maintained by <a href="https://github.com/INTABiotechMJ">INTABiotechMJ</a></p>
+</footer>
 </div>
 <script src="javascripts/scale.fix.js"></script>
 
