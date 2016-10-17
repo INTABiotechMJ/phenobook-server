@@ -1,6 +1,7 @@
 <?php
 require "../../files/php/config/require.php";
-$variableGroups = obj2arr(Entity::listMe("VariableGroup","active"));
+$variables = obj2arr(Entity::listMe("Variable","active AND userGroup = '".$__user->userGroup->id."'"));
+$phenobooks = obj2arr(Entity::listMe("Phenobook","active AND userGroup = '".$__user->userGroup->id."'"));
 ?>
 <style media="screen">
 .more {
@@ -50,9 +51,9 @@ th{
 	<div class="filters row">
 		<div class="col-md-offset-1 col-md-3">
 			<div class="form-group">
-				<label class="control-label" for="file">Select Variable Group <span class="red">*</span></label>
+				<label class="control-label" for="file">Select Variables <span class="red">*</span></label>
 				<?php
-				printSelect("variableGroup", _post("variableGroup"), $variableGroups, null, "select2 required variableGroup" ,null );
+				printSelect("variables[]", _post("variables"), $variables, null, "select2 required multiple variables" ,"multiple");
 				?>
 				<span class="help-block">
 				</span>
@@ -62,7 +63,7 @@ th{
 			<div class="form-group">
 				<label class="control-label" for="phenobooks">Select Phenobooks <span class="red">*</span></label>
 				<?php
-				printSelect("phenobooks[]", _post("phenobooks"), null, null, "select2 required phenobooks select-multiple","multiple" );
+				printSelect("phenobooks[]", _post("phenobooks"), $phenobooks, null, "select2 required phenobooks multiple","multiple" );
 				?>
 				<span class="help-block">
 				</span>
@@ -144,7 +145,7 @@ $("body").on("change",".variableGroup",function(){
 	return false;
 });
 
-$(".variableGroup").trigger("change");
+$(".variables").trigger("change");
 
 $("#search").click(function(){
 	reload_table();
@@ -156,13 +157,13 @@ function reload_table(){
 		return;
 	}
 	var ids = $(".phenobooks").val();
-	var variableGroup = $(".variableGroup").val();
+	var variables = $(".variables").val();
 	$.ajax({
 		method: "POST",
 		url: "ajax/data_report.php",
 		data: {
 			phenobooks:ids,
-			variableGroup:variableGroup,
+			variables:variables,
 		}
 	})
 	.done(function(data) {

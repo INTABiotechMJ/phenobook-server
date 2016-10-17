@@ -2,15 +2,9 @@
 require "../../files/php/config/require.php";
 $id = _get("id");
 $phenobook = Entity::search("Phenobook","id = '$id' AND active");
-$variableGroup = Entity::search("VariableGroup","active AND id = '" . $phenobook->variableGroup->id . "'");
-
-$informative = Entity::search("FieldType","active AND type = '" . FieldType::$TYPE_INFORMATIVE . "'");
 $photo = Entity::search("FieldType","active AND type = '" . FieldType::$TYPE_PHOTO . "'");
+$variables =  Entity::listMe("Variable","active AND fieldType != '$photo->id' AND id IN (SELECT variable FROM PhenobookVariable WHERE phenobook = '$phenobook->id')");
 
-$variables = Entity::listMe("Variable","active AND fieldType != '$photo->id' AND variableGroup = '$variableGroup->id' ORDER BY field(fieldType, ".$informative->id.") DESC");
-if(empty($variables)){
-	redirect("index.php?e=Selected variable group has no variables yet");
-}
 $data = array();
 for ($i=1; $i <= $phenobook->experimental_units_number; $i++) {
 	$row = array();
@@ -18,13 +12,13 @@ for ($i=1; $i <= $phenobook->experimental_units_number; $i++) {
 		$reg = Entity::search("Registry","active AND phenobook = '$phenobook->id' AND status AND experimental_unit_number = '$i' AND variable = '$v->id' ORDER BY experimental_unit_number, id DESC");
 		if($reg){
 			switch ($v->fieldType->type) {
-				case FieldType::$TYPE_OPTION:
+				case FieldType::$TYPE_CATEGORICAL:
 				$option = Entity::search("Category","variable = '$v->id' AND id = '$reg->value'");
 				if($option){
 					$row["$v"] = $option->name;
 				}
 				break;
-				case FieldType::$TYPE_CHECK:
+				case FieldType::$TYPE_BOOLEAN:
 				$row["$v"] = $reg->value?"true":"false";
 				break;
 				default:
@@ -32,7 +26,7 @@ for ($i=1; $i <= $phenobook->experimental_units_number; $i++) {
 				break;
 			}
 		}else{
-			if($v->fieldType->isCheck()){
+			if($v->fieldType->isBoolean()){
 				$row["$v"] = "false";
 			}else{
 				$row["$v"] = "";
@@ -97,31 +91,33 @@ var hotSettings = {
 		<?php
 		$countInformative = 0;
 		foreach ((array) $variables as $k2 => $v) {
+			$renderer = "";
+			if($v->isInformative){
+				$renderer = "renderer: yellowRenderer,";
+				$countInformative++;
+			}
 			$editor = "";
 			#https://docs.handsontable.com/pro/1.7.0/tutorial-cell-types.html
 			#'text'
 			#'numeric'  format: '0.00%'  format: '0.00%'
 			#'date' format 'MM/DD/YYYY'
-			if($v->fieldType->isCheck()){
-				echo "{data:'$v',type:'checkbox'}, ";
+			if($v->fieldType->isBoolean()){
+				echo "{data:'$v',$renderer type:'checkbox'}, ";
 			}
 			#'date' format 'MM/DD/YYYY'
 			if($v->fieldType->isDate()){
-				echo "{data:'$v',width:110,type: 'date',dateFormat: 'YYYY-MM-DD',width:'auto'}, ";
+				echo "{data:'$v',$renderer width:110,type: 'date',dateFormat: 'YYYY-MM-DD',width:'auto'}, ";
 			}
-			if($v->fieldType->isInformative()){
-				$countInformative++;
-				echo "{data:'$v',renderer: yellowRenderer,type:'text',width:'auto'}, ";
-			}
+
 			if($v->fieldType->isNumeric()){
-				echo "{data:'$v',type:'numeric',width:'auto'}, ";
+				echo "{data:'$v',$renderer type:'numeric',width:'auto'}, ";
 			}
 			if($v->fieldType->isText()){
-				echo "{data:'$v',type:'text',width:'auto'}, ";
+				echo "{data:'$v',$renderer type:'text',width:'auto'}, ";
 			}
-			if($v->fieldType->isOption()){
-				$options = $v->getOptions();
-				echo "{data:'$v',
+			if($v->fieldType->isCategorical()){
+				$options = $v->getCategories();
+				echo "{data:'$v',$renderer
 					type:'autocomplete',
 					strict:'true',
 					source: ['".implode($options,"','")."'],

@@ -66,7 +66,7 @@ if($variable->fieldType->isDate()){
   $out .= "<b>Max date: </b>".$data[count($data) - 1]."<br/>";
 }
 
-if($variable->fieldType->isCheck()){
+if($variable->fieldType->isBoolean()){
   $count = 0;
   foreach ((array)$regs as $r) {
     if(!is_null($r) && $r->value == 1){
@@ -91,17 +91,6 @@ if($variable->fieldType->isText()){
   $out .= "<b>Different values: </b>".count(array_unique($data))."<br/>";
 }
 
-if($variable->fieldType->isInformative()){
-  foreach ((array)$regs as $r) {
-    if(!is_null($r)){
-      $data[] = $r->value;
-    }
-  }
-  $out .= "<h5>Text variable</h5>";
-  $out .= "<b>Name: </b>$variable"."<br/>";
-  $out .= "<b>Non empty: </b>".count($data)."<br/>";
-  $out .= "<b>Different values: </b>".count(array_unique($data))."<br/>";
-}
 
 
 if($variable->fieldType->isPhoto()){
@@ -116,7 +105,7 @@ if($variable->fieldType->isPhoto()){
 }
 
 
-if($variable->fieldType->isOption()){
+if($variable->fieldType->isCategorical()){
   $opts = Entity::listMe("Category","active AND variable = '$variable->id'");
   foreach ((array)$regs as $r) {
     if(!is_null($r)){

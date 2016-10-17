@@ -57,7 +57,7 @@ if($_POST){
 						echo check("isInformative",$item->isInformative);
 						?>
 						<label class="control-label" for="isInformative">Is informative</label>
-						<span class="help-block">Informative variables are pre-filled in Phenobook and serve as a visual guide to the user</span>
+						<span class="help-block">Informative variables are pre-filled and serve as a visual guide to the user</span>
 					</div>
 					<div class="form-group">
 						<input name="save" type="submit" class="btn btn-primary" value="Save">

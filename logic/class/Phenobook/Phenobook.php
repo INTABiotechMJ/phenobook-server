@@ -45,31 +45,23 @@ class Phenobook extends Object{
 	}
 
 	function searchInformativeVariables(){
-		$pv = Entity::listMe("PhenobookVariable","active AND phenobook = '$this->id'");
-		$ret = array();
-		foreach ((array)$vars as $pv) {
-			if($pv->variable->isInformative){
-				$ret[] = $pv->variable;
-			}
-		}
-		return $ret;
+		global $__user;
+		return Entity::listMe("Variable","active AND isInformative AND id IN (SELECT variable FROM PhenobookVariable WHERE active AND phenobook = '$this->id') AND userGroup = '".$__user->userGroup->id."'");
 	}
 
-	function searchVariables($fieldType = false){
-		$pv = Entity::listMe("PhenobookVariable","active AND phenobook = '$this->id'");
-		$ret = array();
-		foreach ((array)$vars as $pv) {
-			if($fieldType){
-				if($pv->variable->fieldType != $fieldType){
-					continue;
-				}
-			}
-			if($pv->variable->isInformative){
-				continue;
-			}
-			$ret[] = $pv->variable;
+	function searchNonInformativeVariables($fieldType = false){
+		global $__user;
+		if($fieldType){
+			return Entity::listMe("Variable","active AND fieldType = '$fieldType' AND NOT isInformative AND id IN (SELECT variable FROM PhenobookVariable WHERE active AND phenobook = '$this->id') AND userGroup = '".$__user->userGroup->id."'");
 		}
-		return $ret;
+		return Entity::listMe("Variable","active AND NOT isInformative AND id IN (SELECT variable FROM PhenobookVariable WHERE active AND phenobook = '$this->id') AND userGroup = '".$__user->userGroup->id."'");
+	}
+	function searchVariables($fieldType = false){
+		global $__user;
+		if($fieldType){
+			return Entity::listMe("Variable","active AND fieldType = '$fieldType' AND id IN (SELECT variable FROM PhenobookVariable WHERE active AND phenobook = '$this->id') AND userGroup = '".$__user->userGroup->id."' ORDER BY isInformative DESC");
+		}
+		return Entity::listMe("Variable","active AND id IN (SELECT variable FROM PhenobookVariable WHERE active AND phenobook = '$this->id') AND userGroup = '".$__user->userGroup->id."' ORDER BY isInformative DESC");
 	}
 
 }

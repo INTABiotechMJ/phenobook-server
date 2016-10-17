@@ -55,11 +55,11 @@ class Registry extends Object{
 
 	function __toString(){
 		switch ($this->variable->fieldType->type) {
-			case FieldType::$TYPE_OPTION:
+			case FieldType::$TYPE_CATEGORICAL:
 			$option = Entity::search("Category","variable = '".$this->variable->id."' AND id = '$this->value'");
 			$value = $option->name;
 			break;
-			case FieldType::$TYPE_CHECK:
+			case FieldType::$TYPE_BOOLEAN:
 			$value = $this->value?"yes":"no";
 			break;
 			case FieldType::$TYPE_PHOTO:

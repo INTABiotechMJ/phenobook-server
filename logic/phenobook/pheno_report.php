@@ -2,10 +2,6 @@
 require "../../files/php/config/require.php";
 $id = _get("id");
 $phenobook = Entity::search("Phenobook","id = '$id' AND active");
-
-$informative = Entity::search("FieldType","active AND type = '" . FieldType::$TYPE_INFORMATIVE . "'");
-$check = Entity::search("FieldType","active AND type = '" . FieldType::$TYPE_CHECK . "'");
-
 $variables = array_merge($phenobook->searchInformativeVariables(),$phenobook->searchVariables());
 
 $data = array();
@@ -20,28 +16,30 @@ if($lastReg){
 }
 
 
-$variables_boolean = $phenobook->searchVariables(FieldType::$TYPE_BOOLEAN);
-$variables_to_fill = $phenobook->searchVariables();
+$variables_boolean = count($phenobook->searchNonInformativeVariables(FieldType::$TYPE_BOOLEAN));
+$variables_to_fill = $phenobook->searchNonInformativeVariables();
 $informative_variables_count = count($phenobook->searchInformativeVariables());
 $informative_cells_count = $phenobook->experimental_units_number * $informative_variables_count;
 $variable_count = count($variables_to_fill) - count($variables_boolean);
 $all_cell_count = count($variables) * $phenobook->experimental_units_number;
 $cell_count = count($variables_to_fill) * $phenobook->experimental_units_number;
-
 $completed_cells = 0;
 $reg = Entity::listMe("Registry","phenobook = '$phenobook->id' AND active AND status");
 $informative_cells_filled = 0;
 foreach ((array)$reg as $value) {
-	if($value->variable->fieldType->isInformative()){
+	if($value->variable->isInformative){
 		$informative_cells_filled++;
 	}
-	if($value->variable->fieldType->isInformative() or $value->variable->fieldType->isCheck()){
+	if($value->variable->isInformative or $value->variable->fieldType->isBoolean()){
 		continue;
 	}
 	$completed_cells++;
 }
-
-$completed_percentage = number_format($completed_cells * 100 / (count($variables_to_fill_no_check) * $phenobook->experimental_units_number),2);
+if($variables_boolean){
+	$completed_percentage = number_format($completed_cells * 100 / (count($variables_to_fill_no_check) * $phenobook->experimental_units_number),2);
+}else{
+	$completed_percentage = 100;
+}
 ?>
 <style media="screen">
 .more {

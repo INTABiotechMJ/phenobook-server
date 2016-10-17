@@ -24,7 +24,7 @@ class FieldType extends Object{
 	/**
 	*@ignore
 	*/
-	static $TYPE_NUERICAL = 4;
+	static $TYPE_NUMERICAL = 4;
 	/**
 	*@ignore
 	*/
@@ -79,7 +79,7 @@ class FieldType extends Object{
 			case FieldType::$TYPE_TEXT:
 			return "<input  type='text' name='$name' id='$name' value='$value' class='form-control input-lg $req'>";
 			break;
-			case FieldType::$TYPE_OPTION:
+			case FieldType::$TYPE_CATEGORICAL:
 			$opciones = Entity::listMe("Category","active AND variable = '$variable->id' ORDER BY defaultOption DESC");
 			$opciones = obj2arr($opciones, false, false, true);
 			return html_select($name, $value, $opciones, "Sel.", "input-lg");
@@ -89,11 +89,11 @@ class FieldType extends Object{
 			$opciones = obj2arr($opciones);
 			return html_select($name."[]", $value, $opciones, "Sel.", "multiple", "multiple");
 			break;
-			case FieldType::$TYPE_CHECK:
+			case FieldType::$TYPE_BOOLEAN:
 			$checked = $value == 1? "checked" : "";
 			return "<input $checked type='checkbox' name='$name' id='$name' value='1' class='form-control  input-lg'>";
 			break;
-			case FieldType::$TYPE_NUMBER:
+			case FieldType::$TYPE_NUMERICAL:
 			return "<input  type='number' name='$name' id='$name' value='$value' class='form-control int input-lg $req'>";
 			break;
 			case FieldType::$TYPE_DECIMAL:
@@ -124,11 +124,11 @@ class FieldType extends Object{
 			break;
 		}
 	}
-	function isCheck(){
-		return $this->type == FieldType::$TYPE_CHECK;
+	function isBoolean(){
+		return $this->type == FieldType::$TYPE_BOOLEAN;
 	}
 	function isNumeric(){
-		return $this->type == FieldType::$TYPE_NUMBER;
+		return $this->type == FieldType::$TYPE_NUMERICAL;
 	}
 	function isDate(){
 		return $this->type == FieldType::$TYPE_DATE;
@@ -142,12 +142,10 @@ class FieldType extends Object{
 	function isAudio(){
 		return $this->type == FieldType::$TYPE_AUDIO;
 	}
-	function isOption(){
-		return $this->type == FieldType::$TYPE_OPTION;
+	function isCategorical(){
+		return $this->type == FieldType::$TYPE_CATEGORICAL;
 	}
-	function isInformative(){
-		return $this->type == FieldType::$TYPE_INFORMATIVE;
-	}
+
 	function searchGraphType(){
 		$tgtc = Entity::listMe("GrapTypeFieldType", "fieldType = '$this->id' AND active");
 		$ret = array();

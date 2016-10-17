@@ -55,7 +55,7 @@ class Variable extends Object{
 		$name = str_replace("ú", "u", $name);
 		return $name;
 	}
-	function getOptions(){
+	function getCategories(){
 		return Entity::listMe("Category","active AND Variable = '$this->id' ORDER BY id DESC");
 	}
 

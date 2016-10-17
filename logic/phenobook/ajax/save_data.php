@@ -9,7 +9,7 @@ foreach ($data->change as $value) {
   $col_name = $value[1];
   $prev_value = $value[2];
   $new_value = $value[3];
-  $SQL = "active AND variableGroup = '".$phenobook->variableGroup->id."' AND name = '$col_name'";
+  $SQL = "active AND name = '$col_name' AND userGroup = '".$__user->userGroup->id."'";
   $variable = Entity::search("Variable",$SQL);
   if(!$variable){
     return false;
@@ -27,7 +27,7 @@ foreach ($data->change as $value) {
   $registry->experimental_unit_number = $position;
   $registry->stamp = stamp();
   $registry->status = 1;
-  if($variable->fieldType->isOption()){
+  if($variable->fieldType->isCategorical()){
     $option = Entity::search("Category","variable = '$variable->id' AND name = '$new_value'");
     $registry->value = $option->id;
   }else{
