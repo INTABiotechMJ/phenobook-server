@@ -125,21 +125,24 @@
           Variables
         </h3>
         Each Phenobook is a spreadsheet like document and each column is represented by a variable.
-        Variables are organized in Variable Groups and has a data type associated.
-        To create variables, select the option <code>Variable Groups</code> in upper menu.
-        Click on <code>Add</code> button and insert the desired Variable Group name. After clicking <code>Save and add variables</code> you will be asked to start entering variables. Each variable must have a name and a data type, description is optional.
-        Data type can be: Text, number, check, date, option and photo. You can add as many variables as you want.
+        Variables are created before creating a Phenobook, so different Phenobooks may share
+        the same variables. This way it is possible to merge different Phenobooks results in the same report.
+        To create variables, select the option <code>Variables</code> in upper menu.
+        Click on <code>Add</code> button and insert the desired variable name, description, field type and whether the variable is informative.
+        Field type can be: Text, number, boolean, date, categorical and photo.
+        If a variable is selected as informative, it means that the data is known prior to make the observations. This will serve as a guide to the user when registering records (for example in a crop experiment, cultivar and repetition can be both  informative variables, with field type categorical and numerical respectively).
+        You can add as many variables as you want.
         <p>
-          <h4 id="variables-adding-options-to-variables">Adding options to variables</h4>
-          Optional variables needs explicit specification of the options it can contain.
-          In order to add options go to <code>Variable Groups</code> -> <code>Change variables</code> and in the table, click the <code>Options</code> button next to the variable you want to specify (notice that the Option button is only visible for Option variable type)
+          <h4 id="variables-adding-options-to-variables">Adding categories to categorical variables</h4>
+          Categorical variables needs explicit specification of the categories it can contain.
+          In order to add categories, go to <code>Variables</code> and in the table, click the <code>Categories</code> button next to the variable you want to specify (notice that the Categories button is only visible for Categorical variable type)
         </p>
       </p>
       <p>
         <h3 id="creating-phenobooks">
           Creating Phenobooks
         </h3>
-        Once you have Variable Groups specified, you can start to add Phenobboks. Go to <code>Phenobooks</code> menu in the upper menu and click on the <code>Add</code> button. Each Phenobook has a name, the quantity of experimental units (rows) an optional description and a Variable Group. Once created, the Phenobook will be visible to all users within the same <a href="#user-management">Group</a> as the creator. The available actions for each created Phenobook are:
+        Once you have Variables specified, you can start to add Phenobboks. Go to <code>Phenobooks</code> menu in the upper menu and click on the <code>Add</code> button. Each Phenobook has a name, the quantity of experimental units (rows) an optional description and a set of variables. Once created, the Phenobook will be visible to all users within the same <a href="#user-management">Group</a> as the creator. The available actions for each created Phenobook are:
         <p>
 
           <h4 id="creating-phenobooks-inspect-results">
@@ -173,7 +176,7 @@
         <h3 id="data-report">
           Data Report
         </h3>
-        It is possible to merge different Phenobooks data by accessing this option in the top menu. It is required that Phenobooks have the same Variable Group in order to merge them. Once selected the variable group, you can select as many Phenobooks as you want. It is possible to show the results or download a CSV file. In the results table, you can access record information by clicking on each cell, also a summary is provided when clicking on each variable name.
+        It is possible to merge different Phenobooks data by accessing this option in the top menu. First you need to select which Variables you want to be shown. Once selected them, you can select as many Phenobooks as you want. It is possible to show the results or download a CSV file. In the results table, you can access record information by clicking on each cell, also a summary is provided when clicking on each variable name.
       </p>
       <h3 id="user-management">
         User management
@@ -189,7 +192,7 @@
         <h4 id="user-management-creating-users">
           Creating users
         </h4>
-        When adding new users, besides personal and access information, it is required to select a User Group, and check whether the user is administrator. Administrator users are able to: Manage other users, user groups and variable groups.
+        When adding new users, besides personal and access information, it is required to select a User Group, and check whether the user is administrator. Administrator users are able to: Manage other users and user groups.
       </p>
     </p>
     <p>
