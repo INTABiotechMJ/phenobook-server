@@ -68,7 +68,7 @@ echo "<div id='hot'></div>";
 			Photo variables are hidden in this section
 		</li>
 		<li>
-			You can copy and paste from Excel like programs in above table
+			You can copy and paste from Excel like programs in above table (use cmd+c / cmd+v or ctrl+c / ctrl+v)
 		</li>
 	</ul>
 </div>

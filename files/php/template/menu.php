@@ -17,10 +17,17 @@
         <li><a href="<?= __URL ?>logic/phenobook/data_report.php">Data Report</a></li>
         <li><a href="<?= __URL ?>logic/variables">Variables</a></li>
         <?php
-        if($__user->isAdmin)
+        if($__user->isSuperAdmin)
         {
           ?>
           <li><a href="<?= __URL ?>logic/userGroups">Users Groups</a></li>
+          <?php
+        }
+        ?>
+        <?php
+        if($__user->isAdmin)
+        {
+          ?>
           <li><a href="<?= __URL ?>logic/users">Users</a></li>
           <?php
         }

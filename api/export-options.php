@@ -3,12 +3,12 @@ header('Access-Control-Allow-Origin: *');
 $noLogin = true;
 $noMenu = true;
 $noHeader = true;
-require_once "../../../../files/php/config/require.php";
+require_once "../files/php/config/require.php";
 
-$email = _post("email");
-$pass = _post("pass");
+$email = _request("email");
+$pass = _request("pass");
 $user = Entity::search("User", "email = '$email' AND pass = '$pass' AND active");
 if(!$user){
 	die("error");
 }
-echo json_encode(Entity::listMe("Phenobook","active AND visible"));
+echo json_encode(Entity::listMe("Category","active"));

@@ -76,7 +76,15 @@ $users = obj2arr(Entity::listMe("User","active AND 1"));
         <span class="help-block"></span>
       </div>
       <div class="form-group">
-        <label class=" control-label" for="file">Select informative variables</label>
+        <b>
+          Note:
+        </b>
+        <p>
+          If you do not find the variables you are looking for, you may need to create them <a href="../variables" target="_blank">here</a> first.
+        </p>
+      </div>
+      <div class="form-group">
+        <label class=" control-label" for="file">Informative variables</label>
         <?php
         printSelect("informativeVariables[]", _post("informativeVariables"), $informativeVariables, null, "select2 select-multiple","multiple" );
         ?>
@@ -86,7 +94,7 @@ $users = obj2arr(Entity::listMe("User","active AND 1"));
       </div>
 
       <div class="form-group">
-        <label class=" control-label" for="file">Select variables <span class="red">*</span></label>
+        <label class=" control-label" for="file">Variables <span class="red">*</span></label>
         <?php
         printSelect("variables[]", _post("variables"), $variables, null, "select2 select-multiple","multiple" );
         ?>

@@ -27,19 +27,15 @@ class User extends Object{
 	/**
 	*@type TINYINT DEFAULT 1
 	*/
+	var $isSuperAdmin;
+	/**
+	*@type TINYINT DEFAULT 1
+	*/
 	var $active;
 	/**
 	*@class UserGroup
 	*/
 	var $userGroup;
-	/**
-	*@ignore
-	*/
-	static $LANG_EN = 0;
-	/**
-	*@ignore
-	*/
-	static $LANG_ES = 1;
 
 	function __toString(){
 		return "$this->name $this->lastName";

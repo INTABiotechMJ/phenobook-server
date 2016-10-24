@@ -32,9 +32,6 @@ if(!isset($noMenu)){
 	require __ROOT."files/php/template/menu.php";
 }
 
-require __ROOT."files/php/class/EMail.php";
-require __ROOT."files/php/class/elements/Select.php";
-
 try {
 	$GLOBALS["conn"] = new PDO("mysql:".__DBHOST."=localhost;dbname=".__DBNAME, __DBUSER, __DBPASS,
 		array(PDO::MYSQL_ATTR_INIT_COMMAND => "SET NAMES 'utf8'"));

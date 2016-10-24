@@ -79,15 +79,6 @@ th{
 		</div>
 	</div>
 </form>
-<div class="row">
-	<div class="col-md-offset-1 col-md-9" style="margin-top:1em;">
-		<div class="alert alert-info">
-			Select one variable group and then select phenobooks
-			you want in the report (only phenobooks with selected
-			variable group will be available)
-		</div>
-	</div>
-</div>
 <?php
 
 ?>

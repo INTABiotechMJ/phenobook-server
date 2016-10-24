@@ -20,8 +20,11 @@ if($_POST){
   $isAdmin = _post("isAdmin");
   $item->isAdmin = !empty($isAdmin)?1:0;
 
-  $item->userGroup = Entity::load("UserGroup",_post("userGroup"));
-
+  if($__user->isSuperAdmin){
+    $item->userGroup = Entity::load("UserGroup",_post("userGroup"));
+  }else{
+    $item->userGroup = $__user->userGroup;
+  }
 
   if(_post("sendEmail")){
     $email_obj = new Email();
@@ -96,36 +99,23 @@ function randomPassword($length) {
           <label class="control-label" for="password">Password <span class="red">*</span> </label>
           <input minlength="4" value="<?= $password;?>" id="password" name="password" value="<?= _post("password"); ?>" type="text"  class="form-control input-md required">
         </div>
-
+        <?php
+        if($__user->isSuperAdmin){
+          ?>
         <div class="form-group">
           <label class="control-label" for="userGroup">Group <span class="red">*</span> </label>
           <?php
           printSelect("userGroup", _post("userGroup"), $grupos, null, "select2","" );
           ?>
-          <span class="help-block">
-            Non administrator users can only access phenobooks
-            of their own groups
-          </span>
         </div>
+        <?php
+        }
+        ?>
         <div class="form-group">
           <input type="checkbox" name="isAdmin" value="1" id="isAdmin">
           <label class="control-label" for="isAdmin"> Is administrator</label>
           <span class="help-block">
-            Administrator users are able to:
-            <ul>
-              <li>
-                Manage other users
-              </li>
-              <li>
-                Manage user groups
-              </li>
-              <li>
-                Manage variable groups
-              </li>
-              <li>
-                Assign phenobooks to different groups
-              </li>
-            </ul>
+            Administrator users are able to manage other users
           </span>
         </div>
 

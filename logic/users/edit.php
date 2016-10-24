@@ -13,7 +13,11 @@ if($_POST){
   $item->lastName = _post("lastName");
   if($__user->isAdmin){
     $item->isAdmin = _post("isAdmin")?1:0;
+  }
+  if($__user->isSuperAdmin){
     $item->userGroup = Entity::load("UserGroup",_post("userGroup"));
+  }else{
+    $item->userGroup = $__user->userGroup;
   }
   if($__user->id == $item->id && _post("password")){
     if(_post("password") == _post("password2")){
@@ -102,7 +106,7 @@ if($_POST){
         }
         ?>
         <?php
-        if($__user->isAdmin){
+        if($__user->isSuperAdmin){
           ?>
           <div class="form-group ">
             <label class=" control-label" for="usuarios">Group <span class="red">*</span></label>
@@ -113,28 +117,19 @@ if($_POST){
               <span class="help-block"></span>
             </div>
           </div>
-
+          <?php
+        }
+        ?>
+        <?php
+        if($__user->isAdmin){
+          ?>
           <div class="form-group">
             <?php
             echo check("isAdmin",$item->isAdmin);
             ?>
             <label class="control-label" for="isAdmin"> Is administrator</label>
             <span class="help-block">
-              Administrator users are able to:
-              <ul>
-                <li>
-                  Manage other users
-                </li>
-                <li>
-                  Manage user groups
-                </li>
-                <li>
-                  Manage variable groups
-                </li>
-                <li>
-                  Assign phenobooks to different groups
-                </li>
-              </ul>
+              Administrator users are able to manage other users
             </span>
           </div>
           <?php
