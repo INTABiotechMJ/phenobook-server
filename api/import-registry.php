@@ -11,11 +11,11 @@ $user = Entity::search("User", "email = '$email' AND pass = '$pass' AND active")
 if(!$user){
 	die("error");
 }
-$phenobook = Entity::load("Phenobook",_request("phenobook"));
+$phenobook = Entity::load("Phenobook",_request("phenobook_id"));
 if(!$phenobook){
 	die("please specify a valid phenobook id");
 }
-$variable = Entity::load("Variable",_request("variable"));
+$variable = Entity::load("Variable",_request("variable_id"));
 if(!$variable){
 	die("please specify a valid variable");
 }

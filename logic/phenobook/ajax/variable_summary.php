@@ -30,10 +30,15 @@ if(!empty($phenos)){
     $out .= "$pheno"."<br/>";
   }
 }
+foreach ((array)$regs as $k => $v) {
+  if(empty($v->value)){
+    unset($regs[$k]);
+  }
+}
 
 if($variable->fieldType->isNumeric()){
   foreach ((array)$regs as $r) {
-    if(!is_null($r)){
+    if(!empty($r)){
       $data[] = intval($r->value);
     }
   }
