@@ -9,8 +9,7 @@ if($item->userGroup->id != $__user->userGroup->id){
 	raise404();
 }
 $item->active = 0;
-$idgv = _get("idgv");
 if(!$alert->hasError){
 	Entity::update($item);
-	redirect("index.php?id=$idgv&m=$className deleted");
+	redirect("index.php?m=$className deleted");
 }

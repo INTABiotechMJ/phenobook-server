@@ -44,4 +44,4 @@ foreach((array)$registries as $k => $r){
 		}
 	}
 }
-echo json_encode($registries);
+echo json_encode(array_values($registries));

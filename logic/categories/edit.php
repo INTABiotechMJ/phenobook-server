@@ -1,5 +1,4 @@
 <?php
-$admin = true;
 require "../../files/php/config/require.php";
 $id = _request("id");
 $item = Entity::load("Category", $id);

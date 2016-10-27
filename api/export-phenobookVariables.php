@@ -12,4 +12,11 @@ if(!$user){
 	die("error");
 }
 $ug = _post("from_app")?" AND userGroup = '".$user->userGroup->id."' ":"";
-echo json_encode(Entity::listMe("PhenobookVariable","active $ug"));
+
+$pvs = Entity::listMe("PhenobookVariable","active");
+foreach ($pvs as $k => $v) {
+	if($v->phenobook->userGroup->id != $user->userGroup->id ){
+		unset($pvs[$k]);
+	}
+}
+echo json_encode(array_values($pvs));

@@ -1,5 +1,4 @@
 <?php
-$admin = true;
 require "../../files/php/config/require.php";
 $userGroups = obj2arr(Entity::listMe("UserGroup","active"));
 $informativeVariables = obj2arr(Entity::listMe("Variable","active AND userGroup = '" . $__user->userGroup->id . "' AND isInformative "));
@@ -22,7 +21,7 @@ if($_POST){
     Entity::save($item);
     if(empty($phenobookInformativeVariables)){
       $all = $phenobookVariables;
-    }else{    
+    }else{
       $all = array_merge($phenobookVariables, $phenobookInformativeVariables);
     }
     foreach((array)$all as $v){
@@ -53,6 +52,15 @@ $users = obj2arr(Entity::listMe("User","active AND 1"));
       <legend>Add Phenobook</legend>
 
       <div class="form-group">
+        <b>
+          Note:
+        </b>
+        <p>
+          If you do not find the variables you are looking for, you may need to create them <a href="../variables">here</a> first (will close this windows and changes will be lost).
+        </p>
+      </div>
+      
+      <div class="form-group">
         <label class=" control-label" for="name">Name <span class="red">*</span></label>
         <input placeholder="Phenobook name" id="name" name="name" value="<?= _post("name"); ?>" type="text" class="form-control input-md required">
       </div>
@@ -78,14 +86,6 @@ $users = obj2arr(Entity::listMe("User","active AND 1"));
         <label class=" control-label" for="description">Description</label>
         <textarea name="description" id="description" class="form-control" cols="30" rows="3"><?= _post("description"); ?></textarea>
         <span class="help-block"></span>
-      </div>
-      <div class="form-group">
-        <b>
-          Note:
-        </b>
-        <p>
-          If you do not find the variables you are looking for, you may need to create them <a href="../variables" target="_blank">here</a> first.
-        </p>
       </div>
       <div class="form-group">
         <label class=" control-label" for="file">Informative variables</label>

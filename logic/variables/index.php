@@ -17,7 +17,7 @@ $classNameShow = "Variable";
 			$item["Description"] = $value->description;
 			$item["Is informative"] = $value->isInformative?"yes":"no";
 			$item["Actions"] = "<a href='edit.php?id=$value->id' class='btn btn-default btn-sm'>Edit</a> ";
-			$item["Actions"] .= " <a data-href='delete.php?id=$value->id' class='btn btn-default btn-sm ask' data-what='Are you sure?'>Delete</a>";
+			$item["Actions"] .= " <a data-href='delete.php?id=$value->id' class='btn btn-danger btn-sm ask' data-what='Are you sure?'>Delete</a>";
 			if($value->fieldType->isCategorical())	{
 				$item["Actions"] .= " <a href='../categories/index.php?id=$value->id' class='btn btn-primary btn-sm'>Categories</a> ";
 			}

@@ -1,5 +1,4 @@
 <?php
-$admin = true;
 require "../../files/php/config/require.php";
 $id = _get("id");
 $variable = Entity::load("Variable", $id);

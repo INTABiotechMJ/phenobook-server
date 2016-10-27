@@ -6,8 +6,9 @@ if($phenobook->userGroup->id != $__user->userGroup->id){
 	raise404();
 }
 $photo = Entity::search("FieldType","active AND type = '" . FieldType::$TYPE_PHOTO . "'");
-$variables =  Entity::listMe("Variable","active AND fieldType != '$photo->id' AND id IN (SELECT variable FROM PhenobookVariable WHERE phenobook = '$phenobook->id')");
-
+$variables_informative =  Entity::listMe("Variable","active AND isInformative AND fieldType != '$photo->id' AND id IN (SELECT variable FROM PhenobookVariable WHERE phenobook = '$phenobook->id') ORDER BY id");
+$variables_noninformative =  Entity::listMe("Variable","active AND NOT isInformative AND fieldType != '$photo->id' AND id IN (SELECT variable FROM PhenobookVariable WHERE phenobook = '$phenobook->id') ORDER BY id");
+$variables = array_merge($variables_informative,$variables_noninformative);
 $data = array();
 for ($i=1; $i <= $phenobook->experimental_units_number; $i++) {
 	$row = array();
