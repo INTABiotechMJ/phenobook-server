@@ -1,11 +1,14 @@
 <?php
 $admin = true;
 require "../../files/php/config/require.php";
+$item = Entity::load("Phenobook",_request("id"));
+if($item->userGroup->id != $__user->userGroup->id){
+  raise404();
+}
 $userGroups = obj2arr(Entity::listMe("UserGroup","active"));
 $informativeVariables = obj2arr(Entity::listMe("Variable","active AND userGroup = '" . $__user->userGroup->id . "' AND isInformative "));
 $variables = obj2arr(Entity::listMe("Variable","active AND userGroup = '" . $__user->userGroup->id . "' AND NOT isInformative"));
 
-$item = Entity::load("Phenobook",_request("id"));
 $selectedVariables = array();
 $selectedInformativeVariables = array();
 $oldSelected = Entity::listMe("PhenobookVariable","phenobook = '$item->id' AND active");

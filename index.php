@@ -88,7 +88,7 @@ if(_get("e")){
       <a href="https://play.google.com/store/apps/details?id=manolo.field" target="_blank"><img class="store-badge" src="<?= __URL ?>assets/img/app-store-badge.png" alt="Download on the Apple Store" /></a> <br>
       <p>
         You can also download the
-        <a href="<?= __URL ?>app.apk" target="_blank">APK file</a> <br>
+        <a href="<?= __URL ?>app.apk" target="_blank">APK file</a> for Android devices <br>
       </p>
       <hr>
       <h4>

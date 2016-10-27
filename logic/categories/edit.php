@@ -3,6 +3,9 @@ $admin = true;
 require "../../files/php/config/require.php";
 $id = _request("id");
 $item = Entity::load("Category", $id);
+if($item->variable->userGroup->id != $__user->userGroup->id){
+  raise404();
+}
 if($_POST){
   $item->name = _post("name");
   if(!$alert->hasError){

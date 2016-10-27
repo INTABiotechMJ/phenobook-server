@@ -1,4 +1,5 @@
 <?php
+$superAdmin = true;
 require "../../files/php/config/require.php";
 $classNamePlural = "User Groups";
 $className = "UserGroup";

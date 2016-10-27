@@ -3,6 +3,9 @@ $admin = true;
 require "../../files/php/config/require.php";
 $id = _get("id");
 $variable = Entity::load("Variable", $id);
+if($variable->userGroup->id != $__user->userGroup->id){
+  raise404();
+}
 $items = Entity::listMe("Category","active AND Variable = '$id' ORDER BY id DESC");
 $data = array();
 $cont = 1;

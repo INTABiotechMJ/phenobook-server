@@ -2,6 +2,9 @@
 require "../../files/php/config/require.php";
 $id = _get("id");
 $phenobook = Entity::search("Phenobook","id = '$id' AND active");
+if($phenobook->userGroup->id != $__user->userGroup->id){
+	raise404();
+}
 $variables = array_merge($phenobook->searchInformativeVariables(),$phenobook->searchVariables());
 
 $data = array();

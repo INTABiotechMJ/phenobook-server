@@ -13,6 +13,9 @@ if(!empty(_request("variables")) && !empty(_request("phenobooks"))){
 //only one phenobook is requested
 if(!empty(_request("phenobook"))){
 	$phenobook = Entity::load("Phenobook",_request("phenobook"));
+	if($phenobook->userGroup->id != $__user->userGroup->id){
+		raise404();
+	}
 	$ids = array(_request("phenobook"));
 	$variables = $phenobook->searchVariables();
 }
@@ -38,6 +41,9 @@ echo "</tr>";
 $ids_str = "(".implode($ids,",").")";
 $phenos = Entity::listMe("Phenobook","active AND id IN $ids_str ORDER BY id");
 foreach ($phenos as $pheno) {
+	if($pheno->userGroup->id != $__user->userGroup->id){
+		raise404();
+	}
 	for ($i=1; $i <= $pheno->experimental_units_number; $i++) {
 		$row = array();
 	/*	$anyreg = false;

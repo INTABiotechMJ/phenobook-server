@@ -6,6 +6,11 @@ function redirect($link) {
   exit;
 }
 
+function raise404(){
+  echo '<script type=""text/javascript"">window.location.href="' . __URL . '?loggedOut=1&reason=notAllowed"</script>';
+  exit;
+}
+
 /**
 ** $sth = assoc($SQL);
 ** $sth->bindParam(":query",$query_clean,PDO::PARAM_STR);

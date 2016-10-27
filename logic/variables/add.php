@@ -39,7 +39,7 @@ if($_POST){
 			</div>
 
 			<div class='col-md-2'>
-				<a href='index.php?id=<?= $variableGroup->id ?>' class='btn btn-default '>Existents</a>
+				<a href='index.php' class='btn btn-default '>Existents</a>
 			</div>
 
 		</div>
@@ -70,7 +70,7 @@ if($_POST){
 					<div class="form-group">
 						<input name="save_add" type="submit" class="btn btn-primary" value="Save and add another">
 						<input name="save_back" type="submit" class="btn btn-primary" value="Save and finish">
-						<a href="index.php?id=<?= $variableGroup->id ?>" class="btn btn-default">Discard this and finish</a>
+						<a href="index.php" class="btn btn-default">Discard this and finish</a>
 					</div>
 				</form>
 			</div>

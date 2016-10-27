@@ -19,6 +19,9 @@ $row = array();
 $ids_str = "(".implode($ids,",").")";
 $phenos = Entity::listMe("Phenobook","active AND id IN $ids_str ORDER BY id");
 foreach ($phenos as $pheno) {
+	if($pheno->userGroup->id != $__user->userGroup->id){
+		raise404();
+	}
 	for ($i=1; $i <= $pheno->experimental_units_number; $i++) {
 		$row = array();
 		if(!_request("pheno")){

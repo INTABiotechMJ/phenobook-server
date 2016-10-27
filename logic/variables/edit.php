@@ -5,7 +5,9 @@ $className = "Variable";
 $classNameShow = "Variable";
 $id = _request("id");
 $item = Entity::search($className,"id = '$id' AND active");
-
+if($item->userGroup->id != $__user->userGroup->id){
+	raise404();
+}
 if($_POST){
 	Entity::begin();
 	$item->name = _post("name");

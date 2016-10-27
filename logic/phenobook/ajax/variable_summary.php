@@ -7,6 +7,9 @@ $variable = Entity::search("Variable","active AND id = '$id_variable'");
 if(_request("id_phenobook")){
   $id_phenobook = _request("id_phenobook");
   $phenobook = Entity::search("Phenobook","active AND id = '$id_phenobook'");
+  if($phenobook->userGroup->id != $__user->userGroup->id){
+    raise404();
+  }
   $regs = Entity::listMe("Registry","active AND value IS NOT NULL AND phenobook = '$phenobook->id' AND status AND variable = '$variable->id'");
 }
 if(_request("id_phenobooks")){
@@ -27,6 +30,9 @@ if(!empty($phenobook)){
 }
 if(!empty($phenos)){
   foreach ((array)$phenos as $pheno) {
+    if($pheno->userGroup->id != $__user->userGroup->id){
+      raise404();
+    }
     $out .= "$pheno"."<br/>";
   }
 }

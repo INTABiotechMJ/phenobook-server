@@ -20,7 +20,11 @@ if($_POST){
 
   if(!$alert->hasError){
     Entity::save($item);
-    $all = array_merge($phenobookVariables, $phenobookInformativeVariables);
+    if(empty($phenobookInformativeVariables)){
+      $all = $phenobookVariables;
+    }else{    
+      $all = array_merge($phenobookVariables, $phenobookInformativeVariables);
+    }
     foreach((array)$all as $v){
       $pv = new PhenobookVariable();
       $pv->phenobook = $item;
@@ -108,7 +112,6 @@ $users = obj2arr(Entity::listMe("User","active AND 1"));
       <div class="form-group">
         <div class="">
           <input type="submit" name="save-finish" value="Save and finish" class="btn btn-shadow btn-primary">
-          <input type="submit" name="save" value="Save and complete informative variables values" class="btn btn-shadow btn-primary">
         </div>
       </div>
       <hr>

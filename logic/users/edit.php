@@ -1,8 +1,8 @@
 <?php
 require "../../files/php/config/require.php";
 $item = Entity::load("User", _request("id"));
-if($__user->id != $item->id && !$__user->isAdmin){
-  die("");
+if($item->userGroup->id != $__user->userGroup->id && !$__user->isSuperAdmin){
+	raise404();
 }
 $groups = obj2arr(Entity::listMe("UserGroup","active"));
 

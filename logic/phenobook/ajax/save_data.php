@@ -4,6 +4,9 @@ $noMenu = true;
 require "../../../files/php/config/require.php";
 $data =  json_decode($_POST["data"]);
 $phenobook = Entity::load("Phenobook",_post("phenobook"));
+if($phenobook->userGroup->id != $__user->userGroup->id){
+  raise404();
+}
 foreach ($data->change as $value) {
   $position = $value[0] + 1;
   $col_name = $value[1];

@@ -13,9 +13,13 @@ require __ROOT. "files/php/class/Object.php";
 require __ROOT . "logic/class/Session/User.php";
 
 if(empty($noLogin)){
-	if(isset($admin) && $admin){
+	if(isset($admin) && !isset($superAdmin)){
 		require "control_admin.php";
-	}else{
+	}
+	if(isset($superAdmin)){
+		require "control_superAdmin.php";
+	}
+	if(!isset($admin) && !isset($superAdmin)){
 		require "control.php";
 	}
 }else{

@@ -2,8 +2,7 @@
 $admin = true;
 require "../../files/php/config/require.php";
 $items = array();
-
-$items = Entity::listMe("User","active");
+$items = Entity::listMe("User","active AND userGroup = '".$__user->userGroup->id."'");
 
 $data = array();
 $cont = 1;
@@ -15,7 +14,9 @@ foreach ($items as $key => $value) {
 	$item["Admin"] = $value->isAdmin?"Yes":"No";
 	$item["Group"] = $value->userGroup;
 	$item["Actions"] = "<a href='edit.php?id=$value->id' class='btn btn-default btn-sm'>Edit</a> ";
-	$item["Actions"] .= "<a data-href='delete.php?id=$value->id' class='btn btn-danger btn-sm ask' data-what='Are you sure?'>Delete</a>";
+	if($value->id != $__user->id){		
+		$item["Actions"] .= "<a data-href='delete.php?id=$value->id' class='btn btn-danger btn-sm ask' data-what='Are you sure?'>Delete</a>";
+	}
 	$data[] = $item;
 
 }

@@ -6,6 +6,9 @@ $eu = _request("eu");
 $id_variable = _request("variable");
 $id = _request("phenobook");
 $phenobook = Entity::search("Phenobook","id = '$id' AND active");
+if($phenobook->userGroup->id != $__user->userGroup->id){
+	raise404();
+}
 $change_registry = _request("change_registry");
 if($change_registry){
 	$registry_all = Entity::listMe("Registry","active AND phenobook = '$phenobook->id' AND variable = '$id_variable' AND experimental_unit_number = '$eu' ORDER BY id DESC");

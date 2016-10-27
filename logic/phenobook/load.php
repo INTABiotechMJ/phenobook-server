@@ -2,6 +2,9 @@
 require "../../files/php/config/require.php";
 $id = _get("id");
 $phenobook = Entity::search("Phenobook","id = '$id' AND active");
+if($phenobook->userGroup->id != $__user->userGroup->id){
+	raise404();
+}
 $photo = Entity::search("FieldType","active AND type = '" . FieldType::$TYPE_PHOTO . "'");
 $variables =  Entity::listMe("Variable","active AND fieldType != '$photo->id' AND id IN (SELECT variable FROM PhenobookVariable WHERE phenobook = '$phenobook->id')");
 
