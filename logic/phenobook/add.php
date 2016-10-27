@@ -1,8 +1,6 @@
 <?php
 require "../../files/php/config/require.php";
-$userGroups = obj2arr(Entity::listMe("UserGroup","active"));
-$informativeVariables = obj2arr(Entity::listMe("Variable","active AND userGroup = '" . $__user->userGroup->id . "' AND isInformative "));
-$variables = obj2arr(Entity::listMe("Variable","active AND userGroup = '" . $__user->userGroup->id . "' AND NOT isInformative"));
+$variables = Entity::listMe("Variable","active AND userGroup = '" . $__user->userGroup->id . "' ORDER BY name");
 
 if($_POST){
   Entity::begin();
@@ -13,24 +11,14 @@ if($_POST){
   $item->experimental_unit_name = _post("experimental_unit_name");
   $item->stamp = stamp();
   $item->userGroup = $__user->userGroup;
-
-  $phenobookVariables = _post("variables");
-  $phenobookInformativeVariables = _post("informativeVariables");
-
   if(!$alert->hasError){
     Entity::save($item);
-    if(empty($phenobookInformativeVariables)){
-      $all = $phenobookVariables;
-    }else{
-      $all = array_merge($phenobookVariables, $phenobookInformativeVariables);
-    }
-    foreach((array)$all as $v){
+    foreach((array)_post("to") as $v){
       $pv = new PhenobookVariable();
       $pv->phenobook = $item;
       $pv->variable = Entity::load("Variable",$v);
       Entity::save($pv);
     }
-
     Entity::commit();
     if(_post("save-finish")){
       redirect("index.php?id=$item->id&m=Phenobook added");
@@ -52,14 +40,15 @@ $users = obj2arr(Entity::listMe("User","active AND 1"));
       <legend>Add Phenobook</legend>
 
       <div class="form-group">
+        <p>
         <b>
           Note:
         </b>
-        <p>
-          If you do not find the variables you are looking for, you may need to create them <a href="../variables">here</a> first (will close this windows and changes will be lost).
+          If you do not find the variables you are looking for,
+          you may need to create them <a href="../variables">here</a> first (changes made here will be lost).
         </p>
       </div>
-      
+
       <div class="form-group">
         <label class=" control-label" for="name">Name <span class="red">*</span></label>
         <input placeholder="Phenobook name" id="name" name="name" value="<?= _post("name"); ?>" type="text" class="form-control input-md required">
@@ -87,24 +76,42 @@ $users = obj2arr(Entity::listMe("User","active AND 1"));
         <textarea name="description" id="description" class="form-control" cols="30" rows="3"><?= _post("description"); ?></textarea>
         <span class="help-block"></span>
       </div>
-      <div class="form-group">
-        <label class=" control-label" for="file">Informative variables</label>
-        <?php
-        printSelect("informativeVariables[]", _post("informativeVariables"), $informativeVariables, null, "select2 select-multiple","multiple" );
-        ?>
-        <span class="help-block">
-          Informative variables will serve as a guide to the user when making observations
-        </span>
-      </div>
 
       <div class="form-group">
-        <label class=" control-label" for="file">Variables <span class="red">*</span></label>
-        <?php
-        printSelect("variables[]", _post("variables"), $variables, null, "select2 select-multiple","multiple" );
-        ?>
-        <span class="help-block">
-          Variables that will be recorded throught observation. At least one is required.
-        </span>
+        <label class="control-label" for="variables">Variables</label>
+        <div class="row">
+          <div class="col-xs-5">
+            <select name="from[]" id="search" class="form-control" size="8" multiple="multiple">
+              <?php
+              foreach((array)$variables as $v){
+                echo "<option value='$v->id'>".$v->__toStringLong()."</option>";
+              }
+              ?>
+            </select>
+          </div>
+
+          <div class="col-xs-2">
+            <button type="button" id="search_rightAll" class="btn btn-block"><i class="glyphicon glyphicon-forward"></i></button>
+            <button type="button" id="search_rightSelected" class="btn btn-block"><i class="glyphicon glyphicon-chevron-right"></i></button>
+            <button type="button" id="search_leftSelected" class="btn btn-block"><i class="glyphicon glyphicon-chevron-left"></i></button>
+            <button type="button" id="search_leftAll" class="btn btn-block"><i class="glyphicon glyphicon-backward"></i></button>
+          </div>
+
+          <div class="col-xs-5">
+            <select name="to[]" id="search_to" class="form-control" size="8" multiple="multiple"></select>
+
+            <div class="row" style="margin-top:5px;">
+              <div class="col-sm-6">
+                <button type="button" id="search_move_up" class="btn btn-block"><i class="glyphicon glyphicon-arrow-up"></i></button>
+              </div>
+              <div class="col-sm-6">
+                <button type="button" id="search_move_down" class="btn btn-block col-sm-6"><i class="glyphicon glyphicon-arrow-down"></i></button>
+              </div>
+            </div>
+
+          </div>
+        </div>
+
       </div>
 
       <hr>
@@ -124,3 +131,13 @@ $users = obj2arr(Entity::listMe("User","active AND 1"));
 <?php
 require __ROOT."files/php/template/footer.php";
 ?>
+<script type="text/javascript">
+jQuery(document).ready(function($) {
+  $('#search').multiselect({
+    search: {
+      left: '<input type="text" name="q" class="form-control" placeholder="Search..." />',
+      //right: '<input type="text" name="q" class="form-control" placeholder="Search..." />',
+    }
+  });
+});
+</script>

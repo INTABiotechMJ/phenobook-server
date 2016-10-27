@@ -5,8 +5,7 @@ $phenobook = Entity::search("Phenobook","id = '$id' AND active");
 if($phenobook->userGroup->id != $__user->userGroup->id){
 	raise404();
 }
-$variables = array_merge($phenobook->searchInformativeVariables(),$phenobook->searchVariables());
-
+$variables = $phenobook->searchVariables();
 $data = array();
 
 //data

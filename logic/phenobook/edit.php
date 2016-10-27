@@ -4,22 +4,14 @@ $item = Entity::load("Phenobook",_request("id"));
 if($item->userGroup->id != $__user->userGroup->id){
   raise404();
 }
-$userGroups = obj2arr(Entity::listMe("UserGroup","active"));
-$informativeVariables = obj2arr(Entity::listMe("Variable","active AND userGroup = '" . $__user->userGroup->id . "' AND isInformative "));
-$variables = obj2arr(Entity::listMe("Variable","active AND userGroup = '" . $__user->userGroup->id . "' AND NOT isInformative"));
 
+$variables = Entity::listMe("Variable","active AND userGroup = '".$__user->userGroup->id."'");
 $selectedVariables = array();
-$selectedInformativeVariables = array();
-$oldSelected = Entity::listMe("PhenobookVariable","phenobook = '$item->id' AND active");
-foreach((array)$oldSelected as $os){
-  if($os->variable->isInformative){
-    $selectedInformativeVariables[] = $os->variable;
-  }else{
-    $selectedVariables[] = $os->variable;
-  }
+$selectedPhenobookVariables = Entity::listMe("PhenobookVariable","phenobook = '$item->id' AND active");
+
+foreach((array)$selectedPhenobookVariables as $spv){
+  $selectedVariables[] = $spv->variable;
 }
-$selectedVariables = obj2arr($selectedVariables);
-$selectedInformativeVariables = obj2arr($selectedInformativeVariables);
 
 if($_POST){
   Entity::begin();
@@ -28,19 +20,16 @@ if($_POST){
   $item->experimental_units_number = _post("experimental_units_number");
   $item->experimental_unit_name = _post("experimental_unit_name");
 
-  $phenobookVariables = _post("variables")?_post("variables"):array();
-  $phenobookInformativeVariables = _post("informativeVariables")?_post("informativeVariables"):array();
-  $newSelected = array_merge($phenobookVariables, $phenobookInformativeVariables);
-
+  $newVariables = _post("to");
 
   if(!$alert->hasError){
     Entity::update($item);
 
-    foreach((array)$oldSelected as $os){
+    foreach((array)$selectedPhenobookVariables as $os){
       $os->active = 0;
       Entity::update($os);
     }
-    foreach((array)$newSelected as $ns){
+    foreach((array)$newVariables as $ns){
       $pv = new PhenobookVariable();
       $pv->phenobook = $item;
       $pv->variable = Entity::load("Variable",$ns);
@@ -93,23 +82,46 @@ if($_POST){
       </div>
 
       <div class="form-group">
-        <label class=" control-label" for="file">Select informative variables</label>
-        <?php
-        printSelect("informativeVariables[]", $selectedInformativeVariables, $informativeVariables, null, "select2 select-multiple","multiple" );
-        ?>
-        <span class="help-block">
-          Informative variables will serve as a guide to the user when making observations
-        </span>
-      </div>
+        <label class="control-label" for="variables">Variables</label>
+        <div class="row">
+          <div class="col-xs-5">
+            <select name="from[]" id="search" class="form-control" size="8" multiple="multiple">
+              <?php
+              foreach((array)$variables as $v){
+                echo "<option value='$v->id'>".$v->__toStringLong()."</option>";
+              }
+              ?>
+            </select>
+          </div>
 
-      <div class="form-group">
-        <label class=" control-label" for="file">Select variables <span class="red">*</span></label>
-        <?php
-        printSelect("variables[]", $selectedVariables, $variables, null, "select2 select-multiple","multiple" );
-        ?>
-        <span class="help-block">
-          Variables that will be recorded throught observation. At least one is required.
-        </span>
+          <div class="col-xs-2">
+            <button type="button" id="search_rightAll" class="btn btn-block"><i class="glyphicon glyphicon-forward"></i></button>
+            <button type="button" id="search_rightSelected" class="btn btn-block"><i class="glyphicon glyphicon-chevron-right"></i></button>
+            <button type="button" id="search_leftSelected" class="btn btn-block"><i class="glyphicon glyphicon-chevron-left"></i></button>
+            <button type="button" id="search_leftAll" class="btn btn-block"><i class="glyphicon glyphicon-backward"></i></button>
+          </div>
+
+          <div class="col-xs-5">
+            <select name="to[]" id="search_to" class="form-control" size="8" multiple="multiple">
+                <?php
+                foreach((array)$selectedVariables as $v){
+                  echo "<option value='$v->id'>".$v->__toStringLong()."</option>";
+                }
+                ?>
+            </select>
+
+            <div class="row" style="margin-top:5px;">
+              <div class="col-sm-6">
+                <button type="button" id="search_move_up" class="btn btn-block"><i class="glyphicon glyphicon-arrow-up"></i></button>
+              </div>
+              <div class="col-sm-6">
+                <button type="button" id="search_move_down" class="btn btn-block col-sm-6"><i class="glyphicon glyphicon-arrow-down"></i></button>
+              </div>
+            </div>
+
+          </div>
+        </div>
+
       </div>
 
       <hr>
@@ -129,3 +141,15 @@ if($_POST){
 <?php
 require __ROOT."files/php/template/footer.php";
 ?>
+
+<script type="text/javascript">
+jQuery(document).ready(function($) {
+  $('#search').multiselect({
+    keepRenderingSort: true,
+    search: {
+      left: '<input type="text" name="q" class="form-control" placeholder="Search..." />',
+      //right: '<input type="text" name="q" class="form-control" placeholder="Search..." />',
+    }
+  });
+});
+</script>

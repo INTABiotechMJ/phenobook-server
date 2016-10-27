@@ -18,6 +18,7 @@ if(isset($__user)){
 
 <script type="text/javascript" src="<?= __URL; ?>assets/libs/jquery-1.12.3.min.js"></script>
 
+<script type="text/javascript" src="<?= __URL; ?>assets/libs/multiselect.min.js"></script>
 <script type="text/javascript" src="<?= __URL; ?>assets/libs/pickdate/picker.js"></script>
 <script type="text/javascript" src="<?= __URL; ?>assets/libs/pickdate/picker.date.js"></script>
 <script type="text/javascript" src="<?= __URL; ?>assets/libs/pickdate/picker.time.js"></script>

@@ -45,6 +45,10 @@ class Variable extends Object{
 	function toForm($value = null){
 		return $this->fieldType->toForm($this, $value);
 	}
+	function __toStringLong(){
+		$info = $this->isInformative?", informative":"";
+	  return "$this->name (".$this->fieldType.$info.")";
+	}
 	function cleanName(){
 		$name = $this->name;
 		$name = str_replace(" ", "_", $name);

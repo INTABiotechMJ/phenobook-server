@@ -43,25 +43,41 @@ class Phenobook extends Object{
 		}
 		return implode(",", $selectedUsers);
 	}
-
-	function searchInformativeVariables(){
-		global $__user;
-		return Entity::listMe("Variable","active AND isInformative AND id IN (SELECT variable FROM PhenobookVariable WHERE active AND phenobook = '$this->id') AND userGroup = '".$__user->userGroup->id."'");
-	}
-
-	function searchNonInformativeVariables($fieldType = false){
-		global $__user;
-		if($fieldType){
-			return Entity::listMe("Variable","active AND fieldType = '$fieldType' AND NOT isInformative AND id IN (SELECT variable FROM PhenobookVariable WHERE active AND phenobook = '$this->id') AND userGroup = '".$__user->userGroup->id."'");
+	function searchNonInformativeVariables(){
+		$variables = $this->searchVariables();
+		$ret = array();
+		foreach((array)$variables as $v){
+			if($v->isInformative){
+				continue;
+			}
+			$res[] = $v;
 		}
-		return Entity::listMe("Variable","active AND NOT isInformative AND id IN (SELECT variable FROM PhenobookVariable WHERE active AND phenobook = '$this->id') AND userGroup = '".$__user->userGroup->id."'");
+		return $ret;
 	}
+	function searchInformativeVariables(){
+		$variables = $this->searchVariables();
+		$ret = array();
+		foreach((array)$variables as $v){
+			if(!$v->isInformative){
+				continue;
+			}
+			$res[] = $v;
+		}
+		return $ret;
+	}
+
 	function searchVariables($fieldType = false){
 		global $__user;
-		if($fieldType){
-			return Entity::listMe("Variable","active AND fieldType = '$fieldType' AND id IN (SELECT variable FROM PhenobookVariable WHERE active AND phenobook = '$this->id') AND userGroup = '".$__user->userGroup->id."' ORDER BY isInformative DESC");
+		$variables = array();
+		$pvs = Entity::listMe("PhenobookVariable","active AND phenobook = '$this->id'");
+		foreach((array)$pvs as $pv){
+			if($fieldType){
+				if($pv->variable->fieldType->id != $fieldType->id){
+					continue;
+				}
+			}
+			$variables[] = $pv->variable;
 		}
-		return Entity::listMe("Variable","active AND id IN (SELECT variable FROM PhenobookVariable WHERE active AND phenobook = '$this->id') AND userGroup = '".$__user->userGroup->id."' ORDER BY isInformative DESC");
+		return $variables;
 	}
-
 }

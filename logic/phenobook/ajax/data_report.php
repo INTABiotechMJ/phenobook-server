@@ -2,13 +2,12 @@
 $noMenu = true;
 $noHeader = true;
 require "../../../files/php/config/require.php";
-
 $phenobook = false;
 //multiple phenobooks and variables
 if(!empty(_request("variables")) && !empty(_request("phenobooks"))){
 	$ids = _request("phenobooks");
 	$ids_vars = implode(_request("variables"),",");
-	$variables = Entity::listMe("Variable","active AND id IN ($ids_vars) ORDER BY isInformative DESC");
+	$variables = Entity::listMe("Variable","active AND id IN ($ids_vars)");
 }
 //only one phenobook is requested
 if(!empty(_request("phenobook"))){
@@ -46,13 +45,6 @@ foreach ($phenos as $pheno) {
 	}
 	for ($i=1; $i <= $pheno->experimental_units_number; $i++) {
 		$row = array();
-	/*	$anyreg = false;
-		foreach((array)$variables as $v){
-			$anyreg = Entity::search("Registry","active AND phenobook = '$pheno->id' AND status AND experimental_unit_number = '$i' AND variable = '$v->id' ORDER BY experimental_unit_number, id DESC");
-			if($anyreg){
-				break;
-			}
-		}*/
 		echo "<tr>";
 		if(!$phenobook){
 			echo "<td class='grey'>$pheno</td>";
