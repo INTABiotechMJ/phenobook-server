@@ -74,10 +74,10 @@
             <a href="#user-management">User management</a>
             <ul>
               <li>
-                <a href="user-management-user-groups">Users groups</a>
+                <a href="#user-management-user-groups">Users groups</a>
               </li>
               <li>
-                <a href="user-management-creating-users">Creating users</a>
+                <a href="#user-management-creating-users">Creating users</a>
               </li>
             </ul>
           </li>
@@ -154,6 +154,7 @@
           It shows a table with the data of the selected Phenobook.
           On the bottom you can see a summary indicating creation date, last update and the completeness percentage.
           By clicking on each cell you can access information about the registry. It contains how the data was taken (mobile or server), when, by who, and a historical record with all modifications done to the record (cells with historical record are highlighted). It is possible to fix a value (disable modification on mobile device) by clicking in <code>Fix this value</code> button. It is also possible to change the value to a previous one by clicking on <code>use this value</code> on each historical record. You can also access a variable summary by clicking on each variable name. The summary structure depends on the variable data type.
+          There is also an option only visible for text variables, that allows the user to download a file with the variable content.
         </p>
         <p>
           <h4 id="creating-phenobooks-load-data-manually">
@@ -242,9 +243,9 @@
       </h3>
       It is possible to query and update the database via an HTTP API.
 
-      In order to make a request to the API it is required to pass the user and password, as well as some other parameters. Notice that the API will only return data associated with the current user's group. In this example we request all the variables, the response is a json representation of the objects:
+      In order to make a request to the API it is required to pass the user's email and password, as well as some other parameters. Notice that the API will only return data associated with the current user's group. In this example we request all the variables, the response is a json representation of the objects:
       <p class="text-align:left">
-        GET <br> http://getphenobook.com/api/get-variables.php?user=testuser&amp;pass=testpassword
+        GET <br> http://getphenobook.com/api/get-variables.php?email=testuser&amp;pass=testpassword
         <br>
         <code>
           [{"name":"Cultivar","required":"0","description":"","userGroup":{"name":"Default","id":"1","active":"1"},"fieldType":{"name":"Categorial","type":"2","id":"2","active":"1"},
@@ -277,7 +278,7 @@
             api/export-phenobooksVariables.php
           </td>
           <td>
-            user, pass
+            email, pass
           </td>
           <td>
             Will return an associative array of phenobooks and its variables.
@@ -308,7 +309,7 @@
             api/export-users.php
           </td>
           <td>
-            user, pass
+            email, pass
           </td>
           <td>
             Will return all user corresponding to the user's group
@@ -324,7 +325,7 @@
             api/export-variables.php
           </td>
           <td>
-            user, pass
+            email, pass
           </td>
           <td>
             Will return all variables available for the user's group
@@ -338,7 +339,7 @@
             api/export-registries.php
           </td>
           <td>
-            user, pass, phenobook (optional, the phenobook id), variable (optional, the variable id), experimental_unit (optional, the experimental unit number).
+            email, pass, phenobook (optional, the phenobook id), variable (optional, the variable id), experimental_unit (optional, the experimental unit number).
           </td>
           <td>
             Will return all registries by default. It is possible to specify phenobook, variable or experimental unit.
@@ -353,7 +354,7 @@
             api/export-phenobooks.php
           </td>
           <td>
-            user, pass
+            email, pass
           </td>
           <td>
             Will return all the active phenobooks of the user groups
@@ -367,7 +368,7 @@
             api/import-registry.php
           </td>
           <td>
-            user, pass, experimental_unit, variable_id, phenobook_id, value
+            email, pass, experimental_unit, variable_id, phenobook_id, value
           </td>
           <td>
             Will save value as a new record in specified phenobook, variable and experimental unit.
