@@ -15,6 +15,15 @@
   section p{
     text-align:justify;
   }
+  .image-p{
+    padding: 10px;
+    margin-top: 20px;
+  }
+  img{
+    max-width:100% !important;
+    height:auto;
+    display:block;
+  }
   </style>
 </head>
 <body>
@@ -155,7 +164,7 @@
           On the bottom you can see a summary indicating creation date, last update and the completeness percentage.
           By clicking on each cell you can access information about the registry. It contains how the data was taken (mobile or server), when, by who, and a historical record with all modifications done to the record (cells with historical record are highlighted). It is possible to fix a value (disable modification on mobile device) by clicking in <code>Fix this value</code> button. It is also possible to change the value to a previous one by clicking on <code>use this value</code> on each historical record. You can also access a variable summary by clicking on each variable name. The summary structure depends on the variable data type.
           There is also an option only visible for text variables, that allows the user to download a file with the variable content.
-          <p>
+          <p class="image-p">
             <img src="inspect-modal.png" alt="Inspect Modal">
             <b>Fig. 1 Inspect modal screenshot</b>
           </p>
@@ -166,6 +175,10 @@
           </h4>
           Observations can be registered from the Server application.
           This table allows to copy and paste from / to MS Excel, OpenOffice Calc and similar spreadsheet software. Information is automatically saved when changed, excepting the case when cell has a format error (ie. alfabetic characters in a numberic variable). In this case the cells are highlighted in red.
+          <p class="image-p">
+            <img src="load-manually.png" alt="Load data manually">
+            <b>Fig. 2 Load data from server application</b>
+          </p>
         </p>
         <p>
           <h4 id="creating-phenobooks-csv-export">
@@ -185,6 +198,10 @@
           Data Report
         </h3>
         It is possible to merge different Phenobooks data by accessing this option in the top menu. First you need to select which Variables you want to be shown. Once selected them, you can select as many Phenobooks as you want. It is possible to show the results or download a CSV file. In the results table, you can access record information by clicking on each cell, also a summary is provided when clicking on each variable name.
+        <p class="image-p">
+          <img src="data-report.png" alt="Data Report">
+          <b>Fig. 3 Data report example</b>
+        </p>
       </p>
       <h3 id="user-management">
         User management
@@ -220,6 +237,10 @@
         For Android devices, you can download the official application from Google Play Store <a href="https://play.google.com/store/apps/details?id=manolo.field" target="_blank">here</a>, or download the APK file <a href="http://getphenobook.com/app.apk" target="_blank">here</a>.
         For Iphone users, you can go to the app store link <a href="" target="_blank">here</a>.
         If you are using a custom server, it is important to indicate its address in the <code>settings</code> button. Otherwise Phenobook Mobile will try to connect to a different server.
+        <p class="image-p">
+          <img src="app.png" alt="Application screenshot">
+          <b>Fig. 4 Application data input preview</b>
+        </p>
       </p>
       <p>
         <h4 id="mobile-application-compiling">
