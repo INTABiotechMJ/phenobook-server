@@ -37,11 +37,9 @@ foreach ((array)$reg as $value) {
 	}
 	$completed_cells++;
 }
-if($variables_boolean){
-	$completed_percentage = number_format($completed_cells * 100 / (count($variables_to_fill_no_check) * $phenobook->experimental_units_number),2);
-}else{
-	$completed_percentage = 100;
-}
+
+$completed_percentage = number_format($completed_cells * 100 / (count($variable_count) * $phenobook->experimental_units_number),2);
+
 ?>
 <style media="screen">
 .more {
@@ -258,18 +256,18 @@ $("body").on("click",".summary a",function(){
 
 
 <div class="modal fade" id="myModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
-	<div class="modal-dialog">
-		<div class="modal-content">
-			<div class="modal-header">
-				<button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
-				<h4 class="modal-title" id="myModalLabel">Information</h4>
-			</div>
-			<div class="modal-body">
+<div class="modal-dialog">
+<div class="modal-content">
+<div class="modal-header">
+<button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+<h4 class="modal-title" id="myModalLabel">Information</h4>
+</div>
+<div class="modal-body">
 
-			</div>
-			<div class="modal-footer">
-				<button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
-			</div>
-		</div>
-	</div>
+</div>
+<div class="modal-footer">
+<button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+</div>
+</div>
+</div>
 </div>

@@ -36,6 +36,11 @@
       </ul>
       <ul class="nav navbar-nav navbar-right">
         <li>
+          <a href="https://intabiotechmj.github.io/phenobook-server/" target="_blank">
+            Manual
+          </a>
+        </li>
+        <li>
           <a href="<?= __URL."logic/users/edit.php?id=$__user->id"?>"><?= $__user; ?> |
             <?= $__user->userGroup; ?>
           </a>

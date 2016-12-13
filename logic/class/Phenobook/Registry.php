@@ -57,7 +57,11 @@ class Registry extends Object{
 		switch ($this->variable->fieldType->type) {
 			case FieldType::$TYPE_CATEGORICAL:
 			$option = Entity::search("Category","variable = '".$this->variable->id."' AND id = '$this->value'");
-			$value = $option->name;
+			if($option){
+				$value = $option->name;
+			}else{
+				$value = "";
+			}
 			break;
 			case FieldType::$TYPE_BOOLEAN:
 			$value = $this->value?"yes":"no";

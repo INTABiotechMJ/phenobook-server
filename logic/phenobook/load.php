@@ -11,6 +11,9 @@ $data = array();
 for ($i=1; $i <= $phenobook->experimental_units_number; $i++) {
 	$row = array();
 	foreach((array)$variables as $v){
+		if($v->fieldType->id == $photo->id){
+			continue;
+		}
 		$reg = Entity::search("Registry","active AND phenobook = '$phenobook->id' AND status AND experimental_unit_number = '$i' AND variable = '$v->id' ORDER BY experimental_unit_number, id DESC");
 		if($reg){
 			switch ($v->fieldType->type) {
@@ -66,6 +69,9 @@ echo "<div id='hot'></div>";
 ?>
 <div class="alert alert-info" style="margin-top:1em">
 	<ul>
+		<li>
+			In order to update a value, double-click on the cell and change it. Auto-saving will be automatically triggered.
+		</li>
 		<li>
 			Photo variables are hidden in this section
 		</li>
@@ -141,6 +147,9 @@ var hotSettings = {
 		colHeaders: [
 			<?php
 			foreach ((array) $variables as $k => $v) {
+				if($v->fieldType->id == $photo->id){
+					continue;
+				}
 				echo "'$v [".$v->fieldType->name."]',";
 			}
 			?>

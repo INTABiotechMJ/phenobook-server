@@ -17,8 +17,8 @@
 		}
 	}
 
-	require "../files/php/class/EMail.php";
-	$classes[] = "EMail";
+
+
 	require "../files/php/class/TableMapper.php";
 	echo initDB($classes);
 

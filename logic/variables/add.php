@@ -39,7 +39,7 @@ if($_POST){
 			</div>
 
 			<div class='col-md-2'>
-				<a href='index.php' class='btn btn-default '>Existents</a>
+				<a href='index.php' class='btn btn-default '>Existing</a>
 			</div>
 
 		</div>

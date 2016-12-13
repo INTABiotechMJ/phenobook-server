@@ -85,7 +85,7 @@ if(_get("e")){
         Get phenobook for mobile
       </h4>
       <a href="https://play.google.com/store/apps/details?id=manolo.field" target="_blank"><img class="store-badge" src="<?= __URL ?>assets/img/google-play-badge.png" alt="Get it on Google Play" /></a> <br>
-      <a href="https://play.google.com/store/apps/details?id=manolo.field" target="_blank"><img class="store-badge" src="<?= __URL ?>assets/img/app-store-badge.png" alt="Download on the Apple Store" /></a> <br>
+      <a href="https://itunes.apple.com/us/app/phenobook/id1170632297?ls=1&mt=8" target="_blank"><img class="store-badge" src="<?= __URL ?>assets/img/app-store-badge.png" alt="Download on the Apple Store" /></a> <br>
       <p>
         You can also download the
         <a href="<?= __URL ?>app.apk" target="_blank">APK file</a> for Android devices <br>

@@ -55,7 +55,7 @@ $users = obj2arr(Entity::listMe("User","active AND 1"));
       </div>
 
 
-      <div class="form-group">
+      <div class="form-group hide">
         <label class=" control-label" for="experimental_units_number">Experimental units <span class="red">*</span></label>
         <input placeholder="Experimental units" id="experimental_units_number" name="experimental_units_number" value="<?= _post("experimental_units_number"); ?>" type="number" class="form-control int input-md required">
         <span class="help-block">
@@ -110,6 +110,9 @@ $users = obj2arr(Entity::listMe("User","active AND 1"));
             </div>
 
           </div>
+          <span class="help-block">
+            Variables in the phenobook will keep this order.
+          </span>
         </div>
 
       </div>

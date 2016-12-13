@@ -43,7 +43,13 @@ $registry_other = Entity::listMe("Registry","active AND phenobook = '$phenobook-
 <b>Phenobook:</b> <?= $phenobook ?> <br>
 <b>Variable:</b> <?= $registry->variable ?> <br>
 <b>Experimental Unit: </b><?= $eu ?>
-
+<?php
+if($registry->variable->fieldType->isText()){
+ ?> <br>
+<b>Download as file: </b> <a class="btn btn-xs btn-default" href="ajax/download.php?id=<?= $registry->id ?>"><i class="glyphicon glyphicon-download-alt"></i></a>
+<?php
+}
+ ?>
 <hr>
 
 <h5>Current value</h5>

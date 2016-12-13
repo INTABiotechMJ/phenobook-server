@@ -43,14 +43,19 @@ class Phenobook extends Object{
 		}
 		return implode(",", $selectedUsers);
 	}
-	function searchNonInformativeVariables(){
+	function searchNonInformativeVariables($fieldType = false){
 		$variables = $this->searchVariables();
 		$ret = array();
 		foreach((array)$variables as $v){
 			if($v->isInformative){
 				continue;
 			}
-			$res[] = $v;
+			if($fieldType){
+				if($fieldType != $v->fieldType->type){
+					continue;
+				}
+			}
+			$ret[] = $v;
 		}
 		return $ret;
 	}
