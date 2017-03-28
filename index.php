@@ -106,6 +106,9 @@ if(_get("e")){
         Email us at vanzetti.leonardo[at]inta.gob.ar with
         information about you and your institution.
       </p>
+      <p>
+        <a target="_blank" href="privacypolicy.html">Privacy Policy</a>
+      </p>
     </div>
   </div>
   <?php

@@ -140,7 +140,7 @@ var hotSettings = {
 		stretchH: 'all',
 		startRows: <?= $phenobook->experimental_units_number; ?>,
 		rowHeaders: true,
-		fixedColumnsLeft: <?= $countInformative ?>,
+		//fixedColumnsLeft: <?= $countInformative ?>,
 		manualColumnFreeze: true,
 		manualRowResize: true,
 		manualColumnResize: true,

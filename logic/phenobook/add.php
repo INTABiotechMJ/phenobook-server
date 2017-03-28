@@ -8,7 +8,6 @@ if($_POST){
   $item->name = _post("name");
   $item->description = _post("description");
   $item->experimental_units_number = _post("experimental_units_number");
-  $item->experimental_unit_name = _post("experimental_unit_name");
   $item->stamp = stamp();
   $item->userGroup = $__user->userGroup;
   if(!$alert->hasError){
@@ -33,8 +32,8 @@ $users = obj2arr(Entity::listMe("User","active AND 1"));
 <div class="row">
 
   <div class="col-sm-8 col-md-offset-1 col-xs-10 col-xs-offset-1">
-    <form autocomplete="off" enctype="multipart/form-data" class="form-horizontal valid"
-    method="POST" action="<?= $_SERVER["PHP_SELF"]?>">
+    <form autocomplete="off" class="form-horizontal valid"
+    method="POST" action="<?= $_SERVER["PHP_SELF"]?>" name="myform">
     <fieldset>
       <!-- Form Name -->
       <legend>Add Phenobook</legend>
@@ -55,19 +54,11 @@ $users = obj2arr(Entity::listMe("User","active AND 1"));
       </div>
 
 
-      <div class="form-group hide">
+      <div class="form-group">
         <label class=" control-label" for="experimental_units_number">Experimental units <span class="red">*</span></label>
         <input placeholder="Experimental units" id="experimental_units_number" name="experimental_units_number" value="<?= _post("experimental_units_number"); ?>" type="number" class="form-control int input-md required">
         <span class="help-block">
           Number of experimental units
-        </span>
-      </div>
-
-      <div class="form-group">
-        <label class=" control-label" for="experimental_unit_name">Experimental unit name</label>
-        <input placeholder="Experimental unit name" id="experimental_unit_name" name="experimental_unit_name" value="<?= _post("experimental_unit_name"); ?>" type="text" class="form-control input-md">
-        <span class="help-block">
-          If left blank, it will use just <i>Experimental Unit</i> as name
         </span>
       </div>
 
@@ -108,11 +99,11 @@ $users = obj2arr(Entity::listMe("User","active AND 1"));
                 <button type="button" id="search_move_down" class="btn btn-block col-sm-6"><i class="glyphicon glyphicon-arrow-down"></i></button>
               </div>
             </div>
-
+            <span class="help-block">
+              Variables in phenobook will keep this order.
+            </span>
           </div>
-          <span class="help-block">
-            Variables in the phenobook will keep this order.
-          </span>
+
         </div>
 
       </div>

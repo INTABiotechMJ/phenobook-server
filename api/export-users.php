@@ -4,7 +4,7 @@ $noLogin = true;
 $noMenu = true;
 $noHeader = true;
 require "../files/php/config/require.php";
-$email = _request("email");
+$email = _request("user");
 $pass = _request("pass");
 $user = Entity::search("User", "email = '$email' AND pass = '$pass' AND active");
 if(!$user){

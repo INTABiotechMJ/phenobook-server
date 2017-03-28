@@ -22,15 +22,19 @@ $variables_boolean = count($phenobook->searchNonInformativeVariables(FieldType::
 $variables_to_fill = $phenobook->searchNonInformativeVariables();
 $informative_variables_count = count($phenobook->searchInformativeVariables());
 $informative_cells_count = $phenobook->experimental_units_number * $informative_variables_count;
-$variable_count = count($variables_to_fill) - count($variables_boolean);
+$variable_count = count($variables_to_fill) - $variables_boolean;
 $all_cell_count = count($variables) * $phenobook->experimental_units_number;
 $cell_count = count($variables_to_fill) * $phenobook->experimental_units_number;
 $completed_cells = 0;
 $reg = Entity::listMe("Registry","phenobook = '$phenobook->id' AND active AND status");
 $informative_cells_filled = 0;
 foreach ((array)$reg as $value) {
+	if(empty($value->value)){
+		continue;
+	}
 	if($value->variable->isInformative){
 		$informative_cells_filled++;
+		continue;
 	}
 	if($value->variable->isInformative or $value->variable->fieldType->isBoolean()){
 		continue;
@@ -38,7 +42,7 @@ foreach ((array)$reg as $value) {
 	$completed_cells++;
 }
 
-$completed_percentage = number_format($completed_cells * 100 / (count($variable_count) * $phenobook->experimental_units_number),2);
+$completed_percentage = number_format($completed_cells * 100 / ($variable_count * $phenobook->experimental_units_number),2);
 
 ?>
 <style media="screen">
@@ -113,7 +117,7 @@ th{
 			<b>Informative variable count:</b> <?= $informative_variables_count ?>
 		</li>
 		<li class="hide">
-			<b>Variable count:</b> <?= $variable_count + $check_variables_count ?> <span class="downlight">(Informative variables do not count)</span>
+			<b>Variable count:</b> <?= $variable_count + $variables_boolean ?> <span class="downlight">(Informative variables do not count)</span>
 		</li>
 		<li class="hide">
 			<b>Informative cells count:</b> <?= $informative_cells_count."  <span class='downlight'>(filled: ".$informative_cells_filled ?>)</span>
