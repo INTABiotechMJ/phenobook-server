@@ -268,9 +268,9 @@
       </h3>
       It is possible to query and update the database via an HTTP API.
 
-      In order to make a request to the API it is required to pass the user's email and password, as well as some other parameters. Notice that the API will only return data associated with the current user's group. In this example we request all the variables, the response is a json representation of the objects:
+      In order to make a request to the API it is required to pass the user's user and password, as well as some other parameters. Notice that the API will only return data associated with the current user's group. In this example we request all the variables, the response is a json representation of the objects:
       <p class="text-align:left">
-        GET <br> http://getphenobook.com/api/get-variables.php?email=testuser&amp;pass=testpassword
+        GET <br> http://getphenobook.com/api/get-variables.php?user=testuser&amp;pass=testpassword
         <br>
         <code>
           [{"name":"Cultivar","required":"0","description":"","userGroup":{"name":"Default","id":"1","active":"1"},"fieldType":{"name":"Categorial","type":"2","id":"2","active":"1"},
@@ -303,7 +303,7 @@
             api/export-phenobooksVariables.php
           </td>
           <td>
-            email, pass
+            user, pass
           </td>
           <td>
             Will return an associative array of phenobooks and its variables.
@@ -334,7 +334,7 @@
             api/export-users.php
           </td>
           <td>
-            email, pass
+            user, pass
           </td>
           <td>
             Will return all user corresponding to the user's group
@@ -350,7 +350,7 @@
             api/export-variables.php
           </td>
           <td>
-            email, pass
+            user, pass
           </td>
           <td>
             Will return all variables available for the user's group
@@ -364,7 +364,7 @@
             api/export-registries.php
           </td>
           <td>
-            email, pass, phenobook (optional, the phenobook id), variable (optional, the variable id), experimental_unit (optional, the experimental unit number).
+            user, pass, phenobook (optional, the phenobook id), variable (optional, the variable id), experimental_unit (optional, the experimental unit number).
           </td>
           <td>
             Will return all registries by default. It is possible to specify phenobook, variable or experimental unit.
@@ -379,7 +379,7 @@
             api/export-phenobooks.php
           </td>
           <td>
-            email, pass
+            user, pass
           </td>
           <td>
             Will return all the active phenobooks of the user groups
@@ -393,7 +393,7 @@
             api/import-registry.php
           </td>
           <td>
-            email, pass, experimental_unit, variable_id, phenobook_id, value
+            user, pass, experimental_unit, variable_id, phenobook_id, value
           </td>
           <td>
             Will save value as a new record in specified phenobook, variable and experimental unit.
