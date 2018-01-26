@@ -1,5 +1,8 @@
 files/php/config/config_remote.php
-files/php/config/config.php
+files/php/config/config.1.php
 files/php/config/config_remote_vpsleo.php
 *.DS_Store
 changes.sql
+files/php/scripts/thumb/cache/*
+files/uploads/*
+database.sql

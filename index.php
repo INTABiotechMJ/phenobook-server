@@ -63,8 +63,16 @@ if(_get("e")){
       </form>
       <div class="text-center">
         <img class="img-logo" src="assets/img/inta.png" alt="" />
-        <img class="img-logo" src="assets/img/conicet.png" alt="" />
+        <img class="img-logo hide" src="assets/img/conicet.png" alt="" />
       </div>
+      <p>
+        Aplicación para la carga de observaciones a campo.
+        Para obtener más información en español puede enviarnos
+        un email a vanzetti.leonardo[at]inta.gob.ar. <br>
+
+
+
+      </p>
     </div>
     <div class="col-md-8">
       <h4>
@@ -74,6 +82,9 @@ if(_get("e")){
       on a server software and a mobile application.
       <p>
         It can be easily implemented in collaborative research and development projects involving data collecting and forward analyses. Adopting Phenobook is expected to improve the involved processes by minimizing input errors, resulting in higher quality and reliability of the research outcomes.
+      </p>
+      <p>
+        Paper: <a href="https://doi.org/10.1093/gigascience/giw019" target="_blank">Gigascience</a>
       </p>
       <hr>
       <h4>

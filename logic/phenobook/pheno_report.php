@@ -7,7 +7,9 @@ if($phenobook->userGroup->id != $__user->userGroup->id){
 }
 $variables = $phenobook->searchVariables();
 $data = array();
-
+if(empty($variables)){
+	redirect("index.php?m=Selected Phenobook has no variables");
+}
 //data
 $creation_date = $phenobook->stamp;
 $lastReg = Entity::search("Registry", "active AND phenobook = '$phenobook->id' ORDER BY stamp DESC");
@@ -41,8 +43,10 @@ foreach ((array)$reg as $value) {
 	}
 	$completed_cells++;
 }
+if($variable_count > 0){
+	$completed_percentage = number_format($completed_cells * 100 / ($variable_count * $phenobook->experimental_units_number),2);
+}
 
-$completed_percentage = number_format($completed_cells * 100 / ($variable_count * $phenobook->experimental_units_number),2);
 
 ?>
 <style media="screen">
@@ -260,18 +264,18 @@ $("body").on("click",".summary a",function(){
 
 
 <div class="modal fade" id="myModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
-<div class="modal-dialog">
-<div class="modal-content">
-<div class="modal-header">
-<button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
-<h4 class="modal-title" id="myModalLabel">Information</h4>
-</div>
-<div class="modal-body">
+	<div class="modal-dialog">
+		<div class="modal-content">
+			<div class="modal-header">
+				<button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+				<h4 class="modal-title" id="myModalLabel">Information</h4>
+			</div>
+			<div class="modal-body">
 
-</div>
-<div class="modal-footer">
-<button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
-</div>
-</div>
-</div>
+			</div>
+			<div class="modal-footer">
+				<button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+			</div>
+		</div>
+	</div>
 </div>

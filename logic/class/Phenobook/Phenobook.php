@@ -76,6 +76,9 @@ class Phenobook extends Object{
 		$variables = array();
 		$pvs = Entity::listMe("PhenobookVariable","active AND phenobook = '$this->id'");
 		foreach((array)$pvs as $pv){
+			if($pv->variable == Null){
+				continue;
+			}
 			if($fieldType){
 				if($pv->variable->fieldType->id != $fieldType->id){
 					continue;

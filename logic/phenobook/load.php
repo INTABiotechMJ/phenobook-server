@@ -7,6 +7,10 @@ if($phenobook->userGroup->id != $__user->userGroup->id){
 }
 $photo = Entity::search("FieldType","active AND type = '" . FieldType::$TYPE_PHOTO . "'");
 $variables = $phenobook->searchVariables();
+
+if(empty($variables)){
+	redirect("index.php?m=Selected Phenobook has no variables");
+}
 $data = array();
 for ($i=1; $i <= $phenobook->experimental_units_number; $i++) {
 	$row = array();
