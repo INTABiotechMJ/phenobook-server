@@ -48,7 +48,7 @@ class User extends Object{
 		return Entity::search("User","email = '$email' AND active $exclude");
 	}
 	function getUserGroups(){
-		$ug =  Entity::listMe("UserUserGroup","user = '$this->id' AND active");
+		$ug =  Entity::listMe("UserGroup","user = '$this->id' AND active");
 		$res = array();
 		foreach ($ug as $u) {
 			$res[] = $u->userGroup;
